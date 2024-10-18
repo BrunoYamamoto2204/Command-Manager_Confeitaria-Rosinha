@@ -1,0 +1,17 @@
+{
+    "doce": {},
+    "salgado": {
+        "frito": {
+            "coxinha": 30
+        },
+        "assado": {
+            "pastel": 30
+        },
+        "empadao": {
+            "frango": 30
+        }
+    },
+    "bolo": {},
+    "sobremesa": {},
+    "fio_de_ovos": {}
+}
