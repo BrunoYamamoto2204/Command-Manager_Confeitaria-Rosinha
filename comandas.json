@@ -1,7 +1,8 @@
 {
-    "num": 2,
+    "num": 9,
     "comandas": {
         "comanda1": {
+            "num_item": 1,
             "salgados": [
                 "\u001b[1;33m50 UN\u001b[m - Coxinha",
                 "\u001b[1;33m45 UN\u001b[m - Coxinha c/ Catupiry",
@@ -20,6 +21,161 @@
             "fio_de_ovos": [
                 "\u001b[1;33m5 Kg\u001b[m - Fio de ovos"
             ]
+        },
+        "comanda2": {
+            "num_item": 3,
+            "salgados": [
+                "(0) - 11 UN - Coxinha"
+            ],
+            "doces": [
+                "(0) - 22 UN - Bomb. Dois Amores"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "comanda3": {
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "0 - 23 UN - Bomb. Brigadeiro",
+                "0 - 2 UN - Bomb. Laranjinha"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {}
+        },
+        "comanda4": {
+            "num_item": 16,
+            "salgados": [
+                "0 - 1 UN - Coxinha"
+            ],
+            "doces": [
+                "0 - 1 UN - Brigadeiro",
+                "0 - 2 UN - Bomb. Laranjinha"
+            ],
+            "bolos": [
+                "0 - 2 Kg - Ta\u00e7a Dueto"
+            ],
+            "sobremesas": [
+                "0 - 4 Kg - Torta Maracuj\u00e1",
+                "0 - 2 Kg - Banoff"
+            ],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [
+                    "10 - 1 UN - Coxinha",
+                    "12 - 3 Kg - Empad\u00e3o Frango",
+                    "15 - 1 UN - Coxinha"
+                ],
+                "doces": [
+                    "11 - 1 UN - Brigadeiro"
+                ],
+                "bolos": [],
+                "sobremesas": [
+                    "14 - 4 Kg - Torta Morango"
+                ],
+                "fio_de_ovos": [
+                    "13 - 4 Kg - Fio de ovos"
+                ]
+            }
+        },
+        "comanda5": {
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "0 - 23 UN - Brigadeiro",
+                "0 - 2 UN - Bomb. Dois Amores"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {}
+        },
+        "comanda6": {
+            "num_item": 5,
+            "salgados": [
+                "0 - 1 UN - Coxinha",
+                "0 - 3 Kg - Empad\u00e3o Camar\u00e3o"
+            ],
+            "doces": [
+                "0 - 1 UN - Brigadeiro"
+            ],
+            "bolos": [
+                "0 - 1 Kg - Abacaxi c/ C\u00f4co"
+            ],
+            "sobremesas": [],
+            "fio_de_ovos": [
+                "0 - 4 Kg - Fio de ovos"
+            ],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "comanda7": {
+            "num_item": 10,
+            "salgados": [
+                "(0) - 1 UN - Coxinha",
+                "(3) - 2 UN - Folhado Presunto e Queijo"
+            ],
+            "doces": [
+                "(1) - 1 UN - Bomb. Morango"
+            ],
+            "bolos": [
+                "(2) - 1 Kg - Bolo Trufado"
+            ],
+            "sobremesas": [
+                "(4) - 1 Kg - Torta Choco Morango"
+            ],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [
+                    "(6) - 2 UN - Bomb. Uva",
+                    "(7) -> 2 UN - Bomb. Dois Amores"
+                ],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "comanda8": {
+            "salgados": [
+                "(1) -> 50 Kg - Coxinha",
+                "(2) -> 50 Kg - Kibe"
+            ],
+            "doces": [
+                "(3) -> 100 UN - Brigadeiro"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [
+                    "(5) -> 30 Kg - Risoles de Palmito"
+                ],
+                "doces": [],
+                "bolos": [
+                    "(6) -> 2.5 Kg - Dueto"
+                ],
+                "sobremesas": [
+                    "(7) -> 1.5 UN - Pav\u00ea Morango"
+                ],
+                "fio_de_ovos": []
+            },
+            "num_item": 8
         }
     }
 }

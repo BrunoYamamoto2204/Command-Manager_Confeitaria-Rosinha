@@ -27,15 +27,16 @@ def esc_opcoes():
             print("\033[33m1 - \033[34mNova Comanda\033[m")
             print("\033[33m2 - \033[34mVer Comanda existente\033[m")
             print("\033[33m3 - \033[34mAdicionar em uma comanda existente\033[m")
-            print("\033[33m4 - \033[34mSair\033[m")
+            print("\033[33m4 - \033[34mExcluir itens da comanda\033[m")
+            print("\033[33m5 - \033[34mSair\033[m")
             print()
             opc = int(input("Escolha: "))
-            if opc > 4 or opc < 1:
-                print("\033[31mEscolha um número entre 1 e 4 apenas!\033[m\n")
+            if opc > 5 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 5 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 4 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 5 apenas!\033[m\n")
 
     return opc
 
@@ -54,10 +55,10 @@ def esc_comandas():
             opc = int(input("Escolha: "))
             if opc > 6 or opc < 1:
                 print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
-            else:
-                break
         except ValueError:
             print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+        else:
+            break
 
     return opc
 
@@ -68,13 +69,14 @@ def num_comanda():
         try:
             num = int(input("Escolha o número da comanda: "))
             if num >= comandas["num"] or num < 1:
-                print(f"\033[31mSó existem comandas entre 1 e {comandas['num']}!\033[m\n")
-            else:
-                break
-        except KeyError or ValueError:
-            print(f"\033[31mSó existem comandas entre 1 e {comandas['num']}!\033[m\n")
+                print(f"\033[31mSó existem comandas entre 1 e {comandas['num']-1}!\033[m\n")
+                continue
+        except ValueError:
+            print(f"\033[31mSó existem comandas entre 1 e {comandas['num']-1}!\033[m\n")
+        else:
+            break
 
-    return num
+    return int(num)
 
 def esc_salgado():
     while True:
@@ -201,45 +203,46 @@ Escolha:"""))
 \033[33m7\033[m- \033[34mBrigadeiro Branco c/ Cereal 
 \033[33m8\033[m- \033[34mDois Amores 
 \033[33m9\033[m- \033[34mEspelhado Ouriço 
-\033[33m9\033[m- \033[34mEspelhado Dois Amores  
-\033[33m10\033[m- \033[34mEspelhado Brigadeiro
-\033[33m11\033[m- \033[34mEspelhado Cereja
-\033[33m12\033[m- \033[34mEspelhado Nozes
-\033[33m13\033[m- \033[34mEspelhado Olho Sogra\033[m  
+\033[33m10\033[m- \033[34mEspelhado Dois Amores  
+\033[33m11\033[m- \033[34mEspelhado Brigadeiro
+\033[33m12\033[m- \033[34mEspelhado Cereja
+\033[33m13\033[m- \033[34mEspelhado Nozes
+\033[33m14\033[m- \033[34mEspelhado Olho Sogra\033[m  
     
 Escolha: """))
-                if escolha > 13 or escolha < 1:
-                    print("\033[31mEscolha um número entre 1 e 13 apenas!\033[m\n")
+                if escolha > 14 or escolha < 1:
+                    print("\033[31mEscolha um número entre 1 e 14 apenas!\033[m\n")
                 else:
                     break
             except ValueError:
-                print("\033[31mEscolha um número entre 1 e 13 apenas!\033[m\n")
+                print("\033[31mEscolha um número entre 1 e 14 apenas!\033[m\n")
 
     if tipo_doce == 2:
         while True:
             try:
                 escolha = int(input
 ("""Escolha o bombom:
-\033[33m14\033[m - \033[34mBomb. Morango   
-\033[33m13\033[m - \033[34mBomb. Damasco
-\033[33m15\033[m - \033[34mBomb. Uva
-\033[33m16\033[m - \033[34mBomb. Cereja 
-\033[33m17\033[m - \033[34mBomb. Nozes 
-\033[33m18\033[m - \033[34mBomb. Brigadeiro  
-\033[33m19\033[m - \033[34mBomb. Côco 
-\033[33m20\033[m - \033[34mBomb. Dois Amores 
-\033[33m21\033[m - \033[34mBomb. Crocante 
-\033[33m22\033[m - \033[34mBomb. Laranjinha  
-\033[33m23\033[m - \033[34mBomb. Suspiro
-\033[33m24\033[m - \033[34mCamafeu\033[m 
+\033[33m15\033[m - \033[34mBomb. Morango   
+\033[33m16\033[m - \033[34mBomb. Damasco
+\033[33m17\033[m - \033[34mBomb. Uva
+\033[33m18\033[m - \033[34mBomb. Cereja 
+\033[33m19\033[m - \033[34mBomb. Nozes 
+\033[33m20\033[m - \033[34mBomb. Brigadeiro  
+\033[33m21\033[m - \033[34mBomb. Côco 
+\033[33m22\033[m - \033[34mBomb. Dois Amores 
+\033[33m23\033[m - \033[34mBomb. Crocante 
+\033[33m24\033[m - \033[34mBomb. Laranjinha  
+\033[33m25\033[m - \033[34mBomb. Suspiro
+\033[33m26\033[m - \033[34mCamafeu\033[m 
 
 Escolha: """))
-                if escolha > 24 or escolha < 14:
-                    print("\033[31mEscolha um número entre 14 e 24 apenas!\033[m\n")
+
+                if escolha > 26 or escolha < 14:
+                    print("\033[31mEscolha um número entre 15 e 26 apenas!\033[m\n")
                 else:
                     break
             except ValueError:
-                print("\033[31mEscolha um número entre 14 e 24 apenas!\033[m\n")
+                print("\033[31mEscolha um número entre 15 e 26 apenas!\033[m\n")
 
     return escolha
 def esc_bolo():
@@ -344,7 +347,10 @@ Escolha: """))
     return escolha
 
 
-def qnd_salg(salg):
+def qnd_salg(salg,num_comanda):
+    with open("comandas.json", "r") as r:
+         comanda = json.load(r)
+
     lista_salg = ["Coxinha", "Coxinha c/ Catupiry", "Kibe", "Kibe Recheado", "Bolinha de Queijo", "Vininha",
                   "Risoles de Carne", "Risoles de Queijo e Presunto", "Risoles de Palmito", "Risoles Camarão",
                   "Mini Pastel Carne", "Mini Pastel Queijo", "Espetinho Carne", "Espetinho Frango", "Esfiha Carne",
@@ -367,12 +373,15 @@ def qnd_salg(salg):
         else:
             break
 
+    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
     if salg < 29:
-        return f"\033[1;33m{qntd} UN\033[m - {salgado}"
+        return f"({num_item}) -> {qntd} UN - {salgado}"
     else:
-        return f"\033[1;33m{qntd} Kg\033[m - {salgado}"
+        return f"({num_item}) -> {qntd} Kg - {salgado}"
 
-def qntd_doce(doce):
+def qntd_doce(doce,num_comanda):
+    with open("comandas.json", "r") as r:
+         comanda = json.load(r)
     lista_doce = ["Brigadeiro", "Brigadeiro Branco", "Beijinho", "Olho de Sogra", "Cajuzinho",
                    "Brigadeiro Preto c/ Cereal", "Brigadeiro Branco c/ Cereal", "Dois Amores", "Espelhado Ouriço",
                    "Espelhado Dois Amores", "Espelhado Brigadeiro", "Espelhado Cereja", "Espelhado Nozes",
@@ -390,9 +399,12 @@ def qntd_doce(doce):
         else:
             break
 
-    return f"\033[1;33m{qntd} UN\033[m - {doce}"
+    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    return f"({num_item}) -> {qntd} UN - {doce}"
 
-def qntd_sobremesa(sobre):
+def qntd_sobremesa(sobre,num_comanda):
+    with open("comandas.json", "r") as r:
+         comanda = json.load(r)
     lista_sobremesa = ["Torta Choco Morango", "Torta Choco Nana", "Torta Maracujá", "Torta Limão", "Torta Morango",
                         "Torta Alemã", "Mini Quindim", "Mini Torta Brigadeiro", "Mini Torta Limão",
                         "Mini Torta Morango", "Mini Torta Strogonoff Nozes", "Mini Torta Uva", "Mil Folhas",
@@ -414,12 +426,15 @@ def qntd_sobremesa(sobre):
         else:
             break
 
+    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
     if sobre < 7 or sobre > 12:
-        return f"\033[1;33m{qntd} Kg\033[m - {sobremesa}"
+        return f"({num_item}) -> {qntd} UN - {sobremesa}"
     else:
-        return f"\033[1;33m{qntd} UN\033[m - {sobremesa}"
+        return f"({num_item}) -> {qntd} KG - {sobremesa}"
 
-def qntd_bolo(bolo):
+def qntd_bolo(bolo,num_comanda):
+    with open("comandas.json", "r") as r:
+         comanda = json.load(r)
     lista_bolos = ["Abacaxi c/ Côco", "Ameixa c/ Côco", "Delícia de Limão e Abacaxi", "Martha Rocha", "Prestígio",
                    "Sonho de Valsa", "Morango Nata e Suspiro", "Morango c/ Chocolate", "Surpresa de Morango",
                    "Tentação de Morango", "Dueto", "Sinfonia de Damasco", "Bolo Trufado", "Floresta Negra",
@@ -437,9 +452,12 @@ def qntd_bolo(bolo):
         else:
             break
 
-    return f"\033[1;33m{qntd} Kg\033[m - {bolos}"
+    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    return f"({num_item}) -> {qntd} Kg - {bolos}"
 
-def qntd_fio_de_ovos():
+def qntd_fio_de_ovos(num_comanda):
+    with open("comandas.json", "r") as r:
+         comanda = json.load(r)
     while True:
         try:
             qntd = (input("Peso do Fio de Ovos(Kg): ").strip().replace(",", "."))
@@ -449,6 +467,7 @@ def qntd_fio_de_ovos():
         else:
             break
 
-    return f"\033[1;33m{qntd} Kg\033[m - Fio de ovos"
+    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    return f"({num_item}) -> {qntd} Kg - Fio de ovos"
 
 

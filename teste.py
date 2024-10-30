@@ -1,8 +1,22 @@
-def solution(lista1,lista2):
-    soma=0
-    for c in range(0,len(lista1)):
-        soma += ((lista1[c]-lista2[c])**2)
-    media = soma/len(lista1)
-    print(media)
+import json
+comandas = {"comandas1":{"bolos":["1 - 123","2 - 456"],"salgagos":["1 - 456"]}}
+print(comandas)
 
-solution([1,2,3],[4,5,6])
+string = input("Escreva o número: ")
+string = string+" -"
+for key,value in comandas.items():
+    print(f"chave = {key}")
+    for k,v in value.items():
+        novos_valores = []
+        for c in v:
+            print(f"valor = {c}")
+            if string not in c:
+                novos_valores.append(c)  # Adiciona apenas se "1 -" não estiver presente
+                # Atualiza a lista original com os novos valores
+        print(comandas[key][k])
+        comandas[key][k] = novos_valores
+
+print(comandas)
+
+opa = '(4) -> 1 Kg - Torta Choco Morango'.split()
+print(opa[0])
