@@ -1,17 +1,121 @@
 {
-    "doce": {},
-    "salgado": {
-        "frito": {
-            "coxinha": 30
+    "doce": {
+        "tradicional/espelhado": {
+            "Brigadeiro": 0,
+            "Brigadeiro Branco": 0,
+            "Beijinho": 0,
+            "Olho de Sogra": 0,
+            "Cajuzinho": 0,
+            "Brigadeiro Preto c/ Cereal": 0,
+            "Brigadeiro Branco c/ Cereal": 0,
+            "Dois Amores": 0,
+            "Espelhado Ourico": 0,
+            "Espelhado Dois Amores": 0,
+            "Espelhado Brigadeiro": 0,
+            "Espelhado Cereja": 0,
+            "Espelhado Nozes": 0,
+            "Espelhado Olho Sogra": 0
         },
-        "assado": {
-            "pastel": 30
-        },
-        "empadao": {
-            "frango": 30
+        "bombom": {
+            "Bomb. Morango": 0,
+            "Bomb. Damasco": 0,
+            "Bomb. Uva": 0,
+            "Bomb. Cereja": 0,
+            "Bomb. Nozes": 0,
+            "Bomb. Brigadeiro": 0,
+            "Bomb. Coco": 0,
+            "Bomb. Dois Amores": 0,
+            "Bomb. Crocante": 0,
+            "Bomb. Laranjinha": 0,
+            "Bomb. Suspiro": 0,
+            "Camafeu": 0
         }
     },
-    "bolo": {},
-    "sobremesa": {},
-    "fio_de_ovos": {}
+    "salgado": {
+        "fritos": {
+            "Coxinha": 60,
+            "Coxinha c/ Catupiry": 0,
+            "Kibe": 0,
+            "Kibe Recheado": 0,
+            "Bolinha de Queijo": 0,
+            "Vininha": 0,
+            "Risoles de Carne": 0,
+            "Risoles de Queijo e Presunto": 0,
+            "Risoles de Palmito": 0,
+            "Risoles Camarao": 0,
+            "Mini Pastel Carne": 0,
+            "Mini Pastel Queijo": 0,
+            "Espetinho Carne": 0
+        },
+        "assados": {
+            "Esfiha Carne": 0,
+            "Esfiha Frango": 0,
+            "Esfiha Ricota c/ Tomate Seco": 0,
+            "Doguinho": 0,
+            "Mini Calzone Frango": 0,
+            "Mini Pizza": 0,
+            "Assado Escarola e Bacon": 0,
+            "Empadinha Frango": 22,
+            "Empadinha Palmito": 0,
+            "Empadinha Camarao": 0,
+            "Trouxinha Camarao": 0,
+            "Folhado Presunto e Ameixa": 0,
+            "Folhado Frango c/ Catupiry": 0,
+            "Folhado Presunto e Queijo": 2
+        },
+        "empadao": {
+            "Empadao Palmito": 0,
+            "Empadao Camarao": 0,
+            "Empadao Frango": 1.0
+        }
+    },
+    "bolo": {
+        "Abacaxi c/ Coco": 0,
+        "Ameixa c/ Coco": 0,
+        "Delicia de Limoe e Abacaxi": 0,
+        "Martha Rocha": 0,
+        "Prestigio": 0,
+        "Sonho de Valsa": 0,
+        "Morango Nata e Suspiro": 0,
+        "Morango c/ Chocolate": 0,
+        "Surpresa de Morango": 0,
+        "Tentacao de Morango": 0,
+        "Dueto": 0,
+        "Sinfonia de Damasco": 0,
+        "Bolo Trufado": 0,
+        "Floresta Negra": 0,
+        "Taca Martha Rocha": 0,
+        "Taca Dueto": 0,
+        "Taca Morango Nata e Suspiro": 2.0
+    },
+    "sobremesa": {
+        "tortas": {
+            "Torta Choco Morango": 0,
+            "Torta Choco Nana": 0,
+            "Torta Maracuja": 0,
+            "Torta Limoe": 0,
+            "Torta Morango": 0,
+            "Torta Alema": 0,
+            "Mini Quindim": 0,
+            "Mini Torta Brigadeiro": 0,
+            "Mini Torta Limoe": 0,
+            "Mini Torta Morango": 0,
+            "Mini Torta Strogonoff Nozes": 0,
+            "Mini Torta Uva": 0
+        },
+        "Paves/Profiteroles/Banoff/Mil Folhas": {
+            "Mil Folhas": 0,
+            "Mil Folhas c/ Morango": 0,
+            "Mil Folhas c/ Frutas": 0,
+            "Pave Frutas Tropicais": 0,
+            "Pave Morango": 0,
+            "Pave Pessego": 0,
+            "Pave Abacaxi": 0,
+            "Profiteroles": 0,
+            "Banoff": 0
+        }
+    },
+    "fio_de_ovos": {
+        "fio_de_ovos": 0
+    }
 }

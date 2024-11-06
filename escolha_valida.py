@@ -1,5 +1,6 @@
 import json
 from datetime import datetime,timedelta
+from unidecode import unidecode
 def esc_principal():
     while True:
         try:
@@ -88,6 +89,7 @@ def nome_comanda():
     return variavel_nome.lower()
 
 def esc_salgado():
+    #ESCOLHA DOS TIPOS DE SALGADOS
     while True:
         try:
             tipo_salg = int(input
@@ -106,6 +108,7 @@ Escolha:"""))
 
     print("="*60)
 
+    #ESCOLHA DOS SALGADOS
     if tipo_salg == 1:
         while True:
             try:
@@ -178,6 +181,7 @@ Escolha: """))
                     break
             except ValueError:
                 print("\033[31mEscolha um número entre 29 e 31 apenas!\033[m\n")\
+
 
     return escolha
 def esc_doce():
@@ -357,8 +361,10 @@ Escolha: """))
 
 
 def qnd_salg(salg,nome):
-    with open("comandas.json", "r") as r:
+    with open("comandas.json", "r", encoding="utf-8") as r:
          comanda = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
 
     lista_salg = ["Coxinha", "Coxinha c/ Catupiry", "Kibe", "Kibe Recheado", "Bolinha de Queijo", "Vininha",
                   "Risoles de Carne", "Risoles de Queijo e Presunto", "Risoles de Palmito", "Risoles Camarão",
@@ -375,22 +381,40 @@ def qnd_salg(salg,nome):
             if salg < 29:
                 qntd = int(input("Quantidade de Salgados(UN): ").strip())
             else:
-                qntd = (input("Peso do Empadão(Kg): ").strip().replace(",","."))
+                qntd = float(input("Peso do Empadão(Kg): ").strip().replace(",","."))
                 float(qntd)
         except ValueError:
             print("\033[31m\nDigite uma quantidade válida!\033[m")
         else:
             break
 
+    #ADICIONAR EM DADOS
+    if salg >= 1 and salg <= 14: #FRITOS
+        dados_salgado = dados['salgado']['fritos'][unidecode(salgado)] + qntd
+        dados['salgado']['fritos'][unidecode(salgado)] = dados_salgado
+    if salg >=15 and salg <= 28: #ASSADOS
+        dados_salgado = dados['salgado']['assados'][unidecode(salgado)] + qntd
+        dados['salgado']['assados'][unidecode(salgado)] = dados_salgado
+    if salg >=29 and salg <= 31: #ASSADOS
+        dados_salgado = dados['salgado']['empadao'][unidecode(salgado)] + float(qntd)
+        dados['salgado']['empadao'][unidecode(salgado)] = dados_salgado
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     if salg < 29:
         return f"({num_item}) -> {qntd} UN - {salgado}"
     else:
         return f"({num_item}) -> {qntd} Kg - {salgado}"
 
-def qntd_doce(doce,nome):
-    with open("comandas.json", "r") as r:
+def qntd_doce(doces,nome):
+    with open("comandas.json", "r", encoding="utf-8") as r:
          comanda = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
     lista_doce = ["Brigadeiro", "Brigadeiro Branco", "Beijinho", "Olho de Sogra", "Cajuzinho",
                    "Brigadeiro Preto c/ Cereal", "Brigadeiro Branco c/ Cereal", "Dois Amores", "Espelhado Ouriço",
                    "Espelhado Dois Amores", "Espelhado Brigadeiro", "Espelhado Cereja", "Espelhado Nozes",
@@ -398,7 +422,7 @@ def qntd_doce(doce,nome):
                    "Bomb. Brigadeiro", "Bomb. Côco", "Bomb. Dois Amores", "Bomb. Crocante", "Bomb. Laranjinha",
                    "Bomb. Suspiro", "Camafeu"]
 
-    doce = lista_doce[doce - 1]
+    doce = lista_doce[doces - 1]
 
     while True:
         try:
@@ -408,12 +432,27 @@ def qntd_doce(doce,nome):
         else:
             break
 
+    # ADICIONAR EM DADOS
+    if doces >= 1 and doces <= 14:
+        dados_doce = dados['doce']['tradicional/espelhado'][unidecode(doce)] + qntd
+        dados['doce']['tradicional/espelhado'][unidecode(doce)] = dados_doce
+    if doces >= 15 and doces <= 26:
+        dados_doce = dados['doce']['bombom'][unidecode(doce)] + qntd
+        dados['doce']['bombom'][unidecode(doce)] = dados_doce
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} UN - {doce}"
 
 def qntd_sobremesa(sobre,nome):
-    with open("comandas.json", "r") as r:
+    with open("comandas.json", "r", encoding="utf-8") as r:
          comanda = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
     lista_sobremesa = ["Torta Choco Morango", "Torta Choco Nana", "Torta Maracujá", "Torta Limão", "Torta Morango",
                         "Torta Alemã", "Mini Quindim", "Mini Torta Brigadeiro", "Mini Torta Limão",
                         "Mini Torta Morango", "Mini Torta Strogonoff Nozes", "Mini Torta Uva", "Mil Folhas",
@@ -421,7 +460,6 @@ def qntd_sobremesa(sobre,nome):
                         "Pavê Pêssego", "Pavê Abacaxi", "Profiteroles", "Banoff"]
 
     sobremesa = lista_sobremesa[sobre - 1]
-
 
     while True:
         try:
@@ -435,6 +473,18 @@ def qntd_sobremesa(sobre,nome):
         else:
             break
 
+    # ADICIONAR EM DADOS
+    if sobre >= 1 and sobre <= 12:
+        dados_sobremesa = dados['sobremesa']['tortas'][unidecode(sobremesa)] + float(qntd)
+        dados['sobremesa']['tortas'][unidecode(sobremesa)] = dados_sobremesa
+    if sobre >= 13 and sobre <= 21:
+        dados_sobremesa = dados['sobremesa']['PavÃªs/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] + qntd
+        dados['sobremesa']['PavÃªs/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] = dados_sobremesa
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     if sobre < 7 or sobre > 12:
         return f"({num_item}) -> {qntd} KG - {sobremesa}"
@@ -442,8 +492,11 @@ def qntd_sobremesa(sobre,nome):
         return f"({num_item}) -> {qntd} UN - {sobremesa}"
 
 def qntd_bolo(bolo,nome):
-    with open("comandas.json", "r") as r:
+    with open("comandas.json", "r", encoding="utf-8") as r:
          comanda = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
     lista_bolos = ["Abacaxi c/ Côco", "Ameixa c/ Côco", "Delícia de Limão e Abacaxi", "Martha Rocha", "Prestígio",
                    "Sonho de Valsa", "Morango Nata e Suspiro", "Morango c/ Chocolate", "Surpresa de Morango",
                    "Tentação de Morango", "Dueto", "Sinfonia de Damasco", "Bolo Trufado", "Floresta Negra",
@@ -451,6 +504,7 @@ def qntd_bolo(bolo,nome):
                    "Taça Morango Nata e Suspiro"]
 
     bolos = lista_bolos[bolo - 1]
+    print(bolos)
 
     while True:
         try:
@@ -461,12 +515,24 @@ def qntd_bolo(bolo,nome):
         else:
             break
 
+    # ADICIONAR EM DADOS
+
+    dados_bolos = dados['bolo'][unidecode(bolos)] + float(qntd)
+    dados['bolo'][unidecode(bolos)] = dados_bolos
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - {bolos}"
 
 def qntd_fio_de_ovos(nome):
-    with open("comandas.json", "r") as r:
+    with open("comandas.json", "r", encoding="utf-8") as r:
          comanda = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
     while True:
         try:
             qntd = (input("Peso do Fio de Ovos(Kg): ").strip().replace(",", "."))
@@ -476,6 +542,14 @@ def qntd_fio_de_ovos(nome):
         else:
             break
 
+    # ADICIONAR EM DADOS
+    dados_foi_de_ovos = dados['fio_de_ovos']["fio_de_ovos"] + qntd
+    dados['fio_de_ovos']["fio_de_ovos"] = dados_foi_de_ovos
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - Fio de ovos"
 

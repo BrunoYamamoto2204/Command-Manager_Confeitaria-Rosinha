@@ -39,7 +39,7 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 10,
+            "num_item": 21,
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
                 "(2) -> 50 UN - Mini Pizza",
@@ -57,13 +57,25 @@
             ],
             "ADICIONADO": {
                 "salgados": [
-                    "(8) -> 30 UN - Kibe"
+                    "(8) -> 30 UN - Kibe",
+                    "(10) -> 55 UN - Coxinha",
+                    "(11) -> 22 UN - Empadinha Frango",
+                    "(12) -> 2 UN - Folhado Presunto e Queijo",
+                    "(18) -> 2 UN - Folhado Frango c/ Catupiry",
+                    "(19) -> 1.0 Kg - Empad\u00e3o Frango"
                 ],
                 "doces": [],
                 "bolos": [
-                    "(9) -> 3 Kg - Morango Nata e Suspiro"
+                    "(9) -> 3 Kg - Morango Nata e Suspiro",
+                    "(14) -> 1 Kg - Dueto",
+                    "(15) -> 2 Kg - Sinfonia de Damasco",
+                    "(17) -> 2 Kg - Martha Rocha",
+                    "(20) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro"
                 ],
-                "sobremesas": [],
+                "sobremesas": [
+                    "(13) -> 2 UN - Mini Torta Morango",
+                    "(16) -> 1 KG - Torta Choco Morango"
+                ],
                 "fio_de_ovos": []
             }
         }

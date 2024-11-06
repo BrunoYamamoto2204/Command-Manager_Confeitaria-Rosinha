@@ -1,9 +1,11 @@
-from datetime import datetime
+import json
+from unidecode import unidecode
+
+with open("dados.json","r") as r:
+    dados = json.load(r)
 
 
-data = input("||Formato (%dd/%m/%yyyy)||\nData da encomenda: ")
-try:
-    data_formatada = datetime.strptime(data,"%d/%m/%Y")
-    print(f"Formato correto:", datetime.strftime(data_formatada,"%d/%m/%Y"))
-except ValueError:
-    print("Formato incorreto ")
+opa='Empadão Camarão'
+
+print(dados['salgado']['empadao'][unidecode(opa)])
+

@@ -93,20 +93,6 @@ def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     with open("comandas.json", "w") as w:
         json.dump(comanda, w, indent=4)
 
-# def salvar_atualizado(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome):
-#     with open("comandas.json","r") as r:
-#         comanda = json.load(r)
-#
-#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['salgados'] = lista_salg
-#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['doces'] = lista_doce
-#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['bolos'] = lista_bolo
-#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['sobremesas'] = lista_sobre
-#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['fio_de_ovos'] = lista_fio_ovos
-#
-#     with open("comandas.json", "w") as w:
-#         json.dump(comanda, w, indent=4) #Perguntar pro GPT o porque ele está retornando 1 em vez do dicionario ao escpolher a opcao 3
-#     return comanda['comandas'][f'comanda{num}']
-
 def mostrar_comanda_geral(comanda,nome):
     nome_completo = ""
     for nome in nome.split("_"):
@@ -129,7 +115,7 @@ def mostrar_comanda_geral(comanda,nome):
 
 
     print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-    print(f"\033[1;36m{str(nome_completo.title()):^40}\033[m")
+    print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{data}")
     print(f"{telf:<40}{semanf}")
@@ -145,13 +131,13 @@ def mostrar_comanda_geral(comanda,nome):
             if str(tipo) == "ADICIONADO":
                 print("-"*40)
                 printar = f'--||{str(tipo).capitalize()}||--'
-                print(f"\033[33m{printar:^40}\033[m")
+                print(f"\033[33m{printar:^50}\033[m")
                 for cat_add in comanda[tipo]:
                     for item in comanda[tipo][cat_add]:
                         print(item)
             else:
                 printar = f'--||{str(tipo).capitalize()}||--'
-                print(f"\033[34m{printar:^40}\033[m")
+                print(f"\033[34m{printar:^50}\033[m")
                 for c in comanda[tipo]:
                     print(c)
     print("\033[1;36m=\033[m" * 50)
@@ -177,7 +163,7 @@ def mostrar_comanda_salgados(comanda,nome):
 
     if len(comanda['salgados']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + "- SALGADOS"):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title() + '- SALGADOS'):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -226,7 +212,7 @@ def mostrar_comanda_doces(comanda,nome):
 
     if len(comanda['doces']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + "- DOCES"):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title() + '- DOCES'):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{data}")
         print(f"{telf:<40}{semanf}")
@@ -275,7 +261,7 @@ def mostrar_comanda_bolos(comanda,nome):
 
     if len(comanda['bolos']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + "- BOLOS"):^50} - BOLOS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title() + '- BOLOS'):^50} - BOLOS\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{data}")
         print(f"{telf:<40}{semanf}")
@@ -322,7 +308,7 @@ def mostrar_comanda_sobremesas(comanda,nome):
 
     if len(comanda['sobremesas']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + "- SOBREMESAS"):^50} - SOBREMESAS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title() + '- SOBREMESAS'):^50} - SOBREMESAS\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{data}")
         print(f"{telf:<40}{semanf}")
@@ -370,7 +356,7 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
 
     if len(comanda['fio_de_ovos']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + "- FIO DE OVOS"):^50} - FIO DE OVOS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title() + '- FIO DE OVOS'):^50} - FIO DE OVOS\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{data}")
         print(f"{telf:<40}{semanf}")
