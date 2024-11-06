@@ -1,11 +1,28 @@
 import json
-def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos):
-    with open("comandas.json", "r") as r:
-        comanda = json.load(r)
+def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
+                    nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega):
 
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA'+' '+str(comanda['num']):^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
+    nome_completo = ""
+    for nome in nome_cliente.split("_"):
+        nome_completo += f"{nome} "
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    dataf = f"\033[33mData:\033[m {data}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+
+    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+    print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+    print("\033[1;36m=\033[m" * 50)
+    print(f"{nomef:<40}{dataf}")
+    print(f"{telf:<40}{semanf}")
+    print(f"{celf:<40}{hora_prontaf}")
+    print(f"{hora_entregaf}")
+    print("\033[1;36m=\033[m" * 50)
+
     if len(lista_salg) > 0:
         print(f"\033[34m{'--||Salgados||--':^40}\033[m")
         for c in lista_salg:
@@ -29,67 +46,100 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos)
     print("\033[1;36m=\033[m" * 40)
 
 
-def criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens):
+def criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,
+                  nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega):
+
     with open("comandas.json","r") as r:
         comanda = json.load(r)
 
-    comanda["comandas"][f"comanda{comanda['num']}"] = {}
-    comanda['comandas'][f'comanda{comanda["num"]}']["num_item"] = numero_itens
-    comanda["comandas"][f"comanda{comanda['num']}"]['salgados'] = lista_salg
-    comanda["comandas"][f"comanda{comanda['num']}"]['doces'] = lista_doce
-    comanda["comandas"][f"comanda{comanda['num']}"]['bolos'] = lista_bolo
-    comanda["comandas"][f"comanda{comanda['num']}"]['sobremesas'] = lista_sobre
-    comanda["comandas"][f"comanda{comanda['num']}"]['fio_de_ovos'] = lista_fio_ovos
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO'] = {}
+    comanda['comandas'][f"{nome_cliente}"] = {}
+    comanda['comandas'][f"{nome_cliente}"]['celular'] = num_cel
+    comanda['comandas'][f"{nome_cliente}"]['telefone'] = num_tel
+    comanda['comandas'][f"{nome_cliente}"]['data'] = data
+    comanda['comandas'][f"{nome_cliente}"]['dia_semana'] = dia_semana
+    comanda['comandas'][f"{nome_cliente}"]['hora_pronta'] = hora_pronta
+    comanda['comandas'][f"{nome_cliente}"]['hora_entrega'] = hora_entrega
+    comanda['comandas'][f"{nome_cliente}"]["num_item"] = numero_itens
+    comanda['comandas'][f"{nome_cliente}"]['salgados'] = lista_salg
+    comanda['comandas'][f"{nome_cliente}"]['doces'] = lista_doce
+    comanda['comandas'][f"{nome_cliente}"]['bolos'] = lista_bolo
+    comanda['comandas'][f"{nome_cliente}"]['sobremesas'] = lista_sobre
+    comanda['comandas'][f"{nome_cliente}"]['fio_de_ovos'] = lista_fio_ovos
+    comanda['comandas'][f"{nome_cliente}"]['ADICIONADO'] = {}
 
     with open("comandas.json", "w") as w:
         json.dump(comanda, w, indent=4)
-def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens):
+def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome_cliente):
     with open("comandas.json","r") as r:
         comanda = json.load(r)
 
-    comanda["comandas"][f"comanda{comanda['num']}"] = {} #Nao sei se da ruim tirar a lista kkk
-    comanda["comandas"][f"comanda{comanda['num']}"]['salgados'] = lista_salg
-    comanda["comandas"][f"comanda{comanda['num']}"]['doces'] = lista_doce
-    comanda["comandas"][f"comanda{comanda['num']}"]['bolos'] = lista_bolo
-    comanda["comandas"][f"comanda{comanda['num']}"]['sobremesas'] = lista_sobre
-    comanda["comandas"][f"comanda{comanda['num']}"]['fio_de_ovos'] = lista_fio_ovos
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO'] = {}
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO']["salgados"] = []
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO']["doces"] = []
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO']["bolos"] = []
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO']["sobremesas"] = []
-    comanda["comandas"][f"comanda{comanda['num']}"]['ADICIONADO']["fio_de_ovos"] = []
+    # comanda["comandas"][f"{nome_cliente}"] = {} #Nao sei se da ruim tirar a lista kkk
+    comanda["comandas"][f"{nome_cliente}"]['salgados'] = lista_salg
+    comanda["comandas"][f"{nome_cliente}"]['doces'] = lista_doce
+    comanda["comandas"][f"{nome_cliente}"]['bolos'] = lista_bolo
+    comanda["comandas"][f"{nome_cliente}"]['sobremesas'] = lista_sobre
+    comanda["comandas"][f"{nome_cliente}"]['fio_de_ovos'] = lista_fio_ovos
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO'] = {}
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO']["salgados"] = []
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO']["doces"] = []
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO']["bolos"] = []
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO']["sobremesas"] = []
+    comanda["comandas"][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
 
-    comanda['comandas'][f'comanda{comanda["num"]}']["num_item"] = numero_itens
+    comanda['comandas'][f"{nome_cliente}"]["num_item"] = numero_itens
     comanda["num"] += 1
 
     # print(comanda)
     with open("comandas.json", "w") as w:
         json.dump(comanda, w, indent=4)
 
-def salvar_atualizado(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,num):
-    with open("comandas.json","r") as r:
-        comanda = json.load(r)
+# def salvar_atualizado(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome):
+#     with open("comandas.json","r") as r:
+#         comanda = json.load(r)
+#
+#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['salgados'] = lista_salg
+#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['doces'] = lista_doce
+#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['bolos'] = lista_bolo
+#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['sobremesas'] = lista_sobre
+#     comanda["comandas"][f"comanda{num}"]['ADICIONADO']['fio_de_ovos'] = lista_fio_ovos
+#
+#     with open("comandas.json", "w") as w:
+#         json.dump(comanda, w, indent=4) #Perguntar pro GPT o porque ele está retornando 1 em vez do dicionario ao escpolher a opcao 3
+#     return comanda['comandas'][f'comanda{num}']
 
-    comanda["comandas"][f"comanda{num}"]['ADICIONADO']['salgados'] = lista_salg
-    comanda["comandas"][f"comanda{num}"]['ADICIONADO']['doces'] = lista_doce
-    comanda["comandas"][f"comanda{num}"]['ADICIONADO']['bolos'] = lista_bolo
-    comanda["comandas"][f"comanda{num}"]['ADICIONADO']['sobremesas'] = lista_sobre
-    comanda["comandas"][f"comanda{num}"]['ADICIONADO']['fio_de_ovos'] = lista_fio_ovos
+def mostrar_comanda_geral(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    data = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
 
-    with open("comandas.json", "w") as w:
-        json.dump(comanda, w, indent=4) #Perguntar pro GPT o porque ele está retornando 1 em vez do dicionario ao escpolher a opcao 3
-    return comanda['comandas'][f'comanda{num}']
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    data = f"\033[33mData:\033[m {data}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
 
-def mostrar_comanda_geral(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA'+' '+str(num):^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    # print(comanda)
+
+
+    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+    print(f"\033[1;36m{str(nome_completo.title()):^40}\033[m")
+    print("\033[1;36m=\033[m" * 50)
+    print(f"{nomef:<40}{data}")
+    print(f"{telf:<40}{semanf}")
+    print(f"{celf:<40}{hora_prontaf}")
+    print(f"{hora_entregaf}")
+    print("\033[1;36m=\033[m" * 50)
+
     for tipo in comanda:
         # print(tipo)
-        if tipo == 'num_item':
+        if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
         if len(comanda[tipo]) > 0:
             if str(tipo) == "ADICIONADO":
@@ -104,115 +154,284 @@ def mostrar_comanda_geral(comanda,num):
                 print(f"\033[34m{printar:^40}\033[m")
                 for c in comanda[tipo]:
                     print(c)
-    print("\033[1;36m=\033[m" * 40)
+    print("\033[1;36m=\033[m" * 50)
 
-def mostrar_comanda_salgados(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA' + ' ' + str(num) + '- SALGADOS':^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    try:
+def mostrar_comanda_salgados(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    data = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    dataf = f"\033[33mData:\033[m {data}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+
+    if len(comanda['salgados']) != 0:
+        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print(f"\033[1;36m{str(nome_completo.title() + "- SALGADOS"):^50}\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"{nomef:<40}{dataf}")
+        print(f"{telf:<40}{semanf}")
+        print(f"{celf:<40}{hora_prontaf}")
+        print(f"{hora_entregaf}")
+        print("\033[1;36m=\033[m" * 50)
+
         try:
-            for salgado in comanda["salgados"]:
-                print(salgado)
+            try:
+                for salgado in comanda["salgados"]:
+                    print(salgado)
+            except:
+                print("Sem salgados ")
+            try:
+                for salgado_add in comanda["ADICIONADO"]["salgados"]:
+                    print(salgado_add)
+            except KeyError:
+                a="sopra ter algo"
         except:
-            print("Sem salgados ")
-        try:
-            for salgado_add in comanda["ADICIONADO"]["salgados"]:
-                print(salgado_add)
-        except KeyError:
-            a="sopra ter algo"
-    except:
-        print("erro")
-    print("\033[1;36m=\033[m" * 40)
+            print("erro")
+        print("\033[1;36m=\033[m" * 40)
+        print()
 
-def mostrar_comanda_doces(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA' + ' ' + str(num) + '- DOCES':^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    try:
+    else:
+        print("\033[1;31mSem salgados nesse comanda!\033[m\n")
+
+def mostrar_comanda_doces(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    dataf = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    data = f"\033[33mData:\033[m {dataf}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+
+
+    if len(comanda['doces']) != 0:
+        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print(f"\033[1;36m{str(nome_completo.title() + "- DOCES"):^50}\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"{nomef:<40}{data}")
+        print(f"{telf:<40}{semanf}")
+        print(f"{celf:<40}{hora_prontaf}")
+        print(f"{hora_entregaf}")
+        print("\033[1;36m=\033[m" * 50)
+
         try:
-            for doce in comanda["doces"]:
-                print(doce)
+            try:
+                for doce in comanda["doces"]:
+                    print(doce)
+            except:
+                print("Sem doces ")
+            try:
+                for doce_add in comanda["ADICIONADO"]["doces"]:
+                    print(doce_add)
+            except KeyError:
+                a = "sopra ter algo"
         except:
-            print("Sem doces ")
-        try:
-            for doce_add in comanda["ADICIONADO"]["doces"]:
-                print(doce_add)
-        except KeyError:
-            a = "sopra ter algo"
-    except:
-        print("erro")
-    print("\033[1;36m=\033[m" * 40)
+            print("erro")
+        print("\033[1;36m=\033[m" * 50)
+        print()
 
-def mostrar_comanda_bolos(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA' + ' ' + str(num) + '- BOLOS':^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    try:
+    else:
+        print("\033[1;31mSem doces nesse comanda!\033[m\n")
+
+
+def mostrar_comanda_bolos(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    dataf = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    data = f"\033[33mData:\033[m {dataf}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+
+    if len(comanda['bolos']) != 0:
+        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print(f"\033[1;36m{str(nome_completo.title() + "- BOLOS"):^50} - BOLOS\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"{nomef:<40}{data}")
+        print(f"{telf:<40}{semanf}")
+        print(f"{celf:<40}{hora_prontaf}")
+        print(f"{hora_entregaf}")
+        print("\033[1;36m=\033[m" * 50)
+
         try:
-            for bolo in comanda["bolos"]:
-                print(bolo)
+            try:
+                for bolo in comanda["bolos"]:
+                    print(bolo)
+            except:
+                print("Sem bolos ")
+            try:
+                for bolo_add in comanda["ADICIONADO"]["bolos"]:
+                    print(bolo_add)
+            except KeyError:
+                a = "sopra ter algo"
         except:
-            print("Sem bolos ")
-        try:
-            for bolo_add in comanda["ADICIONADO"]["bolos"]:
-                print(bolo_add)
-        except KeyError:
-            a = "sopra ter algo"
-    except:
-        print("erro")
-    print("\033[1;36m=\033[m" * 40)
+            print("erro")
+        print("\033[1;36m=\033[m" * 50)
+        print()
+    else:
+        print("\033[1;31mSem bolos nesse comanda!\033[m\n")
 
-def mostrar_comanda_sobremesas(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA' + ' ' + str(num) + '- SOBREMESAS':^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    try:
+def mostrar_comanda_sobremesas(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    dataf = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    data = f"\033[33mData:\033[m {dataf}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+
+    if len(comanda['sobremesas']) != 0:
+        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print(f"\033[1;36m{str(nome_completo.title() + "- SOBREMESAS"):^50} - SOBREMESAS\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"{nomef:<40}{data}")
+        print(f"{telf:<40}{semanf}")
+        print(f"{celf:<40}{hora_prontaf}")
+        print(f"{hora_entregaf}")
+        print("\033[1;36m=\033[m" * 50)
+
         try:
-            for sobremesa in comanda["sobremesas"]:
-                print(sobremesa)
+            try:
+                for sobremesa in comanda["sobremesas"]:
+                    print(sobremesa)
+            except:
+                print("Sem sobremesas ")
+            try:
+                for sobremesa_add in comanda["ADICIONADO"]["sobremesas"]:
+                    print(sobremesa_add)
+            except KeyError:
+                a = "sopra ter algo"
         except:
-            print("Sem sobremesas ")
-        try:
-            for sobremesa_add in comanda["ADICIONADO"]["sobremesas"]:
-                print(sobremesa_add)
-        except KeyError:
-            a = "sopra ter algo"
-    except:
-        print("erro")
-    print("\033[1;36m=\033[m" * 40)
+            print("erro")
+        print("\033[1;36m=\033[m" * 50)
+        print()
 
-def mostrar_comanda_fio_de_ovos(comanda,num):
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA' + ' ' + str(num) + '- FIO DE OVOS':^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
-    try:
+    else:
+        print("\033[1;31mSem sobremesas nesse comanda!\033[m\n")
+
+def mostrar_comanda_fio_de_ovos(comanda,nome):
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+    dataf = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    data = f"\033[33mData:\033[m {dataf}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+
+    if len(comanda['fio_de_ovos']) != 0:
+        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print(f"\033[1;36m{str(nome_completo.title() + "- FIO DE OVOS"):^50} - FIO DE OVOS\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"{nomef:<40}{data}")
+        print(f"{telf:<40}{semanf}")
+        print(f"{celf:<40}{hora_prontaf}")
+        print(f"{hora_entregaf}")
+        print("\033[1;36m=\033[m" * 50)
+
         try:
-            for fio_de_ovos in comanda["fio_de_ovos"]:
-                print(fio_de_ovos)
+            try:
+                for fio_de_ovos in comanda["fio_de_ovos"]:
+                    print(fio_de_ovos)
+            except:
+                print("Sem doces ")
+            try:
+                for fio_de_ovo_add in comanda["ADICIONADO"]["fio_de_ovos"]:
+                    print(fio_de_ovo_add)
+            except KeyError:
+                a = "sopra ter algo"
         except:
-            print("Sem doces ")
-        try:
-            for fio_de_ovo_add in comanda["ADICIONADO"]["fio_de_ovos"]:
-                print(fio_de_ovo_add)
-        except KeyError:
-            a = "sopra ter algo"
-    except:
-        print("erro")
-    print("\033[1;36m=\033[m" * 40)
+            print("erro")
+        print("\033[1;36m=\033[m" * 50)
+        print()
 
-def excluir_comanda(num):
+    else:
+        print("\033[1;31mSem Fio de ovos nesse comanda!\033[m\n")
+def excluir_comanda(nome):
     with open("comandas.json","r") as r:
         comandas = json.load(r)
 
-    print("\033[1;36m=\033[m" * 40)
-    print(f"\033[1;36m{'COMANDA'+' '+str(num):^40}\033[m")
-    print("\033[1;36m=\033[m" * 40)
+    comanda = comandas['comandas'][f'{nome}']
 
-    comanda = comandas['comandas'][f'comanda{num}']
+    nome_completo = ""
+    for nome in nome.split("_"):
+        nome_completo += f"{nome} "
+
+    dataf = comanda['data']
+    num_tel = comanda['telefone']
+    num_cel = comanda['celular']
+    dia_semana = comanda['dia_semana']
+    hora_pronta = comanda['hora_pronta']
+    hora_entrega = comanda['hora_entrega']
+
+    nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
+    dataf = f"\033[33mData:\033[m {dataf}"
+    telf = f'\033[33mTelefone:\033[m {num_tel}'
+    semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
+    celf = f'\033[33mCelular:\033[m {num_cel}'
+    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+
+    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+    print(f"\033[1;36m{str(nome_completo.capitalize()).capitalize():^50}\033[m")
+    print("\033[1;36m=\033[m" * 50)
+    print(f"{nomef:<40}{dataf}")
+    print(f"{telf:<40}{semanf}")
+    print(f"{celf:<40}{hora_prontaf}")
+    print(f"{hora_entregaf}")
+    print("\033[1;36m=\033[m" * 50)
 
     for tipo in comanda:
-        if isinstance(comanda[tipo],int): #como o primeiro valor é o num dos itens é necessário pular
+        if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
         if len(comanda[tipo]) > 0:
             if str(tipo) == "ADICIONADO":
@@ -256,7 +475,7 @@ def excluir_comanda(num):
     num_excluir = "("+str(num_excluir)+")"
 
     for tipo in comanda:
-        if isinstance(comanda[tipo],int):
+        if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
         if tipo == "ADICIONADO":
             for tipos_add in comanda[tipo]:
@@ -279,6 +498,19 @@ def excluir_comanda(num):
 
     print(f"\033[32mItem {num_excluir} excluído com sucesso\033[m")
     print()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

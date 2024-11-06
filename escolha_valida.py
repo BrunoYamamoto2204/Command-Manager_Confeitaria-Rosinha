@@ -1,4 +1,5 @@
 import json
+from datetime import datetime,timedelta
 def esc_principal():
     while True:
         try:
@@ -23,7 +24,7 @@ Escolha: """))
 def esc_opcoes():
     while True:
         try:
-            print("Escolha uma opção:")
+            print("\033[1;33mEscolha uma opção:\033[m")
             print("\033[33m1 - \033[34mNova Comanda\033[m")
             print("\033[33m2 - \033[34mVer Comanda existente\033[m")
             print("\033[33m3 - \033[34mAdicionar em uma comanda existente\033[m")
@@ -44,7 +45,7 @@ def esc_comandas():
     print("=" * 60)
     while True:
         try:
-            print("Escolha uma opção:")
+            print("\033[1;33mEscolha uma opção:\033[m\n")
             print("\033[33m1 - \033[34mComanda Geral\033[m")
             print("\033[33m2 - \033[34mComanda Salgados\033[m")
             print("\033[33m3 - \033[34mComanda Doces\033[m")
@@ -62,21 +63,29 @@ def esc_comandas():
 
     return opc
 
-def num_comanda():
+def nome_comanda():
     with open("comandas.json", "r") as r:
         comandas = json.load(r)
+
+    lista_nomes_clientes = []
+    for nomes in comandas['comandas']: #Armazena todos os nomes na lista
+        lista_nomes_clientes.append(nomes)
+
     while True:
         try:
-            num = int(input("Escolha o número da comanda: "))
-            if num >= comandas["num"] or num < 1:
-                print(f"\033[31mSó existem comandas entre 1 e {comandas['num']-1}!\033[m\n")
-                continue
-        except ValueError:
-            print(f"\033[31mSó existem comandas entre 1 e {comandas['num']-1}!\033[m\n")
-        else:
-            break
+            nome = (input("Nome do cliente referente a comanda: "))
+            variavel_nome = ""
+            for c in nome.split(): #Converte o nome do clinte no da variável
+                variavel_nome += c + "_"
 
-    return int(num)
+            if variavel_nome.lower() in lista_nomes_clientes: #Confere se tem esse nome na lista
+                break
+            else: 
+                print(f"\033[31mCliente não encontrado!\033[m\n")
+        except ValueError:
+            print(f"\033[31mCliente não encontrado!\033[m\n")
+
+    return variavel_nome.lower()
 
 def esc_salgado():
     while True:
@@ -347,7 +356,7 @@ Escolha: """))
     return escolha
 
 
-def qnd_salg(salg,num_comanda):
+def qnd_salg(salg,nome):
     with open("comandas.json", "r") as r:
          comanda = json.load(r)
 
@@ -373,13 +382,13 @@ def qnd_salg(salg,num_comanda):
         else:
             break
 
-    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    num_item = comanda['comandas'][nome]["num_item"]
     if salg < 29:
         return f"({num_item}) -> {qntd} UN - {salgado}"
     else:
         return f"({num_item}) -> {qntd} Kg - {salgado}"
 
-def qntd_doce(doce,num_comanda):
+def qntd_doce(doce,nome):
     with open("comandas.json", "r") as r:
          comanda = json.load(r)
     lista_doce = ["Brigadeiro", "Brigadeiro Branco", "Beijinho", "Olho de Sogra", "Cajuzinho",
@@ -399,10 +408,10 @@ def qntd_doce(doce,num_comanda):
         else:
             break
 
-    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} UN - {doce}"
 
-def qntd_sobremesa(sobre,num_comanda):
+def qntd_sobremesa(sobre,nome):
     with open("comandas.json", "r") as r:
          comanda = json.load(r)
     lista_sobremesa = ["Torta Choco Morango", "Torta Choco Nana", "Torta Maracujá", "Torta Limão", "Torta Morango",
@@ -426,13 +435,13 @@ def qntd_sobremesa(sobre,num_comanda):
         else:
             break
 
-    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    num_item = comanda['comandas'][nome]["num_item"]
     if sobre < 7 or sobre > 12:
-        return f"({num_item}) -> {qntd} UN - {sobremesa}"
-    else:
         return f"({num_item}) -> {qntd} KG - {sobremesa}"
+    else:
+        return f"({num_item}) -> {qntd} UN - {sobremesa}"
 
-def qntd_bolo(bolo,num_comanda):
+def qntd_bolo(bolo,nome):
     with open("comandas.json", "r") as r:
          comanda = json.load(r)
     lista_bolos = ["Abacaxi c/ Côco", "Ameixa c/ Côco", "Delícia de Limão e Abacaxi", "Martha Rocha", "Prestígio",
@@ -452,10 +461,10 @@ def qntd_bolo(bolo,num_comanda):
         else:
             break
 
-    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - {bolos}"
 
-def qntd_fio_de_ovos(num_comanda):
+def qntd_fio_de_ovos(nome):
     with open("comandas.json", "r") as r:
          comanda = json.load(r)
     while True:
@@ -467,7 +476,207 @@ def qntd_fio_de_ovos(num_comanda):
         else:
             break
 
-    num_item = comanda['comandas'][f'comanda{num_comanda}']["num_item"]
+    num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - Fio de ovos"
 
 
+def nome_cliente():
+
+    while True:
+
+        while True:
+            nome = input("\033[33mNome do cliente:\033[m ").strip()
+            print("\nNome está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+            confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
+            print()
+            if confirmar == "":
+                break
+            else:
+                continue
+        if nome == "":
+            print("\033[31mNome inválido\033[m")
+        else:
+            break
+
+    variavel_nome = ""
+    for c in nome.split():
+        variavel_nome+=c+"_"
+
+    return variavel_nome.lower()
+
+def numero_cliente():
+    with open("comandas.json", "r") as r:
+        comandas = json.load(r)
+
+    while True:
+        try:
+            print("\033[1;33mEscolha uma das opções:\033[m ")
+            print("(1) - Apenas Celular ")
+            print("(2) - Apenas Telefone ")
+            print("(3) - Telefone e Celular\n")
+            esc_cel_tel = int(input("Escolha: "))
+            if esc_cel_tel < 1 or esc_cel_tel >3:
+                print("\033[mApenas números entre 1 e 3\033[m")
+            else:
+                break
+        except:
+            print("\033[mApenas números entre 1 e 3\033[m")
+
+    print()
+    if esc_cel_tel == 1:
+        # CELULAR
+        while True:
+            try:
+                numerico = 0
+                traco = 0
+                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nmNúmero de celular: ").strip()
+
+                for c in num_cel:
+                    if c.isnumeric():
+                        numerico += 1
+                    elif c == "-":
+                        traco += 1
+                if numerico == 9 and traco == 1:
+                    break
+                else:
+                    print("\033[31mNúmero de celular inválido\033[m\n")
+            except:
+                print("\033[mNúmero celular inválido!\033[m")
+
+        num_tel = '0'
+
+
+    if esc_cel_tel == 2:
+        # TELEFONE
+        while True:
+            try:
+                numerico = 0
+                traco = 0
+                num_tel = input("\033[36m|| Formato (1234-5678) ||\033[m\nNúmero de telefone: ").strip()
+
+                for c in num_tel:
+                    if c.isnumeric():
+                        numerico += 1
+                    elif c == "-":
+                        traco += 1
+                if numerico == 8 and traco == 1:
+                    break
+                else:
+                    print("\033[31mNúmero de telefone inválido\033[m\n")
+            except:
+                print("\033[mNúmero telefone inválido!\033[m")
+
+        num_cel = '0'
+
+    if esc_cel_tel == 3:
+        # TELEFONE
+        while True:
+            try:
+                numerico = 0
+                traco = 0
+                num_tel = input("\033[36m|| Formato (1234-5678) ||\033[m\nNúmero de telefone: ").strip()
+
+                for c in num_tel:
+                    if c.isnumeric():
+                        numerico += 1
+                    elif c == "-":
+                        traco += 1
+                if numerico == 8 and traco == 1:
+                    break
+                else:
+                    print("\033[31mNúmero de telefone inválido\033[m\n")
+            except:
+                print("\033[mNúmero telefone inválido!\033[m")
+
+        print()
+
+        # CELULAR
+        while True:
+            try:
+                numerico = 0
+                traco = 0
+                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nmNúmero de celular: ").strip()
+
+                for c in num_cel:
+                    if c.isnumeric():
+                        numerico += 1
+                    elif c == "-":
+                        traco += 1
+                if numerico == 9 and traco == 1:
+                    break
+                else:
+                    print("\033[31mNúmero de celular inválido\033[m\n")
+            except:
+                print("\033[mNúmero celular inválido!\033[m")
+
+    return [num_cel,num_tel]
+
+def dia_data():
+    #DATA
+    while True:
+        try:
+            data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
+            data_formatada = datetime.strptime(data, "%d/%m/%Y")
+        except ValueError:
+            print("\033[31mData inválida!\033[m")
+        else:
+            data_formatada = datetime.strftime(data_formatada,"%d/%m/%Y")
+            break
+
+    print()
+    #DIA DA SEMANA
+    while True:
+        print("\033[1;33mEscolha o dia da semana:\033[m ")
+        print("\033[33m(1)\033[m Segunda-Feira ")
+        print("\033[33m(2)\033[m Terça-Feira ")
+        print("\033[33m(3)\033[m Quarta-Feira ")
+        print("\033[33m(4)\033[m Quinta-Feira ")
+        print("\033[33m(5)\033[m Sexta-Feira ")
+        print("\033[33m(6)\033[m Sábado ")
+        print("\033[33m(7)\033[m Domingo ")
+
+        try:
+            dia_semana = int(input("\nEscolha uma o dia: "))
+            if dia_semana < 1 or dia_semana > 7:
+                print("\033[31mDigite apenas valores de 1 a 7\033[m")
+            else:
+                break
+        except ValueError:
+            print("\033[31mDigite apenas valores de 1 a 7\033[m")
+
+    return [data_formatada,dia_semana]
+
+def horario_comanda():
+    while True:
+        encomenda = input("\nA comanda é para \033[33mencomenda?\033[m S/N:").strip().upper()
+        if encomenda  == "S" or encomenda == "N":
+            break
+        else:
+            print("\033[31mResposta inválida! Responda S/N\033[m")
+
+    if encomenda == "S":
+        while True:
+            try:
+                horario_entrega = input("\n\033[36m|| Formato (00:00) ||\033[m\nHorário da entrega: ")
+                horario_formatado = datetime.strptime(horario_entrega,"%H:%M")
+            except ValueError:
+                print("\033[31mHorário Inválido!\033[m")
+            else:
+                horario_pronto = horario_formatado - timedelta(hours=1)
+                horario_entrega = datetime.strftime(horario_formatado, "%H:%M")
+                horario_pronto = datetime.strftime(horario_pronto, "%H:%M")
+                break
+
+    elif encomenda == "N":
+        while True:
+            try:
+                horario_pronto = input("||Formato (00:00)||\nHorário da encomenda: ")
+                horario_formatado = datetime.strptime(horario_pronto,"%H:%M")
+            except ValueError:
+                print("\033[31mHorário Inválido!\033[m")
+            else:
+                horario_pronto = datetime.strftime(horario_formatado, "%H:%M")
+                horario_entrega = 0
+                break
+
+    return [horario_pronto,horario_entrega]
