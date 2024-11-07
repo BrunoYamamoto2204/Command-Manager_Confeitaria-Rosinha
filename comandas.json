@@ -39,10 +39,9 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 21,
+            "num_item": 22,
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
-                "(2) -> 50 UN - Mini Pizza",
                 "(3) -> 4 Kg - Empad\u00e3o Frango"
             ],
             "doces": [
@@ -62,7 +61,8 @@
                     "(11) -> 22 UN - Empadinha Frango",
                     "(12) -> 2 UN - Folhado Presunto e Queijo",
                     "(18) -> 2 UN - Folhado Frango c/ Catupiry",
-                    "(19) -> 1.0 Kg - Empad\u00e3o Frango"
+                    "(19) -> 1.0 Kg - Empad\u00e3o Frango",
+                    "(21) -> 3.0 Kg - Empad\u00e3o Palmito"
                 ],
                 "doces": [],
                 "bolos": [

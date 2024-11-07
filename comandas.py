@@ -1,4 +1,8 @@
 import json
+
+import escolha_valida
+
+
 def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
                     nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega):
 
@@ -385,6 +389,8 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
 def excluir_comanda(nome):
     with open("comandas.json","r") as r:
         comandas = json.load(r)
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
 
     comanda = comandas['comandas'][f'{nome}']
 
@@ -468,15 +474,26 @@ def excluir_comanda(nome):
                 lista_adicionados = []
                 for itens in comanda[tipo][tipos_add]:
                     itens_split = str(itens).split()
-                    if num_excluir not in itens_split[0]:
+                    #EXCLUIR EM COMANDAS
+                    if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                         lista_adicionados.append(itens)
+
+                    #EXCLUIR EM DADOS
+                    else:                                 #SE FOR O ITEM
+                        escolha_valida.validar_exclusao(itens_split,itens_split[2]) #(Produto, quantidade)
+
                 comanda[tipo][tipos_add] = lista_adicionados
+
         else:
             lista_itens = []
             for itens in comanda[tipo]:
                 itens_split = str(itens).split()
-                if num_excluir not in itens_split[0]:
+                # EXCLUIR EM COMANDAS
+                if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                     lista_itens.append(itens)
+                # EXCLUIR EM DADOS
+                else:                                   #SE FOR O ITEM
+                    escolha_valida.validar_exclusao(itens_split,itens_split[2])  #(Produto, quantidade)
             comanda[tipo] = lista_itens
 
     with open("comandas.json", "w") as w:

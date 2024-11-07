@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 60,
+            "Coxinha": 56.0,
             "Coxinha c/ Catupiry": 0,
             "Kibe": 0,
             "Kibe Recheado": 0,
@@ -53,7 +53,7 @@
             "Esfiha Ricota c/ Tomate Seco": 0,
             "Doguinho": 0,
             "Mini Calzone Frango": 0,
-            "Mini Pizza": 0,
+            "Mini Pizza": 50.0,
             "Assado Escarola e Bacon": 0,
             "Empadinha Frango": 22,
             "Empadinha Palmito": 0,
@@ -64,9 +64,9 @@
             "Folhado Presunto e Queijo": 2
         },
         "empadao": {
-            "Empadao Palmito": 0,
+            "Empadao Palmito": 3.0,
             "Empadao Camarao": 0,
-            "Empadao Frango": 1.0
+            "Empadao Frango": 0.0
         }
     },
     "bolo": {
@@ -116,6 +116,6 @@
         }
     },
     "fio_de_ovos": {
-        "fio_de_ovos": 0
+        "fio_de_ovos": -4.5
     }
 }

@@ -617,7 +617,7 @@ def numero_cliente():
             except:
                 print("\033[mNúmero celular inválido!\033[m")
 
-        num_tel = '0'
+        num_tel = ''
 
 
     if esc_cel_tel == 2:
@@ -640,7 +640,7 @@ def numero_cliente():
             except:
                 print("\033[mNúmero telefone inválido!\033[m")
 
-        num_cel = '0'
+        num_cel = ''
 
     if esc_cel_tel == 3:
         # TELEFONE
@@ -699,6 +699,8 @@ def dia_data():
 
     print()
     #DIA DA SEMANA
+    dias_da_semana=["","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado","Domingo"]
+
     while True:
         print("\033[1;33mEscolha o dia da semana:\033[m ")
         print("\033[33m(1)\033[m Segunda-Feira ")
@@ -718,7 +720,7 @@ def dia_data():
         except ValueError:
             print("\033[31mDigite apenas valores de 1 a 7\033[m")
 
-    return [data_formatada,dia_semana]
+    return [data_formatada,dias_da_semana[dia_semana]]
 
 def horario_comanda():
     while True:
@@ -754,3 +756,54 @@ def horario_comanda():
                 break
 
     return [horario_pronto,horario_entrega]
+
+def validar_exclusao(itens_split,qntd):
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    if len(itens_split) == 6:  # 1 palavra (nome do item)
+        produto = (itens_split[5])
+        print(itens_split[5])
+    elif len(itens_split) == 7:  # 2 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6])
+        print(itens_split[5] + " " + itens_split[6])
+    elif len(itens_split) == 8:  # 3 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
+        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
+    elif len(itens_split) == 9:  # 4 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
+        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
+    else:  # 5 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+
+    #SALGADOS
+    if unidecode(produto) in dados['salgado']['fritos']:
+        dados['salgado']['fritos'][unidecode(produto)] -= float(qntd)
+    elif unidecode(produto) in dados['salgado']['assados']:
+        dados['salgado']['assados'][unidecode(produto)] -= float(qntd)
+    elif unidecode(produto) in dados['salgado']['empadao']:
+        dados['salgado']['empadao'][unidecode(produto)] -= float(qntd)
+
+    #DOCES
+    if unidecode(produto) in dados['doce']['tradicional/espelhado']:
+        dados['doce']['tradicional/espelhado'][unidecode(produto)] -= float(qntd)
+    elif unidecode(produto) in dados['doce']['bombom']:
+        dados['doce']['bombom'][unidecode(produto)] -= float(qntd)
+
+    #BOLOS
+    if unidecode(produto) in dados['bolo']:
+        dados['bolo'][unidecode(produto)] -= float(qntd)
+
+    #SOBREMESAS
+    if unidecode(produto) in dados['sobremesa']['tortas']:
+        dados['sobremesa']['tortas'][unidecode(produto)] -= float(qntd)
+    if unidecode(produto) in dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas']:
+        dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(produto)] -= float(qntd)
+
+    #FIO DE OVOS
+    if unidecode(produto) in dados['fio_de_ovos']:
+        dados['fio_de_ovos']["fio_de_ovos"] -= float(qntd)
+
+    with open("dados.json", "w") as w:
+        json.dump(dados, w, indent=4)
