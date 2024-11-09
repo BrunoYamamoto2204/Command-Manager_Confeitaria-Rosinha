@@ -30,15 +30,16 @@ def esc_opcoes():
             print("\033[33m2 - \033[34mVer Comanda existente\033[m")
             print("\033[33m3 - \033[34mAdicionar em uma comanda existente\033[m")
             print("\033[33m4 - \033[34mExcluir itens da comanda\033[m")
-            print("\033[33m5 - \033[34mSair\033[m")
+            print("\033[33m5 - \033[34mRelatórios\033[m")
+            print("\033[33m6 - \033[34mSair\033[m")
             print()
             opc = int(input("Escolha: "))
-            if opc > 5 or opc < 1:
-                print("\033[31mEscolha um número entre 1 e 5 apenas!\033[m\n")
+            if opc > 6 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 5 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
 
     return opc
 
@@ -57,10 +58,10 @@ def esc_comandas():
             opc = int(input("Escolha: "))
             if opc > 6 or opc < 1:
                 print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            else:
+                break
         except ValueError:
             print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
-        else:
-            break
 
     return opc
 
@@ -87,6 +88,29 @@ def nome_comanda():
             print(f"\033[31mCliente não encontrado!\033[m\n")
 
     return variavel_nome.lower()
+
+def esc_relatorio():
+    while True:
+        try:
+            print("Escolha uma opção:\n")
+            print("\033[33m1 - \033[34mRelatório Geral\033[m")
+            print("\033[33m2 - \033[34mRelatório Salgados\033[m")
+            print("\033[33m3 - \033[34mRelatório Doces\033[m")
+            print("\033[33m4 - \033[34mRelatório Bolos\033[m")
+            print("\033[33m5 - \033[34mRelatório Sobremesas\033[m")
+            print("\033[33m6 - \033[34mRelatório Fio de Ovos\033[m\n")
+            opc = int(input("Escolha: "))
+
+            if opc > 6 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            else:
+                break
+
+        except ValueError:
+            print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+
+    return opc
+
 
 def esc_salgado():
     #ESCOLHA DOS TIPOS DE SALGADOS

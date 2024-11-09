@@ -140,7 +140,22 @@ def opc_comandas(opc):
         excluir_comanda(nome_comanda)
 
     if opc == 5:
-        return 5
+        relatorio = escolha_valida.esc_relatorio()
+        if relatorio == 1:
+            relatorio_geral()
+        elif relatorio == 2:
+            relatorio_salgados()
+        elif relatorio == 3:
+            relatorio_doces()
+        elif relatorio == 4:
+            relatorio_bolos()
+        elif relatorio == 5:
+            relatorio_sobremesas()
+        elif relatorio == 6:
+            relatorio_fio_ovos()
+
+    if opc == 6:
+        return 6
 
 
 

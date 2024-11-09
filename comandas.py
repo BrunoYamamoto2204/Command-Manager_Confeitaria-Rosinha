@@ -502,11 +502,168 @@ def excluir_comanda(nome):
     print(f"\033[32mItem {num_excluir} excluído com sucesso\033[m")
     print()
 
+def relatorio_geral():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print(f"\n \033[1;34m{'-'*20}{'||Geral||'}{'-'*20}\033[m")
+
+    #DOCES
+    print("\033[33m|| Doces || \033[m")
+
+    tradicionais = dados['doce']['tradicional/espelhado']
+    print("\033[4;34m(Tradicionais)\033[m")
+    for doces in sorted(tradicionais):
+        print(f"\033[36m{doces} = \033[33m{tradicionais[doces]}\033[m")
+
+    bombom = dados['doce']['bombom']
+    print("\n\033[4;34m(Bombom)\033[m")
+    for doces in sorted(bombom):
+        print(f"\033[36m{doces} = \033[33m{bombom[doces]}\033[m")
+
+    #SALGADOS
+    print("\n\033[33m|| Salgados || \033[m")
+
+    fritos = dados['salgado']['fritos']
+    print("\n\033[4;34m(Fritos)\033[m")
+    for salgados in sorted(fritos):
+        print(f"\033[36m{salgados} = \033[33m{fritos[salgados]}\033[m")
+
+    assados = dados['salgado']['assados']
+    print("\n\033[4;34m(Assados)\033[m")
+    for salgados in sorted(assados):
+        print(f"\033[36m{salgados} = \033[33m{assados[salgados]}\033[m")
+
+    empadao = dados['salgado']['empadao']
+    print("\n\033[4;34m(Empadào)\033[m")
+    for salgados in sorted(empadao):
+        print(f"\033[36m{salgados} = \033[33m{empadao[salgados]}\033[m")
+
+    #BOLO
+    print("\n\033[33m|| Bolos || \033[m")
+
+    bolos = dados['bolo']
+    for bolo in sorted(bolos):
+        print(f"\033[36m{bolo} = \033[33m{bolos[bolo]}")
+
+    #SOBREMESAS
+    print("\n\033[33m|| Sobremesas || \033[m")
+
+    tortas = dados['sobremesa']['tortas']
+    print("\n\033[4;34m(Tortas)\033[m")
+    for sobremesa in sorted(tortas):
+        print(f"\033[36m{sobremesa} = \033[33m{tortas[sobremesa]}\033[m")
+
+    outras = dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas']
+    print("\n\033[4;34m(Paves/Profiteroles/Banoff/Mil Folhas)\033[m")
+    for sobremesa in sorted(outras):
+        print(f"\033[36m{sobremesa} = \033[33m{outras[sobremesa]}\033[m")
+
+    #Fio de ovos
+    print("\n\033[33m|| Fio de Ovos || \033[m")
+    fio_ovos = dados['fio_de_ovos']
+    for fio in fio_ovos:
+        print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
 
 
+    print("-"*45)
+    print()
+
+def relatorio_salgados():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print("\n\033[33m|| Salgados || \033[m")
+
+    fritos = dados['salgado']['fritos']
+    print("\n\033[4;34m(Fritos)\033[m")
+    for salgados in sorted(fritos):
+        print(f"\033[36m{salgados} = \033[33m{fritos[salgados]}\033[m")
+
+    assados = dados['salgado']['assados']
+    print("\n\033[4;34m(Assados)\033[m")
+    for salgados in sorted(assados):
+        print(f"\033[36m{salgados} = \033[33m{assados[salgados]}\033[m")
+
+    empadao = dados['salgado']['empadao']
+    print("\n\033[4;34m(Empadào)\033[m")
+    for salgados in sorted(empadao):
+        print(f"\033[36m{salgados} = \033[33m{empadao[salgados]}\033[m")
 
 
+    print("-" * 45)
+    print()
 
+def relatorio_doces():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print("\033[33m|| Doces || \033[m")
+
+    tradicionais = dados['doce']['tradicional/espelhado']
+    print("\033[4;34m(Tradicionais)\033[m")
+    for doces in sorted(tradicionais):
+        print(f"\033[36m{doces} = \033[33m{tradicionais[doces]}\033[m")
+
+    bombom = dados['doce']['bombom']
+    print("\n\033[4;34m(Bombom)\033[m")
+    for doces in sorted(bombom):
+        print(f"\033[36m{doces} = \033[33m{bombom[doces]}\033[m")
+
+
+    print("-" * 45)
+    print()
+
+def relatorio_bolos():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print("\n\033[33m|| Bolos || \033[m")
+
+    bolos = dados['bolo']
+    for bolo in sorted(bolos):
+        print(f"\033[36m{bolo} = \033[33m{bolos[bolo]}")
+
+
+    print("-" * 45)
+    print()
+
+def relatorio_sobremesas():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print("\n\033[33m|| Sobremesas || \033[m")
+
+    tortas = dados['sobremesa']['tortas']
+    print("\n\033[4;34m(Tortas)\033[m")
+    for sobremesa in sorted(tortas):
+        print(f"\033[36m{sobremesa} = \033[33m{tortas[sobremesa]}\033[m")
+
+    outras = dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas']
+    print("\n\033[4;34m(Paves/Profiteroles/Banoff/Mil Folhas)\033[m")
+    for sobremesa in sorted(outras):
+        print(f"\033[36m{sobremesa} = \033[33m{outras[sobremesa]}\033[m")
+
+    # Fio de ovos
+    print("\n\033[33m|| Fio de Ovos || \033[m")
+    fio_ovos = dados['fio_de_ovos']
+    for fio in fio_ovos:
+        print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
+
+    print("-" * 45)
+    print()
+
+def relatorio_fio_ovos():
+    with open("dados.json", "r") as r:
+        dados = json.load(r)
+
+    print("\n\033[33m|| Fio de Ovos || \033[m")
+    fio_ovos = dados['fio_de_ovos']
+    for fio in fio_ovos:
+        print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
+
+    print("-" * 45)
+    print()
 
 
 
