@@ -7,6 +7,8 @@ while True:
     if resp == 6:
         break
 
+# FAZER A PARTE DE MOSTRAR O RELATORIO DIARIO SIMPLES
+# FAZER RELATORIO DIARIO COMPLETO
 
 
 

@@ -1,0 +1,42 @@
+{
+    "07/11/2024": {
+        "doce": {
+            "Brigadeiro": 36
+        },
+        "salgado": {
+            "Coxinha": 29.0,
+            "Coxinha c/ Catupiry": 2.0
+        },
+        "bolo": {
+            "Abacaxi c/ Coco": 16.0
+        },
+        "sobremesa": {
+            "Torta Choco Morango": 10.0,
+            "Mil Folhas": 10.0,
+            "Pave Morango": 30.0
+        },
+        "fio_de_ovos": {
+            "fio_de_ovos": 6.5
+        }
+    },
+    "22/04/2024": {
+        "doce": {
+            "Brigadeiro": 60
+        },
+        "salgado": {
+            "Coxinha": 60
+        },
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {
+            "fio_de_ovos": 2.0
+        }
+    },
+    "24/10/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    }
+}

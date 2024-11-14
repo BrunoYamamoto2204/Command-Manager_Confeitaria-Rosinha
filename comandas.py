@@ -1,5 +1,5 @@
 import json
-
+from datetime import datetime
 import escolha_valida
 
 
@@ -77,7 +77,6 @@ def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     with open("comandas.json","r") as r:
         comanda = json.load(r)
 
-    # comanda["comandas"][f"{nome_cliente}"] = {} #Nao sei se da ruim tirar a lista kkk
     comanda["comandas"][f"{nome_cliente}"]['salgados'] = lista_salg
     comanda["comandas"][f"{nome_cliente}"]['doces'] = lista_doce
     comanda["comandas"][f"{nome_cliente}"]['bolos'] = lista_bolo
@@ -664,6 +663,33 @@ def relatorio_fio_ovos():
 
     print("-" * 45)
     print()
+
+def relatorio_diario_simples():
+    with open("relatorio_diario_simples.json", "r") as r:
+        rel_simples = json.load(r)
+
+    while True:
+        try:
+            data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
+            data_formatada = datetime.strptime(data, "%d/%m/%Y")
+        except ValueError:
+            print("\033[31mData inválida!\033[m")
+        else:
+            data_formatada = datetime.strftime(data_formatada, "%d/%m/%Y")
+            if data_formatada in rel_simples:
+                break
+            else:
+                print("\033[33mNada cadastrado nesta data!\033[m")
+
+    print("-"*20+"Relatório Diário Simples --"+"-"*20)
+    for categorias in rel_simples[data_formatada]:
+        print_categoria = f" \033[34m-- || {categorias.upper()} || --\033[m "
+        print(f"{print_categoria:^70}")
+
+        for produtos in rel_simples[data_formatada][categorias]:
+            print_produtos = f" \033[33m>>\033[m {produtos} : {rel_simples[data_formatada][categorias][produtos]} \033[33m<<\033[m "
+            print(f"{print_produtos:^80}")
+    print("-"*70)
 
 
 

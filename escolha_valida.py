@@ -426,6 +426,20 @@ def qnd_salg(salg,nome):
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
 
+    #ADICIONAR EM RELATORIO DIARIO SIMPLES
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+
+    data_simples = comanda['comandas'][nome]["data"] #DATA A SER ADD NO RELATORIO SIMPLES
+    if unidecode(salgado) in data[data_simples]['salgado']: #CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+        qntd_simples = data[data_simples]['salgado'][unidecode(salgado)] + float(qntd)
+        data[data_simples]['salgado'][unidecode(salgado)] = qntd_simples
+    else:                                                    #CASO NAO TENHA, CRIA
+        data[data_simples]['salgado'][unidecode(salgado)] = float(qntd)
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(data, w, indent=4)
+
     #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     if salg < 29:
@@ -467,6 +481,20 @@ def qntd_doce(doces,nome):
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
 
+    # ADICIONAR EM RELATORIO DIARIO SIMPLES
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+
+    data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
+    if unidecode(doce) in data[data_simples]['doce']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+        qntd_simples = data[data_simples]['doce'][unidecode(doce)] + float(qntd)
+        data[data_simples]['doce'][unidecode(doce)] = qntd_simples
+    else:                                               # CASO NAO TENHA, CRIA
+        data[data_simples]['doce'][unidecode(doce)] = float(qntd)
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(data, w, indent=4)
+
     #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} UN - {doce}"
@@ -502,11 +530,26 @@ def qntd_sobremesa(sobre,nome):
         dados_sobremesa = dados['sobremesa']['tortas'][unidecode(sobremesa)] + float(qntd)
         dados['sobremesa']['tortas'][unidecode(sobremesa)] = dados_sobremesa
     if sobre >= 13 and sobre <= 21:
-        dados_sobremesa = dados['sobremesa']['PavÃªs/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] + qntd
-        dados['sobremesa']['PavÃªs/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] = dados_sobremesa
+        print(dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)])
+        dados_sobremesa = dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] + float(qntd)
+        dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] = dados_sobremesa
 
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    # ADICIONAR EM RELATORIO DIARIO SIMPLES
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+
+    data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
+    if unidecode(sobremesa) in data[data_simples]['sobremesa']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+        qntd_simples = data[data_simples]['sobremesa'][unidecode(sobremesa)] + float(qntd)
+        data[data_simples]['sobremesa'][unidecode(sobremesa)] = qntd_simples
+    else:                                               # CASO NAO TENHA, CRIA
+        data[data_simples]['sobremesa'][unidecode(sobremesa)] = float(qntd)
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(data, w, indent=4)
 
     #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
@@ -528,7 +571,6 @@ def qntd_bolo(bolo,nome):
                    "Taça Morango Nata e Suspiro"]
 
     bolos = lista_bolos[bolo - 1]
-    print(bolos)
 
     while True:
         try:
@@ -547,6 +589,20 @@ def qntd_bolo(bolo,nome):
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
 
+    # ADICIONAR EM RELATORIO DIARIO SIMPLES
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+
+    data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
+    if unidecode(bolos) in data[data_simples]['bolo']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+        qntd_simples = data[data_simples]['bolo'][unidecode(bolos)] + float(qntd)
+        data[data_simples]['bolo'][unidecode(bolos)] = qntd_simples
+    else:                                               # CASO NAO TENHA, CRIA
+        data[data_simples]['bolo'][unidecode(bolos)] = float(qntd)
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(data, w, indent=4)
+
     #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - {bolos}"
@@ -560,18 +616,31 @@ def qntd_fio_de_ovos(nome):
     while True:
         try:
             qntd = (input("Peso do Fio de Ovos(Kg): ").strip().replace(",", "."))
-            float(qntd)
         except ValueError:
             print("\033[31m\nDigite uma quantidade válida!\033[m")
         else:
             break
 
     # ADICIONAR EM DADOS
-    dados_foi_de_ovos = dados['fio_de_ovos']["fio_de_ovos"] + qntd
+    dados_foi_de_ovos = dados['fio_de_ovos']["fio_de_ovos"] + float(qntd)
     dados['fio_de_ovos']["fio_de_ovos"] = dados_foi_de_ovos
 
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
+
+    # ADICIONAR EM RELATORIO DIARIO SIMPLES
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+
+    data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
+    if 'fio_de_ovos' in data[data_simples]['fio_de_ovos']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+        qntd_simples = data[data_simples]['fio_de_ovos']['fio_de_ovos'] + float(qntd)
+        data[data_simples]['fio_de_ovos']['fio_de_ovos'] = qntd_simples
+    else:                                               # CASO NAO TENHA, CRIA
+        data[data_simples]['fio_de_ovos']['fio_de_ovos'] = float(qntd)
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(data, w, indent=4)
 
     #ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
@@ -627,7 +696,7 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nmNúmero de celular: ").strip()
+                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nNúmero de celular: ").strip()
 
                 for c in num_cel:
                     if c.isnumeric():
@@ -693,7 +762,7 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nmNúmero de celular: ").strip()
+                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nNúmero de celular: ").strip()
 
                 for c in num_cel:
                     if c.isnumeric():
@@ -722,6 +791,24 @@ def dia_data():
             break
 
     print()
+
+    #ADICIONAR DATA NO RELATORIO_DIARIO
+    with open("relatorio_diario_simples.json", "r") as r:
+        data = json.load(r)
+    data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
+
+    def converter_data(data_str):
+        return datetime.strptime(data_str, "%d/%m/%Y")
+
+    sorted_keys = sorted(data.keys(), key=converter_data)
+
+    sorted_data = {}
+    for key in sorted_keys:
+        sorted_data[key] = data[key]
+
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(sorted_data, w, indent=4)
+
     #DIA DA SEMANA
     dias_da_semana=["","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado","Domingo"]
 
@@ -784,6 +871,8 @@ def horario_comanda():
 def validar_exclusao(itens_split,qntd):
     with open("dados.json", "r") as r:
         dados = json.load(r)
+    with open('relatorio_diario_simples.json','r') as r:
+        rel_simples =json.load(r)
 
     if len(itens_split) == 6:  # 1 palavra (nome do item)
         produto = (itens_split[5])

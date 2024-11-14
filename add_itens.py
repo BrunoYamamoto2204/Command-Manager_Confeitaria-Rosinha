@@ -8,7 +8,7 @@ def opc_comandas(opc):
     lista_bolo = []
     lista_fio_ovos=[]
 
-    if opc == 1:
+    if opc == 1: #CRIAR COMANDA
         numero_itens = 1
         nome = escolha_valida.nome_cliente()
         numeros = escolha_valida.numero_cliente() # [Celular,telefone]
@@ -64,7 +64,7 @@ def opc_comandas(opc):
         formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega)
         salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
 
-    if opc == 2:
+    if opc == 2: #VER COMANDAS
         with open("comandas.json","r") as r:
             comandas = json.load(r)
 
@@ -85,7 +85,7 @@ def opc_comandas(opc):
         elif esc_comanda == 6:
             mostrar_comanda_fio_de_ovos(comanda_geral, nome_comanda)
 
-    if opc == 3: #NÃO VI AINDA
+    if opc == 3: # ADICIONAR NA COMANDA
 
         with open("comandas.json","r") as r:
             comandas = json.load(r)
@@ -135,11 +135,11 @@ def opc_comandas(opc):
         mostrar_comanda_geral(comandas["comandas"][f"{nome_comanda}"], nome_comanda)
 
 
-    if opc == 4:
+    if opc == 4: # EXCLUIR DA COMANDA
         nome_comanda = escolha_valida.nome_comanda()
         excluir_comanda(nome_comanda)
 
-    if opc == 5:
+    if opc == 5: #RELATORIOS GERAIS
         relatorio = escolha_valida.esc_relatorio()
         if relatorio == 1:
             relatorio_geral()
@@ -154,7 +154,7 @@ def opc_comandas(opc):
         elif relatorio == 6:
             relatorio_fio_ovos()
 
-    if opc == 6:
+    if opc == 6: #SAIR
         return 6
 
 
