@@ -4,19 +4,19 @@
             "Brigadeiro": 36
         },
         "salgado": {
-            "Coxinha": 29.0,
-            "Coxinha c/ Catupiry": 2.0
+            "Coxinha": 28.0,
+            "Coxinha c/ Catupiry": 0.0
         },
         "bolo": {
             "Abacaxi c/ Coco": 16.0
         },
         "sobremesa": {
             "Torta Choco Morango": 10.0,
-            "Mil Folhas": 10.0,
+            "Mil Folhas": 0.0,
             "Pave Morango": 30.0
         },
         "fio_de_ovos": {
-            "fio_de_ovos": 6.5
+            "Fio de ovos": 12.5
         }
     },
     "22/04/2024": {
@@ -29,7 +29,7 @@
         "bolo": {},
         "sobremesa": {},
         "fio_de_ovos": {
-            "fio_de_ovos": 2.0
+            "Fio de ovos": 2.0
         }
     },
     "24/10/2024": {
@@ -37,6 +37,6 @@
         "salgado": {},
         "bolo": {},
         "sobremesa": {},
-        "fio_de_ovos": {}
+        "Fio de ovos": {}
     }
 }

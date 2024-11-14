@@ -33,8 +33,8 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 57.0,
-            "Coxinha c/ Catupiry": 2,
+            "Coxinha": 56.0,
+            "Coxinha c/ Catupiry": 0.0,
             "Kibe": 0,
             "Kibe Recheado": 0,
             "Bolinha de Queijo": 0,
@@ -104,7 +104,7 @@
             "Mini Torta Uva": 0
         },
         "Paves/Profiteroles/Banoff/Mil Folhas": {
-            "Mil Folhas": 10.0,
+            "Mil Folhas": 0.0,
             "Mil Folhas c/ Morango": 0,
             "Mil Folhas c/ Frutas": 0,
             "Pave Frutas Tropicais": 0,
@@ -116,6 +116,6 @@
         }
     },
     "fio_de_ovos": {
-        "fio_de_ovos": 54.0
+        "Fio de ovos": 58.0
     }
 }

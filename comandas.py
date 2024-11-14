@@ -421,6 +421,8 @@ def excluir_comanda(nome):
     print(f"{hora_entregaf}")
     print("\033[1;36m=\033[m" * 50)
 
+    data_encomenda = comanda['data']
+
     for tipo in comanda:
         if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
@@ -479,7 +481,7 @@ def excluir_comanda(nome):
 
                     #EXCLUIR EM DADOS
                     else:                                 #SE FOR O ITEM
-                        escolha_valida.validar_exclusao(itens_split,itens_split[2]) #(Produto, quantidade)
+                        escolha_valida.validar_exclusao(itens_split,itens_split[2],data_encomenda) #(Produto, quantidade)
 
                 comanda[tipo][tipos_add] = lista_adicionados
 
@@ -492,7 +494,7 @@ def excluir_comanda(nome):
                     lista_itens.append(itens)
                 # EXCLUIR EM DADOS
                 else:                                   #SE FOR O ITEM
-                    escolha_valida.validar_exclusao(itens_split,itens_split[2])  #(Produto, quantidade)
+                    escolha_valida.validar_exclusao(itens_split,itens_split[2],data_encomenda)  #(Produto, quantidade)
             comanda[tipo] = lista_itens
 
     with open("comandas.json", "w") as w:
@@ -643,14 +645,14 @@ def relatorio_sobremesas():
     for sobremesa in sorted(outras):
         print(f"\033[36m{sobremesa} = \033[33m{outras[sobremesa]}\033[m")
 
-    # Fio de ovos
-    print("\n\033[33m|| Fio de Ovos || \033[m")
-    fio_ovos = dados['fio_de_ovos']
-    for fio in fio_ovos:
-        print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
-
-    print("-" * 45)
-    print()
+    # # Fio de ovos
+    # print("\n\033[33m|| Fio de Ovos || \033[m")
+    # fio_ovos = dados['fio_de_ovos']
+    # for fio in fio_ovos:
+    #     print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
+    #
+    # print("-" * 45)
+    # print()
 
 def relatorio_fio_ovos():
     with open("dados.json", "r") as r:

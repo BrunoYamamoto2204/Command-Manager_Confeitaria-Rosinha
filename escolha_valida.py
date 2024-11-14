@@ -622,8 +622,8 @@ def qntd_fio_de_ovos(nome):
             break
 
     # ADICIONAR EM DADOS
-    dados_foi_de_ovos = dados['fio_de_ovos']["fio_de_ovos"] + float(qntd)
-    dados['fio_de_ovos']["fio_de_ovos"] = dados_foi_de_ovos
+    dados_foi_de_ovos = dados['fio_de_ovos']["Fio de ovos"] + float(qntd)
+    dados['fio_de_ovos']["Fio de ovos"] = dados_foi_de_ovos
 
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
@@ -634,10 +634,10 @@ def qntd_fio_de_ovos(nome):
 
     data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
     if 'fio_de_ovos' in data[data_simples]['fio_de_ovos']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
-        qntd_simples = data[data_simples]['fio_de_ovos']['fio_de_ovos'] + float(qntd)
-        data[data_simples]['fio_de_ovos']['fio_de_ovos'] = qntd_simples
+        qntd_simples = data[data_simples]['fio_de_ovos']['Fio de ovos'] + float(qntd)
+        data[data_simples]['fio_de_ovos']['Fio de ovos'] = qntd_simples
     else:                                               # CASO NAO TENHA, CRIA
-        data[data_simples]['fio_de_ovos']['fio_de_ovos'] = float(qntd)
+        data[data_simples]['fio_de_ovos']['Fio de ovos'] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
@@ -868,7 +868,7 @@ def horario_comanda():
 
     return [horario_pronto,horario_entrega]
 
-def validar_exclusao(itens_split,qntd):
+def validar_exclusao(itens_split,qntd,data):
     with open("dados.json", "r") as r:
         dados = json.load(r)
     with open('relatorio_diario_simples.json','r') as r:
@@ -898,15 +898,24 @@ def validar_exclusao(itens_split,qntd):
     elif unidecode(produto) in dados['salgado']['empadao']:
         dados['salgado']['empadao'][unidecode(produto)] -= float(qntd)
 
+    if unidecode(produto) in rel_simples[data]['salgado']:
+        rel_simples[data]['salgado'][unidecode(produto)] -= float(qntd)
+
     #DOCES
     if unidecode(produto) in dados['doce']['tradicional/espelhado']:
         dados['doce']['tradicional/espelhado'][unidecode(produto)] -= float(qntd)
     elif unidecode(produto) in dados['doce']['bombom']:
         dados['doce']['bombom'][unidecode(produto)] -= float(qntd)
 
+    if unidecode(produto) in rel_simples[data]['doce']:
+        rel_simples[data]['doce'][unidecode(produto)] -= float(qntd)
+
     #BOLOS
     if unidecode(produto) in dados['bolo']:
         dados['bolo'][unidecode(produto)] -= float(qntd)
+
+    if unidecode(produto) in rel_simples[data]['bolo']:
+        rel_simples[data]['bolo'][unidecode(produto)] -= float(qntd)
 
     #SOBREMESAS
     if unidecode(produto) in dados['sobremesa']['tortas']:
@@ -914,9 +923,17 @@ def validar_exclusao(itens_split,qntd):
     if unidecode(produto) in dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas']:
         dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(produto)] -= float(qntd)
 
+    if unidecode(produto) in rel_simples[data]['sobremesa']:
+        rel_simples[data]['sobremesa'][unidecode(produto)] -= float(qntd)
+
     #FIO DE OVOS
     if unidecode(produto) in dados['fio_de_ovos']:
-        dados['fio_de_ovos']["fio_de_ovos"] -= float(qntd)
+        dados['fio_de_ovos']["Fio de ovos"] -= float(qntd)
+
+    if unidecode(produto) in rel_simples[data]['fio_de_ovos']:
+        rel_simples[data]['fio_de_ovos'][unidecode(produto)] -= float(qntd)
 
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4)
+    with open("relatorio_diario_simples.json", "w") as w2:
+        json.dump(rel_simples, w2, indent=4)

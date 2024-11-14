@@ -29,9 +29,7 @@
                 "sobremesas": [
                     "(4) -> 3 KG - Mil Folhas"
                 ],
-                "fio_de_ovos": [
-                    "(6) -> 2 Kg - Fio de ovos"
-                ]
+                "fio_de_ovos": []
             }
         },
         "jonson_silva_": {
@@ -41,7 +39,7 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 27,
+            "num_item": 31,
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
                 "(3) -> 4 Kg - Empad\u00e3o Frango"
@@ -64,9 +62,7 @@
                     "(12) -> 2 UN - Folhado Presunto e Queijo",
                     "(18) -> 2 UN - Folhado Frango c/ Catupiry",
                     "(19) -> 1.0 Kg - Empad\u00e3o Frango",
-                    "(21) -> 3.0 Kg - Empad\u00e3o Palmito",
-                    "(22) -> 1 UN - Coxinha",
-                    "(23) -> 2 UN - Coxinha c/ Catupiry"
+                    "(21) -> 3.0 Kg - Empad\u00e3o Palmito"
                 ],
                 "doces": [],
                 "bolos": [
@@ -79,12 +75,9 @@
                 "sobremesas": [
                     "(13) -> 2 UN - Mini Torta Morango",
                     "(16) -> 1 KG - Torta Choco Morango",
-                    "(24) -> 10 KG - Mil Folhas",
                     "(25) -> 30 KG - Pav\u00ea Morango"
                 ],
-                "fio_de_ovos": [
-                    "(26) -> 50 Kg - Fio de ovos"
-                ]
+                "fio_de_ovos": []
             }
         }
     }
