@@ -1,11 +1,12 @@
 import json
 from datetime import datetime,timedelta
 from unidecode import unidecode
+import comandas
 def esc_principal():
     while True:
         try:
             escolha = int(input
-("""Escolha uma opção: 
+("""\nEscolha uma opção:\n 
 \033[33m1\033[m - \033[34mSalgados\033[m 
 \033[33m2\033[m - \033[34mDoces\033[m 
 \033[33m3\033[m - \033[34mBolos\033[m 
@@ -30,16 +31,17 @@ def esc_opcoes():
             print("\033[33m2 - \033[34mVer Comanda existente\033[m")
             print("\033[33m3 - \033[34mAdicionar em uma comanda existente\033[m")
             print("\033[33m4 - \033[34mExcluir itens da comanda\033[m")
-            print("\033[33m5 - \033[34mRelatórios\033[m")
-            print("\033[33m6 - \033[34mSair\033[m")
+            print("\033[33m5 - \033[34mRelatórios Gerais\033[m")
+            print("\033[33m6 - \033[34mRelatórios Diários\033[m")
+            print("\033[33m7 - \033[34mSair\033[m")
             print()
             opc = int(input("Escolha: "))
-            if opc > 6 or opc < 1:
-                print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            if opc > 7 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 7 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 7 apenas!\033[m\n")
 
     return opc
 
@@ -530,7 +532,6 @@ def qntd_sobremesa(sobre,nome):
         dados_sobremesa = dados['sobremesa']['tortas'][unidecode(sobremesa)] + float(qntd)
         dados['sobremesa']['tortas'][unidecode(sobremesa)] = dados_sobremesa
     if sobre >= 13 and sobre <= 21:
-        print(dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)])
         dados_sobremesa = dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] + float(qntd)
         dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas'][unidecode(sobremesa)] = dados_sobremesa
 
@@ -633,7 +634,7 @@ def qntd_fio_de_ovos(nome):
         data = json.load(r)
 
     data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
-    if 'fio_de_ovos' in data[data_simples]['fio_de_ovos']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+    if 'Fio de ovos' in data[data_simples]['fio_de_ovos']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['fio_de_ovos']['Fio de ovos'] + float(qntd)
         data[data_simples]['fio_de_ovos']['Fio de ovos'] = qntd_simples
     else:                                               # CASO NAO TENHA, CRIA
@@ -778,7 +779,7 @@ def numero_cliente():
 
     return [num_cel,num_tel]
 
-def dia_data():
+def dia_data(nome):
     #DATA
     while True:
         try:
@@ -795,19 +796,33 @@ def dia_data():
     #ADICIONAR DATA NO RELATORIO_DIARIO
     with open("relatorio_diario_simples.json", "r") as r:
         data = json.load(r)
-    data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
+    with open("relatorio_diario_completo.json", "r") as r:
+        data_completa = json.load(r)
 
-    def converter_data(data_str):
-        return datetime.strptime(data_str, "%d/%m/%Y")
+    if data_formatada not in data:  #SÓ VAI SER CRIADO SE AINDA NÃO EXISTIR A DATA
+        data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
+        data_completa[data_formatada] = {}
+        data_completa[data_formatada][nome] = {"doce":[],"salgado":[],"bolo":[],"sobremesa":[],"fio_de_ovos":[]}
 
-    sorted_keys = sorted(data.keys(), key=converter_data)
+        def converter_data(data_str):
+            return datetime.strptime(data_str, "%d/%m/%Y")
 
-    sorted_data = {}
-    for key in sorted_keys:
-        sorted_data[key] = data[key]
+        sorted_keys = sorted(data.keys(), key=converter_data)
+        sorted_keys_completa = sorted(data_completa.keys(), key=converter_data)
 
-    with open("relatorio_diario_simples.json", "w") as w:
-        json.dump(sorted_data, w, indent=4)
+        sorted_data = {} #DIARIO SIMPLES
+        for key in sorted_keys:
+            sorted_data[key] = data[key]
+
+        sorted_data_completa = {} #DIARIO COMPLETO
+        for key in sorted_keys_completa:
+            sorted_data_completa[key] = data_completa[key]
+
+        with open("relatorio_diario_simples.json", "w") as w:
+            json.dump(sorted_data, w, indent=4)
+
+        with open("relatorio_diario_completo.json", "w") as w:
+            json.dump(sorted_data_completa, w, indent=4)
 
     #DIA DA SEMANA
     dias_da_semana=["","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado","Domingo"]
@@ -937,3 +952,41 @@ def validar_exclusao(itens_split,qntd,data):
         json.dump(dados, w, indent=4)
     with open("relatorio_diario_simples.json", "w") as w2:
         json.dump(rel_simples, w2, indent=4)
+
+
+def relatorios_diarios():
+    with open("relatorio_diario_completo.json", "r") as r:
+        rel_completo = json.load(r)
+
+    while True:
+        try:
+            print("\n\033[1;33mEscolha o tipo de relatório diário:\033[m")
+            print("\033[33m1 - \033[34mRelatório Diário Simples\033[m")
+            print("\033[33m2 - \033[34mRelatório Diário Completo\033[m\n")
+            escolha = int(input("Escolha: "))
+        except:
+            print("\033[31mEscolha um número entre 1 e 2 apenas!\033[m\n")
+        else:
+            if escolha == 1 or escolha == 2:
+                break
+            else:
+                print("\033[31mEscolha um número entre 1 e 2 apenas!\033[m\n")
+
+    while True:
+        try:
+            data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
+            data_formatada = datetime.strptime(data, "%d/%m/%Y")
+        except ValueError:
+            print("\033[31mData inválida!\033[m")
+        else:
+            data_formatada = datetime.strftime(data_formatada, "%d/%m/%Y")
+            if data_formatada in rel_completo:  # TANTO FAZ COMPLETO OU SIMPLES, ABOS VÃO TER AS MESMAS DATAS
+                break
+            else:
+                print("\033[33mNada cadastrado nesta data!\033[m")
+
+    if escolha == 1:
+        comandas.relatorio_diario_simples(data_formatada)
+
+    if escolha == 2:
+        comandas.relatorio_diario_completo(data_formatada)

@@ -1,22 +1,14 @@
 {
-    "07/11/2024": {
-        "doce": {
-            "Brigadeiro": 36
-        },
+    "22/04/2006": {
+        "doce": {},
         "salgado": {
-            "Coxinha": 28.0,
-            "Coxinha c/ Catupiry": 0.0
+            "Coxinha": 71.0,
+            "Empadao Frango": 22.0
         },
-        "bolo": {
-            "Abacaxi c/ Coco": 16.0
-        },
-        "sobremesa": {
-            "Torta Choco Morango": 10.0,
-            "Mil Folhas": 0.0,
-            "Pave Morango": 30.0
-        },
+        "bolo": {},
+        "sobremesa": {},
         "fio_de_ovos": {
-            "Fio de ovos": 12.5
+            "Fio de ovos": 25.0
         }
     },
     "22/04/2024": {
@@ -24,7 +16,7 @@
             "Brigadeiro": 60
         },
         "salgado": {
-            "Coxinha": 60
+            "Coxinha": 129.0
         },
         "bolo": {},
         "sobremesa": {},
@@ -32,11 +24,97 @@
             "Fio de ovos": 2.0
         }
     },
+    "07/07/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
+    "08/08/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
+    "01/09/2024": {
+        "doce": {
+            "Bomb. Suspiro": 20.0,
+            "Espelhado Olho Sogra": 33.0,
+            "Camafeu": 44.0
+        },
+        "salgado": {
+            "Empadao Frango": 6.0,
+            "Espetinho Frango": 45.0,
+            "Folhado Presunto e Queijo": 22.0,
+            "Empadao Camarao": 2.0
+        },
+        "bolo": {
+            "Taca Morango Nata e Suspiro": 2.0
+        },
+        "sobremesa": {
+            "Mini Torta Uva": 22.0,
+            "Banoff": 2.0
+        },
+        "fio_de_ovos": {
+            "Fio de ovos": 55.0
+        }
+    },
+    "09/09/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
+    "10/09/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
     "24/10/2024": {
         "doce": {},
         "salgado": {},
         "bolo": {},
         "sobremesa": {},
         "Fio de ovos": {}
+    },
+    "25/10/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
+    "29/10/2024": {
+        "doce": {},
+        "salgado": {},
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
+    "07/11/2024": {
+        "doce": {
+            "Brigadeiro": 50.0
+        },
+        "salgado": {
+            "Coxinha": 32.0,
+            "Coxinha c/ Catupiry": 0.0
+        },
+        "bolo": {
+            "Abacaxi c/ Coco": 18.0
+        },
+        "sobremesa": {
+            "Torta Choco Morango": 10.0,
+            "Mil Folhas": 0.0,
+            "Pave Morango": 30.0,
+            "Mini Torta Limao": 50.0
+        },
+        "fio_de_ovos": {
+            "Fio de ovos": 4.0
+        }
     }
 }

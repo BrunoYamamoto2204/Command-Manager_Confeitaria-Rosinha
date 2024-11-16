@@ -12,7 +12,7 @@ def opc_comandas(opc):
         numero_itens = 1
         nome = escolha_valida.nome_cliente()
         numeros = escolha_valida.numero_cliente() # [Celular,telefone]
-        data_e_dia = escolha_valida.dia_data() # [Data, dia_semana]
+        data_e_dia = escolha_valida.dia_data(nome) # [Data, dia_semana]
         horario = escolha_valida.horario_comanda() # [Pronto,Entrega]
 
         celular = numeros[0]
@@ -63,6 +63,7 @@ def opc_comandas(opc):
 
         formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega)
         salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
+        salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
 
     if opc == 2: #VER COMANDAS
         with open("comandas.json","r") as r:
@@ -89,14 +90,23 @@ def opc_comandas(opc):
 
         with open("comandas.json","r") as r:
             comandas = json.load(r)
+        with open("relatorio_diario_completo.json", "r") as r:
+            rel_completo = json.load(r)
 
         nome_comanda = escolha_valida.nome_comanda()
+        data = comandas['comandas'][nome_comanda]['data']
 
         lista_salg3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["salgados"]
         lista_doce3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["doces"]
         lista_sobre3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["sobremesas"]
         lista_bolo3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["bolos"]
         lista_fio_ovos3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
+
+        lista_relatorio_salgado = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["salgado"]
+        lista_relatorio_doce = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["doce"]
+        lista_relatorio_bolo = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["bolo"]
+        lista_relatorio_sobre = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["sobremesa"]
+        lista_relatorio_fio = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
 
         print("=" * 40)
         while True:
@@ -106,25 +116,36 @@ def opc_comandas(opc):
                 salg = escolha_valida.esc_salgado()
                 qntd_salgado = escolha_valida.qnd_salg(salg,nome_comanda)
                 lista_salg3.append(qntd_salgado)
+                lista_relatorio_salgado.append(qntd_salgado)
+
             if escolha == 2:
                 doce = escolha_valida.esc_doce()
                 qntd_doce = escolha_valida.qntd_doce(doce,nome_comanda)
                 lista_doce3.append(qntd_doce)
+                lista_relatorio_doce.append(qntd_doce)
+
             if escolha == 3:
                 bolo  = escolha_valida.esc_bolo()
                 qntd_bolo = escolha_valida.qntd_bolo(bolo,nome_comanda)
                 lista_bolo3.append(qntd_bolo)
+                lista_relatorio_bolo.append(qntd_bolo)
+
             if escolha == 4:
                 sobremesa = escolha_valida.esc_sobremesa()
                 qntd_sobremesa = escolha_valida.qntd_sobremesa(sobremesa,nome_comanda)
                 lista_sobre3.append(qntd_sobremesa)
+                lista_relatorio_sobre.append(qntd_sobremesa)
+
             if escolha == 5:
                 qntd_fio_ovos = escolha_valida.qntd_fio_de_ovos(nome_comanda)
                 lista_fio_ovos3.append(qntd_fio_ovos)
+                lista_relatorio_fio.append(qntd_fio_ovos)
 
             comandas['comandas'][f'{nome_comanda}']["num_item"] += 1
             with open("comandas.json","w") as w:
                 json.dump(comandas,w,indent=4)
+            with open("relatorio_diario_completo.json", "w") as w:
+                json.dump(rel_completo, w, indent=4)
 
             print("=" * 40)
             cont = input("Mais itens? S/N:").strip().upper()
@@ -154,8 +175,11 @@ def opc_comandas(opc):
         elif relatorio == 6:
             relatorio_fio_ovos()
 
-    if opc == 6: #SAIR
-        return 6
+    if opc == 6:
+        escolha_valida.relatorios_diarios()
+
+    if opc == 7: #SAIR
+        return 7
 
 
 

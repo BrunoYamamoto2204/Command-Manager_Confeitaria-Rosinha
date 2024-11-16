@@ -4,6 +4,5 @@ from unidecode import unidecode
 import comandas
 from datetime import datetime
 
-comandas.excluir_comanda("jonson_silva_")
-
+comandas.relatorio_diario_completo()
 

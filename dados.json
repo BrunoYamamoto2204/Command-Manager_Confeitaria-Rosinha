@@ -1,7 +1,7 @@
 {
     "doce": {
         "tradicional/espelhado": {
-            "Brigadeiro": 0,
+            "Brigadeiro": 14,
             "Brigadeiro Branco": 0,
             "Beijinho": 0,
             "Olho de Sogra": 0,
@@ -14,7 +14,7 @@
             "Espelhado Brigadeiro": 0,
             "Espelhado Cereja": 0,
             "Espelhado Nozes": 0,
-            "Espelhado Olho Sogra": 0
+            "Espelhado Olho Sogra": 33
         },
         "bombom": {
             "Bomb. Morango": 0,
@@ -27,13 +27,13 @@
             "Bomb. Dois Amores": 0,
             "Bomb. Crocante": 0,
             "Bomb. Laranjinha": 0,
-            "Bomb. Suspiro": 0,
-            "Camafeu": 0
+            "Bomb. Suspiro": 20,
+            "Camafeu": 44
         }
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 56.0,
+            "Coxinha": 200.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": 0,
             "Kibe Recheado": 0,
@@ -45,7 +45,8 @@
             "Risoles Camarao": 0,
             "Mini Pastel Carne": 0,
             "Mini Pastel Queijo": 0,
-            "Espetinho Carne": 0
+            "Espetinho Carne": 0,
+            "Espetinho Frango": 45
         },
         "assados": {
             "Esfiha Carne": 0,
@@ -61,18 +62,18 @@
             "Trouxinha Camarao": 0,
             "Folhado Presunto e Ameixa": 0,
             "Folhado Frango c/ Catupiry": 0,
-            "Folhado Presunto e Queijo": 2
+            "Folhado Presunto e Queijo": 24
         },
         "empadao": {
             "Empadao Palmito": 3.0,
-            "Empadao Camarao": 0,
-            "Empadao Frango": 0.0
+            "Empadao Camarao": 2.0,
+            "Empadao Frango": 28.0
         }
     },
     "bolo": {
-        "Abacaxi c/ Coco": 7.0,
+        "Abacaxi c/ Coco": 9.0,
         "Ameixa c/ Coco": 0,
-        "Delicia de Limoe e Abacaxi": 0,
+        "Delicia de Limao e Abacaxi": 0,
         "Martha Rocha": 0,
         "Prestigio": 0,
         "Sonho de Valsa": 0,
@@ -86,22 +87,22 @@
         "Floresta Negra": 0,
         "Taca Martha Rocha": 0,
         "Taca Dueto": 0,
-        "Taca Morango Nata e Suspiro": 2.0
+        "Taca Morango Nata e Suspiro": 4.0
     },
     "sobremesa": {
         "tortas": {
             "Torta Choco Morango": 0,
             "Torta Choco Nana": 0,
             "Torta Maracuja": 0,
-            "Torta Limoe": 0,
+            "Torta Limao": 0,
             "Torta Morango": 0,
             "Torta Alema": 0,
             "Mini Quindim": 0,
             "Mini Torta Brigadeiro": 0,
-            "Mini Torta Limoe": 0,
+            "Mini Torta Limao": 50.0,
             "Mini Torta Morango": 0,
             "Mini Torta Strogonoff Nozes": 0,
-            "Mini Torta Uva": 0
+            "Mini Torta Uva": 22.0
         },
         "Paves/Profiteroles/Banoff/Mil Folhas": {
             "Mil Folhas": 0.0,
@@ -112,10 +113,10 @@
             "Pave Pessego": 0,
             "Pave Abacaxi": 0,
             "Profiteroles": 0,
-            "Banoff": 0
+            "Banoff": 2.0
         }
     },
     "fio_de_ovos": {
-        "Fio de ovos": 58.0
+        "Fio de ovos": 144.0
     }
 }

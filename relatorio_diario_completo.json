@@ -1,0 +1,44 @@
+{
+    "22/04/2006": {
+        "bruno_yamamoto_": {
+            "doce": [],
+            "salgado": [],
+            "bolo": [],
+            "sobremesa": [],
+            "fio_de_ovos": [
+                "(1) -> 11 Kg - Fio de ovos",
+                "(2) -> 10 Kg - Fio de ovos"
+            ],
+            "ADICIONADO": {
+                "salgado": [
+                    "(4) -> 1 UN - Coxinha"
+                ],
+                "doce": [],
+                "bolo": [],
+                "sobremesa": [],
+                "fio_de_ovos": [
+                    "(3) -> 2 Kg - Fio de ovos"
+                ]
+            }
+        },
+        "c_": {
+            "salgado": [
+                "(1) -> 4 UN - Coxinha"
+            ],
+            "doce": [],
+            "bolo": [],
+            "sobremesa": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgado": [
+                    "(2) -> 22.0 Kg - Empad\u00e3o Frango",
+                    "(3) -> 4 UN - Coxinha"
+                ],
+                "doce": [],
+                "bolo": [],
+                "sobremesa": [],
+                "fio_de_ovos": []
+            }
+        }
+    }
+}

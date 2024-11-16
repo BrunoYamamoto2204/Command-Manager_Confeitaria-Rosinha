@@ -47,7 +47,7 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
         print(f"\033[34m{'--||Fio de Ovos||--':^40}\033[m")
         for c in lista_fio_ovos:
             print(c)
-    print("\033[1;36m=\033[m" * 40)
+    print("\033[1;36m=\033[m" * 50)
 
 
 def criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,
@@ -95,6 +95,31 @@ def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     # print(comanda)
     with open("comandas.json", "w") as w:
         json.dump(comanda, w, indent=4)
+def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome_cliente):
+    with open("relatorio_diario_completo.json","r") as r:
+        rel_completo = json.load(r)
+    with open("comandas.json","r") as r:
+        comanda = json.load(r)
+
+
+    data = comanda['comandas'][nome_cliente]['data']
+
+    rel_completo[data][f'{nome_cliente}'] = {}
+    rel_completo[data][f"{nome_cliente}"]['salgado'] = lista_salg
+    rel_completo[data][f"{nome_cliente}"]['doce'] = lista_doce
+    rel_completo[data][f"{nome_cliente}"]['bolo'] = lista_bolo
+    rel_completo[data][f"{nome_cliente}"]['sobremesa'] = lista_sobre
+    rel_completo[data][f"{nome_cliente}"]['fio_de_ovos'] = lista_fio_ovos
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO'] = {}
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["salgado"] = []
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["doce"] = []
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["bolo"] = []
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["sobremesa"] = []
+    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
+
+    # print(comanda)
+    with open("relatorio_diario_completo.json", "w") as w:
+        json.dump(rel_completo, w, indent=4)
 
 def mostrar_comanda_geral(comanda,nome):
     nome_completo = ""
@@ -453,7 +478,7 @@ def excluir_comanda(nome):
                             print(caracteres, end=' ')
                     print()
 
-    print("\033[1;36m=\033[m" * 40)
+    print("\033[1;36m=\033[m" * 50)
 
     while True:
         try:
@@ -666,35 +691,61 @@ def relatorio_fio_ovos():
     print("-" * 45)
     print()
 
-def relatorio_diario_simples():
+def relatorio_diario_simples(data_formatada):
     with open("relatorio_diario_simples.json", "r") as r:
         rel_simples = json.load(r)
 
-    while True:
-        try:
-            data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
-            data_formatada = datetime.strptime(data, "%d/%m/%Y")
-        except ValueError:
-            print("\033[31mData inválida!\033[m")
-        else:
-            data_formatada = datetime.strftime(data_formatada, "%d/%m/%Y")
-            if data_formatada in rel_simples:
-                break
-            else:
-                print("\033[33mNada cadastrado nesta data!\033[m")
-
-    print("-"*20+"Relatório Diário Simples --"+"-"*20)
+    print()
+    print("_"*80)
+    print(f"Tipo: Relatório Diário Simples")
+    print(f"Data: \033[1;33m({data_formatada})\033[m")
+    print("-"*80)
     for categorias in rel_simples[data_formatada]:
         print_categoria = f" \033[34m-- || {categorias.upper()} || --\033[m "
-        print(f"{print_categoria:^70}")
+        print(f"{print_categoria:^80}")
 
         for produtos in rel_simples[data_formatada][categorias]:
             print_produtos = f" \033[33m>>\033[m {produtos} : {rel_simples[data_formatada][categorias][produtos]} \033[33m<<\033[m "
-            print(f"{print_produtos:^80}")
-    print("-"*70)
+            print(f"{print_produtos:^90}")
+    print("-"*80)
+    print()
 
+def relatorio_diario_completo(data_formatada):
+    with open("relatorio_diario_completo.json", "r") as r:
+        rel_completo = json.load(r)
 
+    print()
+    print("_" * 80)
+    print(f"Tipo: Relatório Diário Completo")
+    print(f"Data: \033[1;33m({data_formatada})\033[m")
+    print("-" * 80)
+    for dia in rel_completo:
+        for cliente in rel_completo[dia]:
 
+            nome_completo = ""
+            for nome in cliente.split("_"):
+                nome_completo += f"{nome} "
+
+            print(f"\033[33m{'='*40:^80}\033[m")
+            print(f"\033[33m{nome_completo.title():^80}\033[m")
+            print(f"\033[33m{'=' * 40:^80}\033[m")
+
+            for categoria in rel_completo[dia][cliente]:
+                print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
+                print(f"{print_categoria:^85}")
+
+                if categoria == "ADICIONADO":
+                    for cat_add in rel_completo[dia][cliente][categoria]:
+                        for item in rel_completo[dia][cliente][categoria][cat_add]:
+                            print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                            print(f"{print_produtos:^95}")
+                else:
+                    for item in rel_completo[dia][cliente][categoria]:
+                        print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
+                        print(f"{print_produtos:^95}")
+
+    print("-" * 80)
+    print()
 
 
 
