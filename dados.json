@@ -1,7 +1,7 @@
 {
     "doce": {
         "tradicional/espelhado": {
-            "Brigadeiro": 14,
+            "Brigadeiro": 15,
             "Brigadeiro Branco": 0,
             "Beijinho": 0,
             "Olho de Sogra": 0,
@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 200.0,
+            "Coxinha": 202.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": 0,
             "Kibe Recheado": 0,
@@ -83,11 +83,11 @@
         "Tentacao de Morango": 0,
         "Dueto": 0,
         "Sinfonia de Damasco": 0,
-        "Bolo Trufado": 0,
-        "Floresta Negra": 0,
-        "Taca Martha Rocha": 0,
+        "Bolo Trufado": 2.0,
+        "Floresta Negra": 2.0,
+        "Taca Martha Rocha": 2.0,
         "Taca Dueto": 0,
-        "Taca Morango Nata e Suspiro": 4.0
+        "Taca Morango Nata e Suspiro": 6.0
     },
     "sobremesa": {
         "tortas": {

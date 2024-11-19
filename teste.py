@@ -4,5 +4,5 @@ from unidecode import unidecode
 import comandas
 from datetime import datetime
 
-comandas.relatorio_diario_completo()
+escolha_valida.dia_data("abbabab_")
 

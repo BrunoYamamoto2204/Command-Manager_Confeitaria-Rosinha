@@ -1,5 +1,5 @@
 {
-    "num": 19,
+    "num": 23,
     "comandas": {
         "marcia_setsuko_yamamoto_": {
             "celular": "98414-9323",
@@ -24,8 +24,7 @@
                 "salgados": [
                     "(5) -> 35 UN - Coxinha",
                     "(7) -> 22 UN - Coxinha",
-                    "(8) -> 22 UN - Coxinha",
-                    "(9) -> 1 UN - Coxinha"
+                    "(8) -> 22 UN - Coxinha"
                 ],
                 "doces": [],
                 "bolos": [],
@@ -92,7 +91,7 @@
                 ]
             }
         },
-        "a_": {
+        "bruno_yamamoto_": {
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -120,16 +119,46 @@
                 ]
             }
         },
-        "b_": {
+        "c_": {
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
-            "dia_semana": "Domingo",
+            "dia_semana": "Segunda-Feira",
             "hora_pronta": "00:00",
             "hora_entrega": "01:00",
+            "num_item": 8,
+            "salgados": [
+                "(1) -> 4 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [
+                    "(2) -> 22.0 Kg - Empad\u00e3o Frango"
+                ],
+                "doces": [],
+                "bolos": [
+                    "(4) -> 2 Kg - Floresta Negra",
+                    "(5) -> 2 Kg - Ta\u00e7a Martha Rocha",
+                    "(6) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro",
+                    "(7) -> 2 Kg - Bolo Trufado"
+                ],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "abbabab_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Quinta-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
             "num_item": 2,
             "salgados": [
-                "(1) -> 66 UN - Coxinha"
+                "(1) -> 1 UN - Coxinha"
             ],
             "doces": [],
             "bolos": [],
@@ -143,25 +172,69 @@
                 "fio_de_ovos": []
             }
         },
-        "c_": {
+        "a_": {
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
             "dia_semana": "Segunda-Feira",
-            "hora_pronta": "00:00",
-            "hora_entrega": "01:00",
-            "num_item": 4,
+            "hora_pronta": "12:00",
+            "hora_entrega": 0,
+            "num_item": 2,
             "salgados": [
-                "(1) -> 4 UN - Coxinha"
+                "(1) -> 1 UN - Coxinha"
             ],
             "doces": [],
             "bolos": [],
             "sobremesas": [],
             "fio_de_ovos": [],
             "ADICIONADO": {
-                "salgados": [
-                    "(2) -> 22.0 Kg - Empad\u00e3o Frango"
-                ],
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "deed_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "gaga_": {
+            "celular": "98424-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "(1) -> 1 UN - Brigadeiro"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
                 "doces": [],
                 "bolos": [],
                 "sobremesas": [],

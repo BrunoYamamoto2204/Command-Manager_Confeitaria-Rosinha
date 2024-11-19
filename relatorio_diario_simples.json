@@ -1,11 +1,18 @@
 {
     "22/04/2006": {
-        "doce": {},
+        "doce": {
+            "Brigadeiro": 1.0
+        },
         "salgado": {
-            "Coxinha": 71.0,
+            "Coxinha": 73.0,
             "Empadao Frango": 22.0
         },
-        "bolo": {},
+        "bolo": {
+            "Floresta Negra": 2.0,
+            "Taca Martha Rocha": 2.0,
+            "Taca Morango Nata e Suspiro": 2.0,
+            "Bolo Trufado": 2.0
+        },
         "sobremesa": {},
         "fio_de_ovos": {
             "Fio de ovos": 25.0

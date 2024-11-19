@@ -103,19 +103,23 @@ def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bol
 
 
     data = comanda['comandas'][nome_cliente]['data']
+    horario = comanda['comandas'][nome_cliente]['hora_pronta']
 
-    rel_completo[data][f'{nome_cliente}'] = {}
-    rel_completo[data][f"{nome_cliente}"]['salgado'] = lista_salg
-    rel_completo[data][f"{nome_cliente}"]['doce'] = lista_doce
-    rel_completo[data][f"{nome_cliente}"]['bolo'] = lista_bolo
-    rel_completo[data][f"{nome_cliente}"]['sobremesa'] = lista_sobre
-    rel_completo[data][f"{nome_cliente}"]['fio_de_ovos'] = lista_fio_ovos
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO'] = {}
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["salgado"] = []
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["doce"] = []
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["bolo"] = []
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["sobremesa"] = []
-    rel_completo[data][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
+    if horario not in rel_completo[data]:
+        rel_completo[data][horario] = {}
+
+    rel_completo[data][horario][f'{nome_cliente}'] = {}
+    rel_completo[data][horario][f"{nome_cliente}"]['salgado'] = lista_salg
+    rel_completo[data][horario][f"{nome_cliente}"]['doce'] = lista_doce
+    rel_completo[data][horario][f"{nome_cliente}"]['bolo'] = lista_bolo
+    rel_completo[data][horario][f"{nome_cliente}"]['sobremesa'] = lista_sobre
+    rel_completo[data][horario][f"{nome_cliente}"]['fio_de_ovos'] = lista_fio_ovos
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO'] = {}
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["salgado"] = []
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["doce"] = []
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["bolo"] = []
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["sobremesa"] = []
+    rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
 
     # print(comanda)
     with open("relatorio_diario_completo.json", "w") as w:
@@ -719,30 +723,32 @@ def relatorio_diario_completo(data_formatada):
     print(f"Tipo: Relatório Diário Completo")
     print(f"Data: \033[1;33m({data_formatada})\033[m")
     print("-" * 80)
+
     for dia in rel_completo:
-        for cliente in rel_completo[dia]:
+        if dia == data_formatada:
+            for cliente in rel_completo[dia]:
 
-            nome_completo = ""
-            for nome in cliente.split("_"):
-                nome_completo += f"{nome} "
+                nome_completo = ""
+                for nome in cliente.split("_"):
+                    nome_completo += f"{nome} "
 
-            print(f"\033[33m{'='*40:^80}\033[m")
-            print(f"\033[33m{nome_completo.title():^80}\033[m")
-            print(f"\033[33m{'=' * 40:^80}\033[m")
+                print(f"\033[33m{'='*40:^80}\033[m")
+                print(f"\033[33m{nome_completo.title():^80}\033[m")
+                print(f"\033[33m{'=' * 40:^80}\033[m")
 
-            for categoria in rel_completo[dia][cliente]:
-                print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
-                print(f"{print_categoria:^85}")
+                for categoria in rel_completo[dia][cliente]:
+                    print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
+                    print(f"{print_categoria:^85}")
 
-                if categoria == "ADICIONADO":
-                    for cat_add in rel_completo[dia][cliente][categoria]:
-                        for item in rel_completo[dia][cliente][categoria][cat_add]:
-                            print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                    if categoria == "ADICIONADO":
+                        for cat_add in rel_completo[dia][cliente][categoria]:
+                            for item in rel_completo[dia][cliente][categoria][cat_add]:
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+                    else:
+                        for item in rel_completo[dia][cliente][categoria]:
+                            print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                             print(f"{print_produtos:^95}")
-                else:
-                    for item in rel_completo[dia][cliente][categoria]:
-                        print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
-                        print(f"{print_produtos:^95}")
 
     print("-" * 80)
     print()

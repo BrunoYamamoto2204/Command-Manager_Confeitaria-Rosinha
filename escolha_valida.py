@@ -302,20 +302,18 @@ def esc_bolo():
 \033[33m11 - \033[34mDueto
 \033[33m12 - \033[34mSinfonia de Damasco 
 \033[33m13 - \033[34mBolo Trufado 
-\033[33m14 - \033[34mFloresta Negra 
-\033[33m15 - \033[34mMorango Nata e suspiro 
-\033[33m16 - \033[34mMorango Nata e suspiro   
-\033[33m17 - \033[34mTaça Martha Rocha
-\033[33m18 - \033[34mTaça Dueto
-\033[33m19 - \033[34mTaça Morango Nata e Suspiro\033[m 
+\033[33m14 - \033[34mFloresta Negra  
+\033[33m15 - \033[34mTaça Martha Rocha
+\033[33m16 - \033[34mTaça Dueto
+\033[33m17 - \033[34mTaça Morango Nata e Suspiro\033[m 
 
 Escolha:"""))
-            if escolha > 19 or escolha < 1:
-                print("\033[31mEscolha um número entre 1 e 19 apenas!\033[m\n")
+            if escolha > 17 or escolha < 1:
+                print("\033[31mEscolha um número entre 1 e 17 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 19 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 17 apenas!\033[m\n")
 
     return escolha
 def esc_sobremesa():
@@ -568,8 +566,7 @@ def qntd_bolo(bolo,nome):
     lista_bolos = ["Abacaxi c/ Côco", "Ameixa c/ Côco", "Delícia de Limão e Abacaxi", "Martha Rocha", "Prestígio",
                    "Sonho de Valsa", "Morango Nata e Suspiro", "Morango c/ Chocolate", "Surpresa de Morango",
                    "Tentação de Morango", "Dueto", "Sinfonia de Damasco", "Bolo Trufado", "Floresta Negra",
-                   "Morango Nata e Suspiro", "Morango Nata e Suspiro", "Taça Martha Rocha", "Taça Dueto",
-                   "Taça Morango Nata e Suspiro"]
+                   "Taça Martha Rocha", "Taça Dueto", "Taça Morango Nata e Suspiro"]
 
     bolos = lista_bolos[bolo - 1]
 
@@ -850,7 +847,7 @@ def dia_data(nome):
 
 def horario_comanda():
     while True:
-        encomenda = input("\nA comanda é para \033[33mencomenda?\033[m S/N:").strip().upper()
+        encomenda = input("\nA comanda é para \033[33mentrega?\033[m S/N:").strip().upper()
         if encomenda  == "S" or encomenda == "N":
             break
         else:
