@@ -17,8 +17,8 @@
             "Espelhado Olho Sogra": 33
         },
         "bombom": {
-            "Bomb. Morango": 0,
-            "Bomb. Damasco": 0,
+            "Bomb. Morango": 1,
+            "Bomb. Damasco": 3,
             "Bomb. Uva": 0,
             "Bomb. Cereja": 0,
             "Bomb. Nozes": 0,
@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 202.0,
+            "Coxinha": 234.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": 0,
             "Kibe Recheado": 0,
@@ -117,6 +117,6 @@
         }
     },
     "fio_de_ovos": {
-        "Fio de ovos": 144.0
+        "Fio de ovos": 145.0
     }
 }

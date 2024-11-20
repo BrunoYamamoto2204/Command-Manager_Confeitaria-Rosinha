@@ -799,27 +799,25 @@ def dia_data(nome):
     if data_formatada not in data:  #SÓ VAI SER CRIADO SE AINDA NÃO EXISTIR A DATA
         data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
         data_completa[data_formatada] = {}
-        data_completa[data_formatada][nome] = {"doce":[],"salgado":[],"bolo":[],"sobremesa":[],"fio_de_ovos":[]}
+    def converter_data(data_str):
+        return datetime.strptime(data_str, "%d/%m/%Y")
 
-        def converter_data(data_str):
-            return datetime.strptime(data_str, "%d/%m/%Y")
+    sorted_keys = sorted(data.keys(), key=converter_data)
+    sorted_keys_completa = sorted(data_completa.keys(), key=converter_data)
 
-        sorted_keys = sorted(data.keys(), key=converter_data)
-        sorted_keys_completa = sorted(data_completa.keys(), key=converter_data)
+    sorted_data = {} #DIARIO SIMPLES
+    for key in sorted_keys:
+        sorted_data[key] = data[key]
 
-        sorted_data = {} #DIARIO SIMPLES
-        for key in sorted_keys:
-            sorted_data[key] = data[key]
+    sorted_data_completa = {} #DIARIO COMPLETO
+    for key in sorted_keys_completa:
+        sorted_data_completa[key] = data_completa[key]
 
-        sorted_data_completa = {} #DIARIO COMPLETO
-        for key in sorted_keys_completa:
-            sorted_data_completa[key] = data_completa[key]
+    with open("relatorio_diario_simples.json", "w") as w:
+        json.dump(sorted_data, w, indent=4)
 
-        with open("relatorio_diario_simples.json", "w") as w:
-            json.dump(sorted_data, w, indent=4)
-
-        with open("relatorio_diario_completo.json", "w") as w:
-            json.dump(sorted_data_completa, w, indent=4)
+    with open("relatorio_diario_completo.json", "w") as w:
+        json.dump(sorted_data_completa, w, indent=4)
 
     #DIA DA SEMANA
     dias_da_semana=["","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado","Domingo"]
@@ -869,7 +867,7 @@ def horario_comanda():
     elif encomenda == "N":
         while True:
             try:
-                horario_pronto = input("||Formato (00:00)||\nHorário da encomenda: ")
+                horario_pronto = input("\n\033[36m||Formato (00:00)||\033[m\nHorário da encomenda: ")
                 horario_formatado = datetime.strptime(horario_pronto,"%H:%M")
             except ValueError:
                 print("\033[31mHorário Inválido!\033[m")

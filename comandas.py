@@ -101,10 +101,11 @@ def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bol
     with open("comandas.json","r") as r:
         comanda = json.load(r)
 
-
     data = comanda['comandas'][nome_cliente]['data']
     horario = comanda['comandas'][nome_cliente]['hora_pronta']
 
+    if data not in rel_completo:
+        rel_completo[data] = {}
     if horario not in rel_completo[data]:
         rel_completo[data][horario] = {}
 
@@ -120,6 +121,23 @@ def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bol
     rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["bolo"] = []
     rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["sobremesa"] = []
     rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
+
+    # print(comanda)
+    def converter_horario(horario_str):
+        return datetime.strptime(horario_str, "%H:%M")
+
+    lista_horarios = []
+    for hora in rel_completo[data]:
+        lista_horarios.append(hora)
+
+    sorted_keys = sorted(lista_horarios, key=lambda h: datetime.strptime(h, "%H:%M"))
+
+    sorted_data = {}
+    sorted_data[data] = {}
+    for key in sorted_keys: # keys = hora
+        sorted_data[data][key] = rel_completo[data][key]
+
+    rel_completo[data] = sorted_data[data]
 
     # print(comanda)
     with open("relatorio_diario_completo.json", "w") as w:
@@ -725,30 +743,37 @@ def relatorio_diario_completo(data_formatada):
     print("-" * 80)
 
     for dia in rel_completo:
+
         if dia == data_formatada:
-            for cliente in rel_completo[dia]:
+            for hora in rel_completo[dia]:
 
-                nome_completo = ""
-                for nome in cliente.split("_"):
-                    nome_completo += f"{nome} "
+                printar_hora = f"█   {hora:>20}{'█':>20}"
+                print(f'{"━"*43:^80}')
+                print(f"{printar_hora:^80}")
+                print(f'{"━"*43:^80}')
 
-                print(f"\033[33m{'='*40:^80}\033[m")
-                print(f"\033[33m{nome_completo.title():^80}\033[m")
-                print(f"\033[33m{'=' * 40:^80}\033[m")
+                for cliente in rel_completo[dia][hora]:
+                    nome_completo = ""
+                    for nome in cliente.split("_"):
+                        nome_completo += f"{nome} "
 
-                for categoria in rel_completo[dia][cliente]:
-                    print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
-                    print(f"{print_categoria:^85}")
+                    print(f"\033[33m{'='*40:^80}\033[m")
+                    print(f"\033[33m{nome_completo.title():^80}\033[m")
+                    print(f"\033[33m{'=' * 40:^80}\033[m")
 
-                    if categoria == "ADICIONADO":
-                        for cat_add in rel_completo[dia][cliente][categoria]:
-                            for item in rel_completo[dia][cliente][categoria][cat_add]:
-                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                    for categoria in rel_completo[dia][hora][cliente]:
+                        print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
+                        print(f"{print_categoria:^85}")
+
+                        if categoria == "ADICIONADO":
+                            for cat_add in rel_completo[dia][hora][cliente][categoria]:
+                                for item in rel_completo[dia][hora][cliente][categoria][cat_add]:
+                                    print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                    print(f"{print_produtos:^95}")
+                        else:
+                            for item in rel_completo[dia][hora][cliente][categoria]:
+                                print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
-                    else:
-                        for item in rel_completo[dia][cliente][categoria]:
-                            print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
-                            print(f"{print_produtos:^95}")
 
     print("-" * 80)
     print()

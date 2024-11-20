@@ -1,5 +1,5 @@
 {
-    "num": 23,
+    "num": 59,
     "comandas": {
         "marcia_setsuko_yamamoto_": {
             "celular": "98414-9323",
@@ -230,6 +230,597 @@
             "doces": [
                 "(1) -> 1 UN - Brigadeiro"
             ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "frfrfr_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "(1) -> 1 UN - Bomb. Morango"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "gtgtgt_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "(1) -> 1 UN - Bomb. Damasco"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "hyhyhy_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [],
+            "doces": [
+                "(1) -> 1 UN - Bomb. Damasco"
+            ],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "e_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "3213_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "09:00",
+            "hora_entrega": "10:00",
+            "num_item": 2,
+            "salgados": [],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [
+                "(1) -> 1 Kg - Fio de ovos"
+            ],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "eba_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 1,
+            "salgados": [],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {}
+        },
+        "ebaaa_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ebaaas_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ewqr_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "10:15",
+            "hora_entrega": "11:15",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "opa_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "10:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ffweqfew_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "eeeeee_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "fdqwedew_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ffff_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "fqefqw_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "1_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "2_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:15",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "regwer_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:30",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ffqwef_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "10:00",
+            "hora_entrega": 0,
+            "num_item": 3,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha",
+                "(2) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "egerwg_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "dewdqw_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ttttt_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "ytyytyt_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": "13:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "uuuuu_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "warfgrgrew_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "20/10/2024",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": "13:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "oi_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": 0,
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
             "bolos": [],
             "sobremesas": [],
             "fio_de_ovos": [],

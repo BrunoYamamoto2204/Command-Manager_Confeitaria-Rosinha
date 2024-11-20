@@ -1,10 +1,12 @@
 {
     "22/04/2006": {
         "doce": {
-            "Brigadeiro": 1.0
+            "Brigadeiro": 1.0,
+            "Bomb. Morango": 1.0,
+            "Bomb. Damasco": 3.0
         },
         "salgado": {
-            "Coxinha": 73.0,
+            "Coxinha": 85.0,
             "Empadao Frango": 22.0
         },
         "bolo": {
@@ -15,7 +17,7 @@
         },
         "sobremesa": {},
         "fio_de_ovos": {
-            "Fio de ovos": 25.0
+            "Fio de ovos": 26.0
         }
     },
     "22/04/2024": {
@@ -23,7 +25,7 @@
             "Brigadeiro": 60
         },
         "salgado": {
-            "Coxinha": 129.0
+            "Coxinha": 142.0
         },
         "bolo": {},
         "sobremesa": {},
@@ -82,6 +84,15 @@
         "sobremesa": {},
         "fio_de_ovos": {}
     },
+    "20/10/2024": {
+        "doce": {},
+        "salgado": {
+            "Coxinha": 1.0
+        },
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
+    },
     "24/10/2024": {
         "doce": {},
         "salgado": {},
@@ -123,5 +134,14 @@
         "fio_de_ovos": {
             "Fio de ovos": 4.0
         }
+    },
+    "19/11/2024": {
+        "doce": {},
+        "salgado": {
+            "Coxinha": 6.0
+        },
+        "bolo": {},
+        "sobremesa": {},
+        "fio_de_ovos": {}
     }
 }
