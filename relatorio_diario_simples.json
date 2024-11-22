@@ -25,12 +25,14 @@
             "Brigadeiro": 60
         },
         "salgado": {
-            "Coxinha": 142.0
+            "Coxinha": 142.0,
+            "Empadao Palmito": 1.0,
+            "Empadao Camarao": 0.0
         },
         "bolo": {},
         "sobremesa": {},
         "fio_de_ovos": {
-            "Fio de ovos": 2.0
+            "Fio de ovos": -4.0
         }
     },
     "07/07/2024": {
@@ -138,7 +140,7 @@
     "19/11/2024": {
         "doce": {},
         "salgado": {
-            "Coxinha": 6.0
+            "Coxinha": 5.0
         },
         "bolo": {},
         "sobremesa": {},

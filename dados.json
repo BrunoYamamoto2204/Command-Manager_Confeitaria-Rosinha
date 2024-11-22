@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 234.0,
+            "Coxinha": 233.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": 0,
             "Kibe Recheado": 0,
@@ -65,7 +65,7 @@
             "Folhado Presunto e Queijo": 24
         },
         "empadao": {
-            "Empadao Palmito": 3.0,
+            "Empadao Palmito": 4.0,
             "Empadao Camarao": 2.0,
             "Empadao Frango": 28.0
         }
@@ -117,6 +117,6 @@
         }
     },
     "fio_de_ovos": {
-        "Fio de ovos": 145.0
+        "Fio de ovos": 139.0
     }
 }

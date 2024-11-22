@@ -1,5 +1,5 @@
 {
-    "num": 59,
+    "num": 60,
     "comandas": {
         "marcia_setsuko_yamamoto_": {
             "celular": "98414-9323",
@@ -37,7 +37,7 @@
         "jonson_silva_": {
             "celular": "98414-9323",
             "telefone": "8414-9323",
-            "data": "07/11/2024",
+            "data": "22/04/2024",
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
@@ -86,8 +86,7 @@
                 ],
                 "fio_de_ovos": [
                     "(31) -> 2 Kg - Fio de ovos",
-                    "(36) -> 1 Kg - Fio de ovos",
-                    "(37) -> 3 Kg - Fio de ovos"
+                    "(36) -> 1 Kg - Fio de ovos"
                 ]
             }
         },
@@ -771,9 +770,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
-            "salgados": [
-                "(1) -> 1 UN - Coxinha"
-            ],
+            "salgados": [],
             "doces": [],
             "bolos": [],
             "sobremesas": [],
@@ -819,6 +816,29 @@
             "num_item": 2,
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "salveee_": {
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2024",
+            "dia_semana": "Ter\u00e7a-Feira",
+            "hora_pronta": "10:00",
+            "hora_entrega": "11:00",
+            "num_item": 2,
+            "salgados": [
+                "(1) -> 1.0 Kg - Empad\u00e3o Palmito"
             ],
             "doces": [],
             "bolos": [],

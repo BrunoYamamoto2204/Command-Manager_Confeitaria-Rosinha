@@ -16,7 +16,7 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
 
     print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
     print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
@@ -24,7 +24,7 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{hora_entregaf}")
+    print(f"{' ':<32}{hora_entregaf}")
     print("\033[1;36m=\033[m" * 50)
 
     if len(lista_salg) > 0:
@@ -155,22 +155,22 @@ def mostrar_comanda_geral(comanda,nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    data = f"\033[33mData:\033[m {data}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
 
 
     print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
     print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
-    print(f"{nomef:<40}{data}")
+    print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{hora_entregaf}")
+    print(f"{' ':<32}{hora_entregaf}")
     print("\033[1;36m=\033[m" * 50)
 
     for tipo in comanda:
@@ -209,16 +209,16 @@ def mostrar_comanda_salgados(comanda,nome):
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
     if len(comanda['salgados']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + '- SALGADOS'):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{hora_entregaf}")
+        print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
         try:
@@ -244,7 +244,7 @@ def mostrar_comanda_doces(comanda,nome):
     nome_completo = ""
     for nome in nome.split("_"):
         nome_completo += f"{nome} "
-    dataf = comanda['data']
+    data = comanda['data']
     num_tel = comanda['telefone']
     num_cel = comanda['celular']
     dia_semana = comanda['dia_semana']
@@ -252,22 +252,22 @@ def mostrar_comanda_doces(comanda,nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    data = f"\033[33mData:\033[m {dataf}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
 
     if len(comanda['doces']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + '- DOCES'):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
-        print(f"{nomef:<40}{data}")
+        print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{hora_entregaf}")
+        print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
         try:
@@ -294,7 +294,7 @@ def mostrar_comanda_bolos(comanda,nome):
     nome_completo = ""
     for nome in nome.split("_"):
         nome_completo += f"{nome} "
-    dataf = comanda['data']
+    data = comanda['data']
     num_tel = comanda['telefone']
     num_cel = comanda['celular']
     dia_semana = comanda['dia_semana']
@@ -302,21 +302,21 @@ def mostrar_comanda_bolos(comanda,nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    data = f"\033[33mData:\033[m {dataf}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
     if len(comanda['bolos']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + '- BOLOS'):^50} - BOLOS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
-        print(f"{nomef:<40}{data}")
+        print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{hora_entregaf}")
+        print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
         try:
@@ -341,7 +341,7 @@ def mostrar_comanda_sobremesas(comanda,nome):
     nome_completo = ""
     for nome in nome.split("_"):
         nome_completo += f"{nome} "
-    dataf = comanda['data']
+    data = comanda['data']
     num_tel = comanda['telefone']
     num_cel = comanda['celular']
     dia_semana = comanda['dia_semana']
@@ -349,21 +349,21 @@ def mostrar_comanda_sobremesas(comanda,nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    data = f"\033[33mData:\033[m {dataf}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
     if len(comanda['sobremesas']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + '- SOBREMESAS'):^50} - SOBREMESAS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
-        print(f"{nomef:<40}{data}")
+        print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{hora_entregaf}")
+        print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
         try:
@@ -389,7 +389,7 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
     nome_completo = ""
     for nome in nome.split("_"):
         nome_completo += f"{nome} "
-    dataf = comanda['data']
+    data = comanda['data']
     num_tel = comanda['telefone']
     num_cel = comanda['celular']
     dia_semana = comanda['dia_semana']
@@ -397,21 +397,21 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    data = f"\033[33mData:\033[m {dataf}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
 
     if len(comanda['fio_de_ovos']) != 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title() + '- FIO DE OVOS'):^50} - FIO DE OVOS\033[m")
+        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
-        print(f"{nomef:<40}{data}")
+        print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{hora_entregaf}")
+        print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
         try:
@@ -437,14 +437,19 @@ def excluir_comanda(nome):
         comandas = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
+    with open("relatorio_diario_completo.json","r") as r:
+        relatorio = json.load(r)
 
     comanda = comandas['comandas'][f'{nome}']
+    data = comanda['data']
+    hora = comanda['hora_pronta']
+    rel_completo = relatorio[data][hora][f'{nome}']
 
     nome_completo = ""
     for nome in nome.split("_"):
         nome_completo += f"{nome} "
 
-    dataf = comanda['data']
+    data = comanda['data']
     num_tel = comanda['telefone']
     num_cel = comanda['celular']
     dia_semana = comanda['dia_semana']
@@ -452,20 +457,20 @@ def excluir_comanda(nome):
     hora_entrega = comanda['hora_entrega']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
-    dataf = f"\033[33mData:\033[m {dataf}"
+    dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega:<40}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
 
     print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-    print(f"\033[1;36m{str(nome_completo.capitalize()).capitalize():^50}\033[m")
+    print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{hora_entregaf}")
+    print(f"{hora_entregaf:>56}")
     print("\033[1;36m=\033[m" * 50)
 
     data_encomenda = comanda['data']
@@ -544,8 +549,33 @@ def excluir_comanda(nome):
                     escolha_valida.validar_exclusao(itens_split,itens_split[2],data_encomenda)  #(Produto, quantidade)
             comanda[tipo] = lista_itens
 
+    # RELATORIO DIARIO COMPLETO
+    for tipo in rel_completo:
+
+        if tipo == "ADICIONADO":
+            for tipos_add in rel_completo[tipo]:
+                lista_adicionados_relatorio = []
+                for itens in rel_completo[tipo][tipos_add]:
+                    itens_split = str(itens).split()
+                    # EXCLUIR EM RELATORIO DIARIO COMPLETO
+                    if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
+                        lista_adicionados_relatorio.append(itens)
+
+                rel_completo[tipo][tipos_add] = lista_adicionados_relatorio
+        else:
+            lista_adicionados_relatorio = []
+            for itens in rel_completo[tipo]:
+                itens_split = str(itens).split()
+                # EXCLUIR EM RELATORIO DIARIO COMPLETO
+                if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
+                    lista_adicionados_relatorio.append(itens)
+
+            rel_completo[tipo] = lista_adicionados_relatorio
+
     with open("comandas.json", "w") as w:
         json.dump(comandas, w, indent=4)
+    with open("relatorio_diario_completo.json", "w") as wr:
+        json.dump(relatorio, wr, indent=4)
 
     print(f"\033[32mItem {num_excluir} excluído com sucesso\033[m")
     print()

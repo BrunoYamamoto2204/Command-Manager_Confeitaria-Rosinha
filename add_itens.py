@@ -95,6 +95,8 @@ def opc_comandas(opc):
 
         nome_comanda = escolha_valida.nome_comanda()
         data = comandas['comandas'][nome_comanda]['data']
+        hora = comandas['comandas'][nome_comanda]['hora_pronta']
+        print(hora)
 
         lista_salg3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["salgados"]
         lista_doce3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["doces"]
@@ -102,11 +104,11 @@ def opc_comandas(opc):
         lista_bolo3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["bolos"]
         lista_fio_ovos3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
 
-        lista_relatorio_salgado = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["salgado"]
-        lista_relatorio_doce = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["doce"]
-        lista_relatorio_bolo = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["bolo"]
-        lista_relatorio_sobre = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["sobremesa"]
-        lista_relatorio_fio = rel_completo[data][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
+        lista_relatorio_salgado = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["salgados"]
+        lista_relatorio_doce = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["doces"]
+        lista_relatorio_bolo = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["bolos"]
+        lista_relatorio_sobre = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesas"]
+        lista_relatorio_fio = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
 
         print("=" * 40)
         while True:

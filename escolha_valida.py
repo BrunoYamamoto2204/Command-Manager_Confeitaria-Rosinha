@@ -197,7 +197,7 @@ Escolha: """))
                 escolha = int(input
 ("""Escolha o salgado empadão:
 \033[33m29\033[m - \033[34mEmpadão Palmito   
-\033[33m30\033[m- \033[34mEmpadão Camarão  
+\033[33m30\033[m - \033[34mEmpadão Camarão  
 \033[33m31\033[m - \033[34mEmpadão Frango\033[m 
 
 Escolha: """))
@@ -799,6 +799,7 @@ def dia_data(nome):
     if data_formatada not in data:  #SÓ VAI SER CRIADO SE AINDA NÃO EXISTIR A DATA
         data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
         data_completa[data_formatada] = {}
+
     def converter_data(data_str):
         return datetime.strptime(data_str, "%d/%m/%Y")
 
