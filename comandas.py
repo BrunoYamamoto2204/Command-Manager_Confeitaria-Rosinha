@@ -162,10 +162,8 @@ def mostrar_comanda_geral(comanda,nome):
     hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
-
-
     print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-    print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+    print(f"\033[1;36m{str(nome_completo.title())+'- GERAL':^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
@@ -211,9 +209,9 @@ def mostrar_comanda_salgados(comanda,nome):
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
-    if len(comanda['salgados']) != 0:
+    if len(comanda["salgados"]) > 0 or len(comanda["ADICIONADO"]["salgados"]) > 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title())+'- SALGADOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -221,19 +219,12 @@ def mostrar_comanda_salgados(comanda,nome):
         print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
-        try:
-            try:
-                for salgado in comanda["salgados"]:
-                    print(salgado)
-            except:
-                print("Sem salgados ")
-            try:
-                for salgado_add in comanda["ADICIONADO"]["salgados"]:
-                    print(salgado_add)
-            except KeyError:
-                a="sopra ter algo"
-        except:
-            print("erro")
+
+        for salgado in comanda["salgados"]:
+            print(salgado)
+        for salgado_add in comanda["ADICIONADO"]["salgados"]:
+            print(salgado_add)
+
         print("\033[1;36m=\033[m" * 40)
         print()
 
@@ -260,9 +251,9 @@ def mostrar_comanda_doces(comanda,nome):
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
 
-    if len(comanda['doces']) != 0:
+    if len(comanda["doces"]) > 0 or len(comanda["ADICIONADO"]["doces"]) > 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title())+'- DOCES':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -270,19 +261,12 @@ def mostrar_comanda_doces(comanda,nome):
         print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
-        try:
-            try:
-                for doce in comanda["doces"]:
-                    print(doce)
-            except:
-                print("Sem doces ")
-            try:
-                for doce_add in comanda["ADICIONADO"]["doces"]:
-                    print(doce_add)
-            except KeyError:
-                a = "sopra ter algo"
-        except:
-            print("erro")
+
+        for doce in comanda["doces"]:
+            print(doce)
+        for doce_add in comanda["ADICIONADO"]["doces"]:
+            print(doce_add)
+
         print("\033[1;36m=\033[m" * 50)
         print()
 
@@ -309,9 +293,9 @@ def mostrar_comanda_bolos(comanda,nome):
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
-    if len(comanda['bolos']) != 0:
+    if len(comanda["bolos"]) > 0 or len(comanda["ADICIONADO"]["bolos"]) > 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title())+'- BOLOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -319,21 +303,14 @@ def mostrar_comanda_bolos(comanda,nome):
         print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
-        try:
-            try:
-                for bolo in comanda["bolos"]:
-                    print(bolo)
-            except:
-                print("Sem bolos ")
-            try:
-                for bolo_add in comanda["ADICIONADO"]["bolos"]:
-                    print(bolo_add)
-            except KeyError:
-                a = "sopra ter algo"
-        except:
-            print("erro")
+        for bolo in comanda["bolos"]:
+            print(bolo)
+        for bolo_add in comanda["ADICIONADO"]["bolos"]:
+            print(bolo_add)
+
         print("\033[1;36m=\033[m" * 50)
         print()
+
     else:
         print("\033[1;31mSem bolos nesse comanda!\033[m\n")
 
@@ -356,9 +333,9 @@ def mostrar_comanda_sobremesas(comanda,nome):
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
 
-    if len(comanda['sobremesas']) != 0:
+    if len(comanda["sobremesas"]) > 0 or len(comanda["ADICIONADO"]["sobremesas"]) > 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title())+'- SOBREMESAS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -366,19 +343,11 @@ def mostrar_comanda_sobremesas(comanda,nome):
         print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
-        try:
-            try:
-                for sobremesa in comanda["sobremesas"]:
-                    print(sobremesa)
-            except:
-                print("Sem sobremesas ")
-            try:
-                for sobremesa_add in comanda["ADICIONADO"]["sobremesas"]:
-                    print(sobremesa_add)
-            except KeyError:
-                a = "sopra ter algo"
-        except:
-            print("erro")
+        for sobremesa in comanda["sobremesas"]:
+            print(sobremesa)
+        for sobremesa_add in comanda["ADICIONADO"]["sobremesas"]:
+            print(sobremesa_add)
+
         print("\033[1;36m=\033[m" * 50)
         print()
 
@@ -404,9 +373,9 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
     hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
 
-    if len(comanda['fio_de_ovos']) != 0:
+    if len(comanda["fio_de_ovos"]) > 0 or len(comanda["ADICIONADO"]["fio_de_ovos"]) > 0:
         print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+        print(f"\033[1;36m{str(nome_completo.title())+'- FIO DE OVOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
@@ -414,19 +383,11 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
         print(f"{' ':<32}{hora_entregaf}")
         print("\033[1;36m=\033[m" * 50)
 
-        try:
-            try:
-                for fio_de_ovos in comanda["fio_de_ovos"]:
-                    print(fio_de_ovos)
-            except:
-                print("Sem doces ")
-            try:
-                for fio_de_ovo_add in comanda["ADICIONADO"]["fio_de_ovos"]:
-                    print(fio_de_ovo_add)
-            except KeyError:
-                a = "sopra ter algo"
-        except:
-            print("erro")
+        for fio_de_ovos in comanda["fio_de_ovos"]:
+            print(fio_de_ovos)
+        for fio_de_ovo_add in comanda["ADICIONADO"]["fio_de_ovos"]:
+            print(fio_de_ovo_add)
+
         print("\033[1;36m=\033[m" * 50)
         print()
 

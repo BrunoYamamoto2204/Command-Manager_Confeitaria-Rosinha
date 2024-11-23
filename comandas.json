@@ -41,7 +41,7 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 38,
+            "num_item": 39,
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
                 "(3) -> 4 Kg - Empad\u00e3o Frango"
@@ -52,9 +52,11 @@
             "bolos": [
                 "(6) -> 4 Kg - Ta\u00e7a Martha Rocha"
             ],
-            "sobremesas": [],
+            "sobremesas": [
+                "(39) -> 2 KG - Banoff"
+            ],
             "fio_de_ovos": [
-                "(7) -> 50 Kg - Fio de ovos"
+
             ],
             "ADICIONADO": {
                 "salgados": [
@@ -82,7 +84,8 @@
                     "(13) -> 2 UN - Mini Torta Morango",
                     "(16) -> 1 KG - Torta Choco Morango",
                     "(25) -> 30 KG - Pav\u00ea Morango",
-                    "(32) -> 50 UN - Mini Torta Lim\u00e3o"
+                    "(32) -> 50 UN - Mini Torta Lim\u00e3o",
+                    "(38) -> 2 KG - Banoff"
                 ],
                 "fio_de_ovos": [
                     "(31) -> 2 Kg - Fio de ovos",
