@@ -727,42 +727,226 @@ def relatorio_diario_completo(data_formatada):
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
 
+    while True:
+        try:
+            print("\nEscolha uma opção:\n")
+            print("\033[33m1 - \033[34mRelatório Geral\033[m")
+            print("\033[33m2 - \033[34mRelatório Salgados\033[m")
+            print("\033[33m3 - \033[34mRelatório Doces\033[m")
+            print("\033[33m4 - \033[34mRelatório Bolos\033[m")
+            print("\033[33m5 - \033[34mRelatório Sobremesas\033[m")
+            print("\033[33m6 - \033[34mRelatório Fio de Ovos\033[m\n")
+            esc_relatorio = int(input("Escolha: "))
+
+            if esc_relatorio > 6 or esc_relatorio < 1:
+                print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            else:
+                break
+        except ValueError:
+            print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+
     print()
     print("_" * 80)
     print(f"Tipo: Relatório Diário Completo")
+    print(f"Categoria: {rel_completo}")
     print(f"Data: \033[1;33m({data_formatada})\033[m")
     print("-" * 80)
 
-    for dia in rel_completo:
+    if esc_relatorio == 1:
+        for dia in rel_completo:
 
-        if dia == data_formatada:
-            for hora in rel_completo[dia]:
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
 
-                printar_hora = f"█   {hora:>20}{'█':>20}"
-                print(f'{"━"*43:^80}')
-                print(f"{printar_hora:^80}")
-                print(f'{"━"*43:^80}')
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
 
-                for cliente in rel_completo[dia][hora]:
-                    nome_completo = ""
-                    for nome in cliente.split("_"):
-                        nome_completo += f"{nome} "
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+                        for nome in cliente.split("_"):
+                            nome_completo += f"{nome} "
 
-                    print(f"\033[33m{'='*40:^80}\033[m")
-                    print(f"\033[33m{nome_completo.title():^80}\033[m")
-                    print(f"\033[33m{'=' * 40:^80}\033[m")
+                        print(f"\033[33m{'='*40:^80}\033[m")
+                        print(f"\033[33m{nome_completo.title():^80}\033[m")
+                        print(f"\033[33m{'=' * 40:^80}\033[m")
 
-                    for categoria in rel_completo[dia][hora][cliente]:
-                        print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
-                        print(f"{print_categoria:^85}")
+                        for categoria in rel_completo[dia][hora][cliente]:
+                            print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
+                            print(f"{print_categoria:^85}")
 
-                        if categoria == "ADICIONADO":
-                            for cat_add in rel_completo[dia][hora][cliente][categoria]:
-                                for item in rel_completo[dia][hora][cliente][categoria][cat_add]:
-                                    print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                            if categoria == "ADICIONADO":
+                                for cat_add in rel_completo[dia][hora][cliente][categoria]:
+                                    for item in rel_completo[dia][hora][cliente][categoria][cat_add]:
+                                        print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                        print(f"{print_produtos:^95}")
+                            else:
+                                for item in rel_completo[dia][hora][cliente][categoria]:
+                                    print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                     print(f"{print_produtos:^95}")
-                        else:
-                            for item in rel_completo[dia][hora][cliente][categoria]:
+    elif esc_relatorio == 2:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        if len(rel_completo[dia][hora][cliente]['salgado']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['salgado']) > 0: # Só mostra de o cliente tiver a categoria
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            print(f"\033[33m{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+                            print_categoria = f" \033[34m-- || SALGADOS || --\033[m "
+                            print(f"{print_categoria:^85}")
+
+                            for item in rel_completo[dia][hora][cliente]['salgado']:
+
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+                            for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["salgado"]:
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+    elif esc_relatorio == 3:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        if len(rel_completo[dia][hora][cliente]['doce']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['doce']) > 0: # Só mostra de o cliente tiver a categoria
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            print(f"\033[33m{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+                            print_categoria = f" \033[34m-- || DOCES || --\033[m "
+                            print(f"{print_categoria:^85}")
+
+                            for item in rel_completo[dia][hora][cliente]['doce']:
+
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+                            for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["doce"]:
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+    elif esc_relatorio == 4:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        if len(rel_completo[dia][hora][cliente]['bolo']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['bolo']) > 0: # Só mostra de o cliente tiver a categoria
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            print(f"\033[33m{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+                            print_categoria = f" \033[34m-- || BOLO || --\033[m "
+                            print(f"{print_categoria:^85}")
+
+                            for item in rel_completo[dia][hora][cliente]['bolo']:
+
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+                            for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["bolo"]:
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+    elif esc_relatorio == 5:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        if len(rel_completo[dia][hora][cliente]['sobremesa']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['sobremesa']) > 0: # Só mostra de o cliente tiver a categoria
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            print(f"\033[33m{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+                            print_categoria = f" \033[34m-- || SOBREMESA || --\033[m "
+                            print(f"{print_categoria:^85}")
+
+                            for item in rel_completo[dia][hora][cliente]['sobremesa']:
+
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+                            for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["sobremesa"]:
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+    elif esc_relatorio == 6:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━"*43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━"*43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        if len(rel_completo[dia][hora][cliente]['fio_de_ovos']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['fio_de_ovos']) > 0: # Só mostra de o cliente tiver a categoria
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            print(f"\033[33m{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+                            print_categoria = f" \033[34m-- || FIO DE OVOS || --\033[m "
+                            print(f"{print_categoria:^85}")
+
+                            for item in rel_completo[dia][hora][cliente]['fio_de_ovos']:
+
+                                print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                print(f"{print_produtos:^95}")
+
+                            for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["fio_de_ovos"]:
                                 print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
