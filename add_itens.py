@@ -18,7 +18,7 @@ def opc_comandas(opc):
         celular = numeros[0]
         telefone = numeros[1]
         data = data_e_dia[0]
-        dia_semana = data_e_dia[1] #ARRUMAR, DIA DA SEMANA ESTÁ EM NÚMERO KAKAKAKAK
+        dia_semana = data_e_dia[1]
         hora_pronta = horario[0]
         hora_entrega = horario[1]
 

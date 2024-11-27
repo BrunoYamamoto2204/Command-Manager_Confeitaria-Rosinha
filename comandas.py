@@ -726,6 +726,9 @@ def relatorio_diario_simples(data_formatada):
 def relatorio_diario_completo(data_formatada):
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
+    with open("comandas.json","r") as r:
+        comandas = json.load(r)
+
 
     while True:
         try:
@@ -745,10 +748,12 @@ def relatorio_diario_completo(data_formatada):
         except ValueError:
             print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
 
+    categoria = ['','Geal','Salgados','Doces','Bolos','Sobremesas','Fio de Ovos']
+
     print()
     print("_" * 80)
     print(f"Tipo: Relatório Diário Completo")
-    print(f"Categoria: {rel_completo}")
+    print(f"Categoria: {categoria[esc_relatorio]}")
     print(f"Data: \033[1;33m({data_formatada})\033[m")
     print("-" * 80)
 
@@ -768,8 +773,19 @@ def relatorio_diario_completo(data_formatada):
                         for nome in cliente.split("_"):
                             nome_completo += f"{nome} "
 
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
                         print(f"\033[33m{'='*40:^80}\033[m")
-                        print(f"\033[33m{nome_completo.title():^80}\033[m")
+                        print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
                         print(f"\033[33m{'=' * 40:^80}\033[m")
 
                         for categoria in rel_completo[dia][hora][cliente]:

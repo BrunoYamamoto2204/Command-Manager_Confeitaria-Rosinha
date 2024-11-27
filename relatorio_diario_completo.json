@@ -5,9 +5,15 @@
                 "salgado": [
                     "(1) -> 4 UN - Coxinha"
                 ],
-                "doce": ["(35) -> 14 UN - Brigadeiro"],
-                "bolo": ["(6) -> 4 Kg - Ta\u00e7a Martha Rocha"],
-                "sobremesa": ["(38) -> 2 KG - Banoff"],
+                "doce": [
+                    "(35) -> 14 UN - Brigadeiro"
+                ],
+                "bolo": [
+                    "(6) -> 4 Kg - Ta\u00e7a Martha Rocha"
+                ],
+                "sobremesa": [
+                    "(38) -> 2 KG - Banoff"
+                ],
                 "fio_de_ovos": [],
                 "ADICIONADO": {
                     "salgado": [
@@ -22,7 +28,9 @@
                         "(7) -> 2 Kg - Bolo Trufado"
                     ],
                     "sobremesa": [],
-                    "fio_de_ovos": ["(3) -> 2 Kg - Fio de ovos"]
+                    "fio_de_ovos": [
+                        "(3) -> 2 Kg - Fio de ovos"
+                    ]
                 }
             }
         },
@@ -34,13 +42,23 @@
                 "doce": [],
                 "bolo": [],
                 "sobremesa": [],
-                "fio_de_ovos": ["(3) -> 2 Kg - Fio de ovos"],
+                "fio_de_ovos": [
+                    "(3) -> 2 Kg - Fio de ovos"
+                ],
                 "ADICIONADO": {
                     "salgado": [],
-                    "doce": ["(35) -> 14 UN - Brigadeiro"],
-                    "bolo": ["(6) -> 4 Kg - Ta\u00e7a Martha Rocha"],
-                    "sobremesa": ["(38) -> 2 KG - Banoff"],
-                    "fio_de_ovos": ["(3) -> 2 Kg - Fio de ovos"]
+                    "doce": [
+                        "(35) -> 14 UN - Brigadeiro"
+                    ],
+                    "bolo": [
+                        "(6) -> 4 Kg - Ta\u00e7a Martha Rocha"
+                    ],
+                    "sobremesa": [
+                        "(38) -> 2 KG - Banoff"
+                    ],
+                    "fio_de_ovos": [
+                        "(3) -> 2 Kg - Fio de ovos"
+                    ]
                 }
             }
         },
@@ -139,7 +157,6 @@
                 ],
                 "ADICIONADO": {
                     "salgado": [
-                        "(8) -> 30 UN - Kibe",
                         "(10) -> 55 UN - Coxinha",
                         "(11) -> 22 UN - Empadinha Frango",
                         "(12) -> 2 UN - Folhado Presunto e Queijo",
