@@ -4,5 +4,6 @@ from unidecode import unidecode
 import comandas
 from datetime import datetime
 
-escolha_valida.relatorios_diarios()
+local = escolha_valida.horario_comanda()
+print(local)
 

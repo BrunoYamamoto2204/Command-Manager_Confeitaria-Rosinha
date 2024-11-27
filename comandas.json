@@ -1,7 +1,8 @@
 {
-    "num": 60,
+    "num": 62,
     "comandas": {
         "marcia_setsuko_yamamoto_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "0",
             "data": "22/04/2024",
@@ -9,6 +10,7 @@
             "hora_pronta": "16:55",
             "hora_entrega": "17:55",
             "num_item": 10,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -35,6 +37,7 @@
             }
         },
         "jonson_silva_": {
+            "local_entrega": "Rua jonson legal",
             "celular": "98414-9323",
             "telefone": "8414-9323",
             "data": "22/04/2024",
@@ -42,6 +45,7 @@
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
             "num_item": 39,
+            "obs": "bolo deve ser legal",
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
                 "(3) -> 4 Kg - Empad\u00e3o Frango"
@@ -91,6 +95,7 @@
             }
         },
         "bruno_yamamoto_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -98,6 +103,7 @@
             "hora_pronta": "21:00",
             "hora_entrega": "22:00",
             "num_item": 5,
+            "obs": "",
             "salgados": [],
             "doces": [],
             "bolos": [],
@@ -119,6 +125,7 @@
             }
         },
         "c_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -126,6 +133,7 @@
             "hora_pronta": "00:00",
             "hora_entrega": "01:00",
             "num_item": 8,
+            "obs": "",
             "salgados": [
                 "(1) -> 4 UN - Coxinha"
             ],
@@ -149,6 +157,7 @@
             }
         },
         "abbabab_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -156,6 +165,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -172,6 +182,7 @@
             }
         },
         "a_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -179,6 +190,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -195,6 +207,7 @@
             }
         },
         "deed_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -202,6 +215,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -218,6 +232,7 @@
             }
         },
         "gaga_": {
+            "local_entrega": "-",
             "celular": "98424-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -225,6 +240,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [
                 "(1) -> 1 UN - Brigadeiro"
@@ -241,6 +257,7 @@
             }
         },
         "frfrfr_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -248,6 +265,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [
                 "(1) -> 1 UN - Bomb. Morango"
@@ -264,6 +282,7 @@
             }
         },
         "gtgtgt_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -271,6 +290,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [
                 "(1) -> 1 UN - Bomb. Damasco"
@@ -287,6 +307,7 @@
             }
         },
         "hyhyhy_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -294,6 +315,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [
                 "(1) -> 1 UN - Bomb. Damasco"
@@ -310,6 +332,7 @@
             }
         },
         "e_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -317,6 +340,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -333,6 +357,7 @@
             }
         },
         "3213_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -340,6 +365,7 @@
             "hora_pronta": "09:00",
             "hora_entrega": "10:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [],
             "bolos": [],
@@ -356,6 +382,7 @@
             }
         },
         "eba_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -363,6 +390,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 1,
+            "obs": "",
             "salgados": [],
             "doces": [],
             "bolos": [],
@@ -371,6 +399,7 @@
             "ADICIONADO": {}
         },
         "ebaaa_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -378,6 +407,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -394,6 +424,7 @@
             }
         },
         "ebaaas_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -401,6 +432,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -417,6 +449,7 @@
             }
         },
         "ewqr_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -424,6 +457,7 @@
             "hora_pronta": "10:15",
             "hora_entrega": "11:15",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -440,6 +474,7 @@
             }
         },
         "opa_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -447,6 +482,7 @@
             "hora_pronta": "10:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -463,6 +499,7 @@
             }
         },
         "ffweqfew_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -470,6 +507,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -486,6 +524,7 @@
             }
         },
         "eeeeee_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -493,6 +532,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -509,6 +549,7 @@
             }
         },
         "fdqwedew_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -516,6 +557,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -532,6 +574,7 @@
             }
         },
         "ffff_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -539,6 +582,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -555,6 +599,7 @@
             }
         },
         "fqefqw_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -562,6 +607,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -578,6 +624,7 @@
             }
         },
         "1_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -585,6 +632,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -601,6 +649,7 @@
             }
         },
         "2_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -608,6 +657,7 @@
             "hora_pronta": "11:15",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -624,6 +674,7 @@
             }
         },
         "regwer_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -631,6 +682,7 @@
             "hora_pronta": "12:30",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -647,6 +699,7 @@
             }
         },
         "ffqwef_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -654,6 +707,7 @@
             "hora_pronta": "10:00",
             "hora_entrega": 0,
             "num_item": 3,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha",
                 "(2) -> 1 UN - Coxinha"
@@ -671,6 +725,7 @@
             }
         },
         "egerwg_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -678,6 +733,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -694,6 +750,7 @@
             }
         },
         "dewdqw_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -701,6 +758,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -717,6 +775,7 @@
             }
         },
         "ttttt_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -724,6 +783,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -740,6 +800,7 @@
             }
         },
         "ytyytyt_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -747,6 +808,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": "13:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -763,6 +825,7 @@
             }
         },
         "uuuuu_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "19/11/2024",
@@ -770,6 +833,7 @@
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [],
             "doces": [],
             "bolos": [],
@@ -784,6 +848,7 @@
             }
         },
         "warfgrgrew_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "20/10/2024",
@@ -791,6 +856,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": "13:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -807,6 +873,7 @@
             }
         },
         "oi_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2006",
@@ -814,6 +881,7 @@
             "hora_pronta": "12:00",
             "hora_entrega": 0,
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
             ],
@@ -830,6 +898,7 @@
             }
         },
         "salveee_": {
+            "local_entrega": "-",
             "celular": "98414-9323",
             "telefone": "",
             "data": "22/04/2024",
@@ -837,8 +906,59 @@
             "hora_pronta": "10:00",
             "hora_entrega": "11:00",
             "num_item": 2,
+            "obs": "",
             "salgados": [
                 "(1) -> 1.0 Kg - Empad\u00e3o Palmito"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "jonsona_": {
+            "local_entrega": "Rua Jonsona 360 legal do zé da esquina ferreira",
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "22/04/2006",
+            "dia_semana": "Segunda-Feira",
+            "hora_pronta": "11:00",
+            "hora_entrega": "12:00",
+            "num_item": 2,
+            "obs": "bolo deve ser legal",
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
+            ],
+            "doces": [],
+            "bolos": [],
+            "sobremesas": [],
+            "fio_de_ovos": [],
+            "ADICIONADO": {
+                "salgados": [],
+                "doces": [],
+                "bolos": [],
+                "sobremesas": [],
+                "fio_de_ovos": []
+            }
+        },
+        "jonsono_": {
+            "local_entrega": "Rua Jonsona 360 legal do zé da esquina ferreira",
+            "celular": "98414-9323",
+            "telefone": "",
+            "data": "19/11/2024",
+            "dia_semana": "Ter\u00e7a-Feira",
+            "hora_pronta": "12:00",
+            "hora_entrega": "13:00",
+            "num_item": 2,
+            "obs": "bolo deve ser legal",
+            "salgados": [
+                "(1) -> 1 UN - Coxinha"
             ],
             "doces": [],
             "bolos": [],

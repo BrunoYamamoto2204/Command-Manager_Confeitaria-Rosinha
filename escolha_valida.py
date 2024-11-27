@@ -26,7 +26,7 @@ Escolha: """))
 def esc_opcoes():
     while True:
         try:
-            print("\033[1;33mEscolha uma opção:\033[m")
+            print("\033[1;33m\nEscolha uma opção:\033[m")
             print("\033[33m1 - \033[34mNova Comanda\033[m")
             print("\033[33m2 - \033[34mVer Comanda existente\033[m")
             print("\033[33m3 - \033[34mAdicionar em uma comanda existente\033[m")
@@ -853,6 +853,8 @@ def horario_comanda():
             print("\033[31mResposta inválida! Responda S/N\033[m")
 
     if encomenda == "S":
+        local = local_de_entrega()
+
         while True:
             try:
                 horario_entrega = input("\n\033[36m|| Formato (00:00) ||\033[m\nHorário da entrega: ")
@@ -866,6 +868,8 @@ def horario_comanda():
                 break
 
     elif encomenda == "N":
+        local = "-"
+
         while True:
             try:
                 horario_pronto = input("\n\033[36m||Formato (00:00)||\033[m\nHorário da encomenda: ")
@@ -877,7 +881,51 @@ def horario_comanda():
                 horario_entrega = 0
                 break
 
-    return [horario_pronto,horario_entrega]
+    return [horario_pronto,horario_entrega,local]
+
+def obs():
+    while True:
+        s_n = input("\nObservação? S/N: ").strip().upper()
+        if s_n == "S":
+            while True:
+                observacao = input("\033[33mObs:\033[m ").strip()
+                print("\nObservação está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+                confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
+                print()
+                if confirmar == "":
+                    break
+                else:
+                    continue
+            if s_n == "":
+                print("\033[31mObservação vazia!\033[m")
+            else:
+                break
+
+        elif s_n == "N":
+            observacao = ""
+        else:
+            print("\033[31mResposta Inválida! Responda S ou N\033[m")
+
+    return observacao
+
+def local_de_entrega():
+    while True:
+
+        while True:
+            local = input("\033[33mEndereço da entrega:\033[m ").strip()
+            print("\nEndereço está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+            confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
+            print()
+            if confirmar == "":
+                break
+            else:
+                continue
+        if local == "":
+            print("\033[31mEndereço inválido\033[m")
+        else:
+            break
+
+    return local
 
 def validar_exclusao(itens_split,qntd,data):
     with open("dados.json", "r") as r:

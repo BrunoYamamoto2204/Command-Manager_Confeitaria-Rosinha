@@ -60,6 +60,22 @@
                         "(3) -> 2 Kg - Fio de ovos"
                     ]
                 }
+            },
+            "jonsona_": {
+                "salgado": [
+                    "(1) -> 1 UN - Coxinha"
+                ],
+                "doce": [],
+                "bolo": [],
+                "sobremesa": [],
+                "fio_de_ovos": [],
+                "ADICIONADO": {
+                    "salgado": [],
+                    "doce": [],
+                    "bolo": [],
+                    "sobremesa": [],
+                    "fio_de_ovos": []
+                }
             }
         },
         "12:00": {
@@ -236,6 +252,24 @@
                 "bolo": [],
                 "sobremesa": [],
                 "fio_de_ovos": []
+            }
+        },
+        "12:00": {
+            "jonsono_": {
+                "salgado": [
+                    "(1) -> 1 UN - Coxinha"
+                ],
+                "doce": [],
+                "bolo": [],
+                "sobremesa": [],
+                "fio_de_ovos": [],
+                "ADICIONADO": {
+                    "salgado": [],
+                    "doce": [],
+                    "bolo": [],
+                    "sobremesa": [],
+                    "fio_de_ovos": []
+                }
             }
         }
     }

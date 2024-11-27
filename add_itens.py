@@ -13,17 +13,19 @@ def opc_comandas(opc):
         nome = escolha_valida.nome_cliente()
         numeros = escolha_valida.numero_cliente() # [Celular,telefone]
         data_e_dia = escolha_valida.dia_data(nome) # [Data, dia_semana]
-        horario = escolha_valida.horario_comanda() # [Pronto,Entrega]
-
+        horario = escolha_valida.horario_comanda() # [Pronto,Entrega,Local de entrega]
+        obs = escolha_valida.obs()
         celular = numeros[0]
         telefone = numeros[1]
         data = data_e_dia[0]
         dia_semana = data_e_dia[1]
         hora_pronta = horario[0]
         hora_entrega = horario[1]
+        local_entrega = horario[2]
+
 
         criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,
-                      nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega)
+                      nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega,local_entrega,obs)
 
         with open("comandas.json", "r") as r:
             comanda = json.load(r)
@@ -61,7 +63,7 @@ def opc_comandas(opc):
             if cont == "N":
                 break
 
-        formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega)
+        formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega,local_entrega)
         salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
         salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
 

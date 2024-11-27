@@ -4,7 +4,7 @@ import escolha_valida
 
 
 def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
-                    nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega):
+                    nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega,local_entrega,obs):
 
     nome_completo = ""
     for nome in nome_cliente.split("_"):
@@ -24,7 +24,7 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{' ':<32}{hora_entregaf}")
+    print(f"{local_entrega:<32}{hora_entregaf}")
     print("\033[1;36m=\033[m" * 50)
 
     if len(lista_salg) > 0:
@@ -48,15 +48,19 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
         for c in lista_fio_ovos:
             print(c)
     print("\033[1;36m=\033[m" * 50)
+    if obs != "":
+        print(f"Obs: {obs}")
+        print("\033[1;36m=\033[m" * 50)
 
 
 def criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,
-                  nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega):
+                  nome_cliente,num_cel,num_tel,data,dia_semana,hora_pronta,hora_entrega,local_entrega,obs):
 
     with open("comandas.json","r") as r:
         comanda = json.load(r)
 
     comanda['comandas'][f"{nome_cliente}"] = {}
+    comanda['comandas'][f"{nome_cliente}"]['local_entrega'] = local_entrega
     comanda['comandas'][f"{nome_cliente}"]['celular'] = num_cel
     comanda['comandas'][f"{nome_cliente}"]['telefone'] = num_tel
     comanda['comandas'][f"{nome_cliente}"]['data'] = data
@@ -64,6 +68,7 @@ def criar_comanda(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nu
     comanda['comandas'][f"{nome_cliente}"]['hora_pronta'] = hora_pronta
     comanda['comandas'][f"{nome_cliente}"]['hora_entrega'] = hora_entrega
     comanda['comandas'][f"{nome_cliente}"]["num_item"] = numero_itens
+    comanda['comandas'][f"{nome_cliente}"]["obs"] = obs
     comanda['comandas'][f"{nome_cliente}"]['salgados'] = lista_salg
     comanda['comandas'][f"{nome_cliente}"]['doces'] = lista_doce
     comanda['comandas'][f"{nome_cliente}"]['bolos'] = lista_bolo
@@ -122,10 +127,6 @@ def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bol
     rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["sobremesa"] = []
     rel_completo[data][horario][f"{nome_cliente}"]['ADICIONADO']["fio_de_ovos"] = []
 
-    # print(comanda)
-    def converter_horario(horario_str):
-        return datetime.strptime(horario_str, "%H:%M")
-
     lista_horarios = []
     for hora in rel_completo[data]:
         lista_horarios.append(hora)
@@ -153,6 +154,8 @@ def mostrar_comanda_geral(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
@@ -161,18 +164,20 @@ def mostrar_comanda_geral(comanda,nome):
     celf = f'\033[33mCelular:\033[m {num_cel}'
     hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
-    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+    print("\033[1;36m=\033[m" * 50)
     print(f"\033[1;36m{str(nome_completo.title())+'- GERAL':^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{' ':<32}{hora_entregaf}")
+    print(f"{local_entregaf:<40}{hora_entregaf}")
+    print(f"{str(local_entrega).capitalize()}")
     print("\033[1;36m=\033[m" * 50)
 
     for tipo in comanda:
-        # print(tipo)
+
         if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
         if len(comanda[tipo]) > 0:
@@ -189,6 +194,9 @@ def mostrar_comanda_geral(comanda,nome):
                 for c in comanda[tipo]:
                     print(c)
     print("\033[1;36m=\033[m" * 50)
+    if obs != "":
+        print(f"\033[33mObs:\033[m {obs}")
+        print("\033[1;36m=\033[m" * 50)
 
 def mostrar_comanda_salgados(comanda,nome):
     nome_completo = ""
@@ -200,23 +208,27 @@ def mostrar_comanda_salgados(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
     if len(comanda["salgados"]) > 0 or len(comanda["ADICIONADO"]["salgados"]) > 0:
-        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-        print(f"\033[1;36m{str(nome_completo.title())+'- SALGADOS':^50}\033[m")
+        print("\033[1;36m=\033[m" * 50)
+        print(f"\033[1;36m{str(nome_completo.title()) + '- SALGADOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{' ':<32}{hora_entregaf}")
+        print(f"{local_entregaf:<40}{hora_entregaf}")
+        print(f"{str(local_entrega).capitalize()}")
         print("\033[1;36m=\033[m" * 50)
 
 
@@ -226,6 +238,9 @@ def mostrar_comanda_salgados(comanda,nome):
             print(salgado_add)
 
         print("\033[1;36m=\033[m" * 40)
+        if obs != "":
+            print(f"\033[33mObs:\033[m {obs}")
+            print("\033[1;36m=\033[m" * 50)
         print()
 
     else:
@@ -241,24 +256,28 @@ def mostrar_comanda_doces(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
 
     if len(comanda["doces"]) > 0 or len(comanda["ADICIONADO"]["doces"]) > 0:
-        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print("\033[1;36m=\033[m" * 50)
         print(f"\033[1;36m{str(nome_completo.title())+'- DOCES':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{' ':<32}{hora_entregaf}")
+        print(f"{local_entregaf:<40}{hora_entregaf}")
+        print(f"{str(local_entrega).capitalize()}")
         print("\033[1;36m=\033[m" * 50)
 
 
@@ -268,6 +287,9 @@ def mostrar_comanda_doces(comanda,nome):
             print(doce_add)
 
         print("\033[1;36m=\033[m" * 50)
+        if obs != "":
+            print(f"\033[33mObs:\033[m {obs}")
+            print("\033[1;36m=\033[m" * 50)
         print()
 
     else:
@@ -284,23 +306,27 @@ def mostrar_comanda_bolos(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
     if len(comanda["bolos"]) > 0 or len(comanda["ADICIONADO"]["bolos"]) > 0:
-        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print("\033[1;36m=\033[m" * 50)
         print(f"\033[1;36m{str(nome_completo.title())+'- BOLOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{' ':<32}{hora_entregaf}")
+        print(f"{local_entregaf:<40}{hora_entregaf}")
+        print(f"{str(local_entrega).capitalize()}")
         print("\033[1;36m=\033[m" * 50)
 
         for bolo in comanda["bolos"]:
@@ -309,6 +335,9 @@ def mostrar_comanda_bolos(comanda,nome):
             print(bolo_add)
 
         print("\033[1;36m=\033[m" * 50)
+        if obs != "":
+            print(f"\033[33mObs:\033[m {obs}")
+            print("\033[1;36m=\033[m" * 50)
         print()
 
     else:
@@ -324,23 +353,27 @@ def mostrar_comanda_sobremesas(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
     hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
     if len(comanda["sobremesas"]) > 0 or len(comanda["ADICIONADO"]["sobremesas"]) > 0:
-        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print("\033[1;36m=\033[m" * 50)
         print(f"\033[1;36m{str(nome_completo.title())+'- SOBREMESAS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{' ':<32}{hora_entregaf}")
+        print(f"{local_entregaf:<40}{hora_entregaf}")
+        print(f"{str(local_entrega).capitalize()}")
         print("\033[1;36m=\033[m" * 50)
 
         for sobremesa in comanda["sobremesas"]:
@@ -349,6 +382,9 @@ def mostrar_comanda_sobremesas(comanda,nome):
             print(sobremesa_add)
 
         print("\033[1;36m=\033[m" * 50)
+        if obs != "":
+            print(f"\033[33mObs:\033[m {obs}")
+            print("\033[1;36m=\033[m" * 50)
         print()
 
     else:
@@ -364,23 +400,27 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
     if len(comanda["fio_de_ovos"]) > 0 or len(comanda["ADICIONADO"]["fio_de_ovos"]) > 0:
-        print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+        print("\033[1;36m=\033[m" * 50)
         print(f"\033[1;36m{str(nome_completo.title())+'- FIO DE OVOS':^50}\033[m")
         print("\033[1;36m=\033[m" * 50)
         print(f"{nomef:<40}{dataf}")
         print(f"{telf:<40}{semanf}")
         print(f"{celf:<40}{hora_prontaf}")
-        print(f"{' ':<32}{hora_entregaf}")
+        print(f"{local_entregaf:<40}{hora_entregaf}")
+        print(f"{str(local_entrega).capitalize()}")
         print("\033[1;36m=\033[m" * 50)
 
         for fio_de_ovos in comanda["fio_de_ovos"]:
@@ -389,6 +429,9 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
             print(fio_de_ovo_add)
 
         print("\033[1;36m=\033[m" * 50)
+        if obs != "":
+            print(f"\033[33mObs:\033[m {obs}")
+            print("\033[1;36m=\033[m" * 50)
         print()
 
     else:
@@ -416,26 +459,30 @@ def excluir_comanda(nome):
     dia_semana = comanda['dia_semana']
     hora_pronta = comanda['hora_pronta']
     hora_entrega = comanda['hora_entrega']
+    local_entrega = comanda['local_entrega']
+    obs = comanda['obs']
 
     nomef = f"\033[33mNome:\033[m {nome_completo.title()}"
     dataf = f"\033[33mData:\033[m {data}"
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
-    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
+    print("\033[1;36m=\033[m" * 50)
     print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{hora_entregaf:>56}")
+    print(f"{local_entregaf:<40}{hora_entregaf}")
+    print(f"{str(local_entrega).capitalize()}")
     print("\033[1;36m=\033[m" * 50)
 
     data_encomenda = comanda['data']
-
+# ------------------------------------------------ Exibir ------------------------------------------------ #
     for tipo in comanda:
         if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
@@ -467,7 +514,10 @@ def excluir_comanda(nome):
                     print()
 
     print("\033[1;36m=\033[m" * 50)
-
+    if obs != "":
+        print(f"\033[33mObs:\033[m {obs}")
+        print("\033[1;36m=\033[m" * 50)
+# ------------------------------------------------ Escolha ------------------------------------------------ #
     while True:
         try:
             num_excluir = int(input("Escolha o número entre \033[1;33m(parênteses)\033[m do item para excluir: "))
@@ -479,7 +529,7 @@ def excluir_comanda(nome):
             print(f"\033[31mEscolha um número entre 1 e {comanda['num_item']-1} apenas!\033[m\n")
 
     num_excluir = "("+str(num_excluir)+")"
-
+# ------------------------------------------------ Exclusão ------------------------------------------------ #
     for tipo in comanda:
         if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
@@ -488,12 +538,13 @@ def excluir_comanda(nome):
                 lista_adicionados = []
                 for itens in comanda[tipo][tipos_add]:
                     itens_split = str(itens).split()
+
                     #EXCLUIR EM COMANDAS
                     if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                         lista_adicionados.append(itens)
 
-                    #EXCLUIR EM DADOS
-                    else:                                 #SE FOR O ITEM
+                    #EXCLUIR EM DADOS E RELATORIO DIARIO SIMPLES
+                    else:  #SE FOR O ITEM
                         escolha_valida.validar_exclusao(itens_split,itens_split[2],data_encomenda) #(Produto, quantidade)
 
                 comanda[tipo][tipos_add] = lista_adicionados
@@ -502,11 +553,13 @@ def excluir_comanda(nome):
             lista_itens = []
             for itens in comanda[tipo]:
                 itens_split = str(itens).split()
+
                 # EXCLUIR EM COMANDAS
                 if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                     lista_itens.append(itens)
-                # EXCLUIR EM DADOS
-                else:                                   #SE FOR O ITEM
+
+                # EXCLUIR EM DADOS E RELATORIO DIARIO SIMPLES
+                else:  #SE FOR O ITEM
                     escolha_valida.validar_exclusao(itens_split,itens_split[2],data_encomenda)  #(Produto, quantidade)
             comanda[tipo] = lista_itens
 
@@ -518,6 +571,7 @@ def excluir_comanda(nome):
                 lista_adicionados_relatorio = []
                 for itens in rel_completo[tipo][tipos_add]:
                     itens_split = str(itens).split()
+
                     # EXCLUIR EM RELATORIO DIARIO COMPLETO
                     if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                         lista_adicionados_relatorio.append(itens)
@@ -527,6 +581,7 @@ def excluir_comanda(nome):
             lista_adicionados_relatorio = []
             for itens in rel_completo[tipo]:
                 itens_split = str(itens).split()
+
                 # EXCLUIR EM RELATORIO DIARIO COMPLETO
                 if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
                     lista_adicionados_relatorio.append(itens)
@@ -726,7 +781,7 @@ def relatorio_diario_simples(data_formatada):
 def relatorio_diario_completo(data_formatada):
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
-    with open("comandas.json","r") as r:
+    with open("comandas.json","r", encoding='utf-8') as r:
         comandas = json.load(r)
 
 
@@ -748,7 +803,7 @@ def relatorio_diario_completo(data_formatada):
         except ValueError:
             print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
 
-    categoria = ['','Geal','Salgados','Doces','Bolos','Sobremesas','Fio de Ovos']
+    categoria = ['','Geral','Salgados','Doces','Bolos','Sobremesas','Fio de Ovos']
 
     print()
     print("_" * 80)
@@ -784,8 +839,13 @@ def relatorio_diario_completo(data_formatada):
                         else:
                             numero_cliente = celular
 
-                        print(f"\033[33m{'='*40:^80}\033[m")
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
+
+                        print(f"\033[33m\n{'='*40:^80}\033[m")
                         print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                        if local_entrega != "-":
+                            print(f'{local_entrega:^80}')
                         print(f"\033[33m{'=' * 40:^80}\033[m")
 
                         for categoria in rel_completo[dia][hora][cliente]:
@@ -801,6 +861,13 @@ def relatorio_diario_completo(data_formatada):
                                 for item in rel_completo[dia][hora][cliente][categoria]:
                                     print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                     print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+
     elif esc_relatorio == 2:
         for dia in rel_completo:
 
@@ -814,13 +881,34 @@ def relatorio_diario_completo(data_formatada):
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
+                        for nome in cliente.split("_"):
+                            nome_completo += f"{nome} "
+
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
+                    for cliente in rel_completo[dia][hora]:
+                        nome_completo = ""
+
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
 
                         if len(rel_completo[dia][hora][cliente]['salgado']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['salgado']) > 0: # Só mostra de o cliente tiver a categoria
                             for nome in cliente.split("_"):
                                 nome_completo += f"{nome} "
 
-                            print(f"\033[33m{'='*40:^80}\033[m")
-                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m\n{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
                             print(f"\033[33m{'=' * 40:^80}\033[m")
                             print_categoria = f" \033[34m-- || SALGADOS || --\033[m "
                             print(f"{print_categoria:^85}")
@@ -833,6 +921,12 @@ def relatorio_diario_completo(data_formatada):
                             for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["salgado"]:
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 3:
         for dia in rel_completo:
@@ -848,12 +942,31 @@ def relatorio_diario_completo(data_formatada):
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
 
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
+
                         if len(rel_completo[dia][hora][cliente]['doce']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['doce']) > 0: # Só mostra de o cliente tiver a categoria
                             for nome in cliente.split("_"):
                                 nome_completo += f"{nome} "
 
-                            print(f"\033[33m{'='*40:^80}\033[m")
-                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                            obs = comandas['comandas'][cliente]["obs"]
+
+                            print(f"\033[33m\n{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
                             print(f"\033[33m{'=' * 40:^80}\033[m")
                             print_categoria = f" \033[34m-- || DOCES || --\033[m "
                             print(f"{print_categoria:^85}")
@@ -866,6 +979,12 @@ def relatorio_diario_completo(data_formatada):
                             for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["doce"]:
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 4:
         for dia in rel_completo:
@@ -881,12 +1000,28 @@ def relatorio_diario_completo(data_formatada):
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
 
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
+
                         if len(rel_completo[dia][hora][cliente]['bolo']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['bolo']) > 0: # Só mostra de o cliente tiver a categoria
                             for nome in cliente.split("_"):
                                 nome_completo += f"{nome} "
 
-                            print(f"\033[33m{'='*40:^80}\033[m")
-                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m\n{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
                             print(f"\033[33m{'=' * 40:^80}\033[m")
                             print_categoria = f" \033[34m-- || BOLO || --\033[m "
                             print(f"{print_categoria:^85}")
@@ -899,6 +1034,12 @@ def relatorio_diario_completo(data_formatada):
                             for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["bolo"]:
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 5:
         for dia in rel_completo:
@@ -914,12 +1055,28 @@ def relatorio_diario_completo(data_formatada):
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
 
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
+
                         if len(rel_completo[dia][hora][cliente]['sobremesa']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['sobremesa']) > 0: # Só mostra de o cliente tiver a categoria
                             for nome in cliente.split("_"):
                                 nome_completo += f"{nome} "
 
-                            print(f"\033[33m{'='*40:^80}\033[m")
-                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m\n{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
                             print(f"\033[33m{'=' * 40:^80}\033[m")
                             print_categoria = f" \033[34m-- || SOBREMESA || --\033[m "
                             print(f"{print_categoria:^85}")
@@ -932,6 +1089,12 @@ def relatorio_diario_completo(data_formatada):
                             for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["sobremesa"]:
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 6:
         for dia in rel_completo:
@@ -947,12 +1110,28 @@ def relatorio_diario_completo(data_formatada):
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
 
+                        telefone = comandas['comandas'][cliente]['telefone']
+                        celular = comandas['comandas'][cliente]['celular']
+                        numero_cliente = ""
+
+                        if telefone == "0":
+                            numero_cliente = celular
+                        elif celular == "0":
+                            numero_cliente = telefone
+                        else:
+                            numero_cliente = celular
+
+                        local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                        obs = comandas['comandas'][cliente]["obs"]
+
                         if len(rel_completo[dia][hora][cliente]['fio_de_ovos']) > 0 or len(rel_completo[dia][hora][cliente]["ADICIONADO"]['fio_de_ovos']) > 0: # Só mostra de o cliente tiver a categoria
                             for nome in cliente.split("_"):
                                 nome_completo += f"{nome} "
 
-                            print(f"\033[33m{'='*40:^80}\033[m")
-                            print(f"\033[33m{nome_completo.title():^80}\033[m")
+                            print(f"\033[33m\n{'='*40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title()+f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
                             print(f"\033[33m{'=' * 40:^80}\033[m")
                             print_categoria = f" \033[34m-- || FIO DE OVOS || --\033[m "
                             print(f"{print_categoria:^85}")
@@ -965,6 +1144,12 @@ def relatorio_diario_completo(data_formatada):
                             for item in rel_completo[dia][hora][cliente]["ADICIONADO"]["fio_de_ovos"]:
                                 print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
+
+                        if obs != "":
+                            printar_obs = "\033[33mObs:\033[m"
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            print (f" {f'{printar_obs} {obs}':^80}")
+                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     print("-" * 80)
     print()
