@@ -1153,16 +1153,3 @@ def relatorio_diario_completo(data_formatada):
 
     print("-" * 80)
     print()
-
-
-
-
-
-
-
-
-
-
-
-
-
