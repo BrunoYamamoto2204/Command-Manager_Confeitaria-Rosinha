@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 235.0,
+            "Coxinha": 239.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": -30.0,
             "Kibe Recheado": 0,
@@ -91,13 +91,13 @@
     },
     "sobremesa": {
         "tortas": {
-            "Torta Choco Morango": 0,
+            "Torta Choco Morango": 1.0,
             "Torta Choco Nana": 0,
             "Torta Maracuja": 0,
             "Torta Limao": 0,
             "Torta Morango": 0,
             "Torta Alema": 0,
-            "Mini Quindim": 0,
+            "Mini Quindim": 6.0,
             "Mini Torta Brigadeiro": 0,
             "Mini Torta Limao": 50.0,
             "Mini Torta Morango": 0,

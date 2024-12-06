@@ -25,13 +25,15 @@
             "Brigadeiro": 60
         },
         "salgado": {
-            "Coxinha": 142.0,
+            "Coxinha": 146.0,
             "Empadao Palmito": 1.0,
             "Empadao Camarao": 0.0
         },
         "bolo": {},
         "sobremesa": {
-            "Banoff": 2.0
+            "Banoff": 2.0,
+            "Mini Quindim": 6.0,
+            "Torta Choco Morango": 1.0
         },
         "fio_de_ovos": {
             "Fio de ovos": -5.0

@@ -321,7 +321,7 @@ def esc_sobremesa():
         try:
             tipo_sobremesa = int(input
 ("""Escolha o tipo da sobremesa: 
-\033[33m1\033[m - \033[34mTortas/Tortinhas\033[m 
+\033[33m1\033[m - \033[34mTortas/Tortinhas/Quindim\033[m 
 \033[33m2 - \033[34mPavês/Profeteroles/Banoff/Mil Folhas\033[m 
 
 Escolha:"""))
@@ -651,7 +651,7 @@ def nome_cliente():
 
         while True:
             nome = input("\033[33mNome do cliente:\033[m ").strip()
-            print("\nNome está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+            print("\nNome está correto? Caso contrário, \033[33mdigite\033[m qualquer tecla")
             confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
             print()
             if confirmar == "":
@@ -694,14 +694,14 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nNúmero de celular: ").strip()
+                num_cel = input("\033[36m|| Formato (41 91234-5678) ||\033[m\nNúmero de celular: ").strip()
 
                 for c in num_cel:
                     if c.isnumeric():
                         numerico += 1
                     elif c == "-":
                         traco += 1
-                if numerico == 9 and traco == 1:
+                if numerico == 11 and traco == 1:
                     break
                 else:
                     print("\033[31mNúmero de celular inválido\033[m\n")
@@ -717,14 +717,14 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_tel = input("\033[36m|| Formato (1234-5678) ||\033[m\nNúmero de telefone: ").strip()
+                num_tel = input("\033[36m|| Formato (41 1234-5678) ||\033[m\nNúmero de telefone: ").strip()
 
                 for c in num_tel:
                     if c.isnumeric():
                         numerico += 1
                     elif c == "-":
                         traco += 1
-                if numerico == 8 and traco == 1:
+                if numerico == 10 and traco == 1:
                     break
                 else:
                     print("\033[31mNúmero de telefone inválido\033[m\n")
@@ -739,14 +739,14 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_tel = input("\033[36m|| Formato (1234-5678) ||\033[m\nNúmero de telefone: ").strip()
+                num_tel = input("\033[36m|| Formato (41 1234-5678) ||\033[m\nNúmero de telefone: ").strip()
 
                 for c in num_tel:
                     if c.isnumeric():
                         numerico += 1
                     elif c == "-":
                         traco += 1
-                if numerico == 8 and traco == 1:
+                if numerico == 10 and traco == 1:
                     break
                 else:
                     print("\033[31mNúmero de telefone inválido\033[m\n")
@@ -760,14 +760,14 @@ def numero_cliente():
             try:
                 numerico = 0
                 traco = 0
-                num_cel = input("\033[36m|| Formato (91234-5678) ||\033[m\nNúmero de celular: ").strip()
+                num_cel = input("\033[36m|| Formato (41 91234-5678) ||\033[m\nNúmero de celular: ").strip()
 
                 for c in num_cel:
                     if c.isnumeric():
                         numerico += 1
                     elif c == "-":
                         traco += 1
-                if numerico == 9 and traco == 1:
+                if numerico == 11 and traco == 1:
                     break
                 else:
                     print("\033[31mNúmero de celular inválido\033[m\n")
@@ -883,13 +883,16 @@ def horario_comanda():
 
     return [horario_pronto,horario_entrega,local]
 
-def obs():
+def obs(nome_cliente):
+    with open('comandas.json','r') as r:
+        comandas = json.load(r)
+
     while True:
         s_n = input("\nObservação? S/N: ").strip().upper()
         if s_n == "S":
             while True:
                 observacao = input("\033[33mObs:\033[m ").strip()
-                print("\nObservação está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+                print("\nObservação está correto? Caso contrário, \033[33mdigite\033[m qualquer tecla")
                 confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
                 print()
                 if confirmar == "":
@@ -903,8 +906,14 @@ def obs():
 
         elif s_n == "N":
             observacao = ""
+            break
         else:
             print("\033[31mResposta Inválida! Responda S ou N\033[m")
+
+    comandas['comandas'][nome_cliente]['obs'] = observacao
+
+    with open("comandas.json",'w') as w:
+        json.dump(comandas, w, indent=4)
 
     return observacao
 
@@ -913,7 +922,7 @@ def local_de_entrega():
 
         while True:
             local = input("\033[33mEndereço da entrega:\033[m ").strip()
-            print("\nEndereço está correto? Caso não \033[33mdigite\033[m qualquer tecla")
+            print("\nEndereço está correto? Caso contrário, \033[33mdigite\033[m qualquer tecla")
             confirmar = input("Se não, pressione \033[33mENTER\033[m para continuar... ")
             print()
             if confirmar == "":

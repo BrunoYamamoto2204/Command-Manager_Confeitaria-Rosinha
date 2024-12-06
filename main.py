@@ -7,7 +7,8 @@ while True:
     if resp == 7:
         break
 
-# CONFIRMAR/VOLTAR NA HORA DE INCLUIR NA COMANDA
+# - Excluir comanda inteira
+# - Ver o por que mesmo sem informações, continua saindo os horários no relatório diário completo
 
                     ## RESUMO DOS JSONs ##
 # COMANDAS - SALVAS APÓS TERMINAR DE REGISTRAR A COMANDA

@@ -15,16 +15,18 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     telf = f'\033[33mTelefone:\033[m {num_tel}'
     semanf = f"\033[33mDia da semana:\033[m {dia_semana}"
     celf = f'\033[33mCelular:\033[m {num_cel}'
-    hora_prontaf = f'\033[33mHora(Pronto):\033[m {hora_pronta}'
-    hora_entregaf = f'\033[33mHora(Entrega):\033[m{hora_entrega}'
+    hora_prontaf = f'\033[33mHora (Pronto):\033[m {hora_pronta}'
+    hora_entregaf = f'\033[33mHora(Entrega):\033[m {hora_entrega}'
+    local_entregaf = f"\033[33mLocal de Entrega: \033[m"
 
-    print("\033[1;36m=\033[m" * 50)  # COLOCAR TUDO ESSAS OPÇÕES LÁ NAS PERGUNTAS DE CRIAR COMANDA
-    print(f"\033[1;36m{str(nome_completo.title()):^50}\033[m")
+    print("\033[1;36m=\033[m" * 50)
+    print(f"\033[1;36m{str(nome_completo.title()) + '- GERAL':^50}\033[m")
     print("\033[1;36m=\033[m" * 50)
     print(f"{nomef:<40}{dataf}")
     print(f"{telf:<40}{semanf}")
     print(f"{celf:<40}{hora_prontaf}")
-    print(f"{local_entrega:<32}{hora_entregaf}")
+    print(f"{local_entregaf:<40}{hora_entregaf}")
+    print(f"{str(local_entrega).capitalize()}")
     print("\033[1;36m=\033[m" * 50)
 
     if len(lista_salg) > 0:
@@ -49,7 +51,7 @@ def formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
             print(c)
     print("\033[1;36m=\033[m" * 50)
     if obs != "":
-        print(f"Obs: {obs}")
+        print(f"\033[33mObs:\033[m {obs}")
         print("\033[1;36m=\033[m" * 50)
 
 
@@ -100,7 +102,7 @@ def salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,
     # print(comanda)
     with open("comandas.json", "w") as w:
         json.dump(comanda, w, indent=4)
-def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome_cliente):
+def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome_cliente,local_entrega):
     with open("relatorio_diario_completo.json","r") as r:
         rel_completo = json.load(r)
     with open("comandas.json","r") as r:
@@ -115,6 +117,7 @@ def salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bol
         rel_completo[data][horario] = {}
 
     rel_completo[data][horario][f'{nome_cliente}'] = {}
+    rel_completo[data][horario][f'{nome_cliente}']['entrega'] = local_entrega
     rel_completo[data][horario][f"{nome_cliente}"]['salgado'] = lista_salg
     rel_completo[data][horario][f"{nome_cliente}"]['doce'] = lista_doce
     rel_completo[data][horario][f"{nome_cliente}"]['bolo'] = lista_bolo
@@ -793,17 +796,18 @@ def relatorio_diario_completo(data_formatada):
             print("\033[33m3 - \033[34mRelatório Doces\033[m")
             print("\033[33m4 - \033[34mRelatório Bolos\033[m")
             print("\033[33m5 - \033[34mRelatório Sobremesas\033[m")
-            print("\033[33m6 - \033[34mRelatório Fio de Ovos\033[m\n")
+            print("\033[33m6 - \033[34mRelatório Fio de Ovos\033[m")
+            print("\033[33m7 - \033[34mRelatório Encomendas\033[m\n")
             esc_relatorio = int(input("Escolha: "))
 
-            if esc_relatorio > 6 or esc_relatorio < 1:
+            if esc_relatorio > 7 or esc_relatorio < 1:
                 print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 6 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 7 apenas!\033[m\n")
 
-    categoria = ['','Geral','Salgados','Doces','Bolos','Sobremesas','Fio de Ovos']
+    categoria = ['','Geral','Salgados','Doces','Bolos','Sobremesas','Fio de Ovos','Encomendas']
 
     print()
     print("_" * 80)
@@ -851,6 +855,9 @@ def relatorio_diario_completo(data_formatada):
                         for categoria in rel_completo[dia][hora][cliente]:
                             print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
                             print(f"{print_categoria:^85}")
+
+                            if categoria == 'entrega':
+                                continue
 
                             if categoria == "ADICIONADO":
                                 for cat_add in rel_completo[dia][hora][cliente][categoria]:
@@ -1150,6 +1157,67 @@ def relatorio_diario_completo(data_formatada):
                             print(f"\033[1;36m{'=' * 50:^80}\033[m")
                             print (f" {f'{printar_obs} {obs}':^80}")
                             print(f"\033[1;36m{'=' * 50:^80}\033[m")
+
+    elif esc_relatorio == 7:
+        for dia in rel_completo:
+
+            if dia == data_formatada:
+                for hora in rel_completo[dia]:
+
+                    printar_hora = f"█   {hora:>20}{'█':>20}"
+                    print(f'{"━" * 43:^80}')
+                    print(f"{printar_hora:^80}")
+                    print(f'{"━" * 43:^80}')
+
+                    for cliente in rel_completo[dia][hora]:
+
+                        if rel_completo[dia][hora][cliente]['entrega'] != "-": # SÓ VAI SER EXECUTADO SE TIVER ENDEREÇO
+                            nome_completo = ""
+                            for nome in cliente.split("_"):
+                                nome_completo += f"{nome} "
+
+                            telefone = comandas['comandas'][cliente]['telefone']
+                            celular = comandas['comandas'][cliente]['celular']
+                            numero_cliente = ""
+
+                            if telefone == "0":
+                                numero_cliente = celular
+                            elif celular == "0":
+                                numero_cliente = telefone
+                            else:
+                                numero_cliente = celular
+
+                            local_entrega = comandas['comandas'][cliente]["local_entrega"]
+                            obs = comandas['comandas'][cliente]["obs"]
+
+                            print(f"\033[33m\n{'=' * 40:^80}\033[m")
+                            print(f"\033[33m{nome_completo.title() + f'({numero_cliente})':^80}\033[m")
+                            if local_entrega != "-":
+                                print(f'{local_entrega:^80}')
+                            print(f"\033[33m{'=' * 40:^80}\033[m")
+
+                            for categoria in rel_completo[dia][hora][cliente]:
+                                print_categoria = f" \033[34m-- || {categoria.upper()} || --\033[m "
+                                print(f"{print_categoria:^85}")
+
+                                if categoria == 'entrega':
+                                    continue
+
+                                if categoria == "ADICIONADO":
+                                    for cat_add in rel_completo[dia][hora][cliente][categoria]:
+                                        for item in rel_completo[dia][hora][cliente][categoria][cat_add]:
+                                            print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
+                                            print(f"{print_produtos:^95}")
+                                else:
+                                    for item in rel_completo[dia][hora][cliente][categoria]:
+                                        print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
+                                        print(f"{print_produtos:^95}")
+
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print(f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     print("-" * 80)
     print()

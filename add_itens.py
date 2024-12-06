@@ -14,7 +14,8 @@ def opc_comandas(opc):
         numeros = escolha_valida.numero_cliente() # [Celular,telefone]
         data_e_dia = escolha_valida.dia_data(nome) # [Data, dia_semana]
         horario = escolha_valida.horario_comanda() # [Pronto,Entrega,Local de entrega]
-        obs = escolha_valida.obs()
+        obs = ''
+
         celular = numeros[0]
         telefone = numeros[1]
         data = data_e_dia[0]
@@ -63,9 +64,11 @@ def opc_comandas(opc):
             if cont == "N":
                 break
 
-        formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega,local_entrega)
+        obs = escolha_valida.obs(nome)
+
+        formar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,nome,celular,telefone,data,dia_semana,hora_pronta,hora_entrega,local_entrega,obs)
         salvar_comandas(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
-        salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome)
+        salvar_relatorio_diario_completo(lista_salg,lista_doce,lista_sobre,lista_bolo,lista_fio_ovos,numero_itens,nome,local_entrega)
 
     if opc == 2: #VER COMANDAS
         with open("comandas.json","r") as r:
@@ -98,7 +101,8 @@ def opc_comandas(opc):
         nome_comanda = escolha_valida.nome_comanda()
         data = comandas['comandas'][nome_comanda]['data']
         hora = comandas['comandas'][nome_comanda]['hora_pronta']
-        print(hora)
+
+        mostrar_comanda_geral(comandas["comandas"][f"{nome_comanda}"], nome_comanda) # MOSTRAR A COMANDA
 
         lista_salg3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["salgados"]
         lista_doce3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["doces"]
@@ -106,13 +110,12 @@ def opc_comandas(opc):
         lista_bolo3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["bolos"]
         lista_fio_ovos3 = comandas["comandas"][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
 
-        lista_relatorio_salgado = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["salgados"]
-        lista_relatorio_doce = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["doces"]
-        lista_relatorio_bolo = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["bolos"]
-        lista_relatorio_sobre = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesas"]
+        lista_relatorio_salgado = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["salgado"]
+        lista_relatorio_doce = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["doce"]
+        lista_relatorio_bolo = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["bolo"]
+        lista_relatorio_sobre = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesa"]
         lista_relatorio_fio = rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"]
 
-        print("=" * 40)
         while True:
             escolha = escolha_valida.esc_principal()
             print("="*60)
