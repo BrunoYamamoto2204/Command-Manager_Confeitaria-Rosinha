@@ -439,7 +439,7 @@ def mostrar_comanda_fio_de_ovos(comanda,nome):
 
     else:
         print("\033[1;31mSem Fio de ovos nesse comanda!\033[m\n")
-def excluir_comanda(nome):
+def excluir_item(nome):
     with open("comandas.json","r") as r:
         comandas = json.load(r)
     with open("dados.json", "r") as r:
@@ -558,7 +558,7 @@ def excluir_comanda(nome):
                 itens_split = str(itens).split()
 
                 # EXCLUIR EM COMANDAS
-                if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
+                if num_excluir not in itens_split[0]: #SE NÃO FOR O ITEM, É ADICIONADO NA LISTA
                     lista_itens.append(itens)
 
                 # EXCLUIR EM DADOS E RELATORIO DIARIO SIMPLES
@@ -576,7 +576,7 @@ def excluir_comanda(nome):
                     itens_split = str(itens).split()
 
                     # EXCLUIR EM RELATORIO DIARIO COMPLETO
-                    if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
+                    if num_excluir not in itens_split[0]: #SE NÃO FOR O ITEM, É ADICIONADO NA LISTA
                         lista_adicionados_relatorio.append(itens)
 
                 rel_completo[tipo][tipos_add] = lista_adicionados_relatorio
@@ -586,7 +586,7 @@ def excluir_comanda(nome):
                 itens_split = str(itens).split()
 
                 # EXCLUIR EM RELATORIO DIARIO COMPLETO
-                if num_excluir not in itens_split[0]: #SE O NÃO FOR O ITEM, É ADICIONADO NA LISTA
+                if num_excluir not in itens_split[0]: #SE NÃO FOR O ITEM, É ADICIONADO NA LISTA
                     lista_adicionados_relatorio.append(itens)
 
             rel_completo[tipo] = lista_adicionados_relatorio
@@ -598,6 +598,62 @@ def excluir_comanda(nome):
 
     print(f"\033[32mItem {num_excluir} excluído com sucesso\033[m")
     print()
+
+def excluir_comanda(nome):
+    with open("comandas.json", 'r') as r:
+        comanda = json.load(r)
+    with open("relatorio_diario_completo.json", 'r') as r:
+        rel_completo = json.load(r)
+
+    cliente = comanda['comandas'][nome]
+    data = cliente['data']
+    hora = cliente['hora_pronta']
+    relatorio = rel_completo[data][hora][nome]
+
+    # COMANDAS, REL.SIMPLES, DADOS
+    for categoria in cliente:
+
+        if isinstance(cliente[categoria], list) or isinstance(cliente[categoria], dict):
+
+            if categoria == "ADICIONADO":
+                for cat_add in cliente[categoria]:
+
+                    for produtos_add in cliente[categoria][cat_add]:
+                        produtos_split = produtos_add.split()
+                        escolha_valida.validar_exclusao(produtos_split, produtos_split[2], data)
+
+                    cliente[categoria][cat_add] = [] # COMO IRIA EXCLUIR A COMANDA INTEIRA, NÃO É NECESSÁRIO
+            else:
+                for produtos in cliente[categoria]:
+                    produtos_split = produtos.split()
+                    escolha_valida.validar_exclusao(produtos_split, produtos_split[2], data)
+
+                cliente[categoria] = [] # COMO IRIA EXCLUIR A COMANDA INTEIRA, NÃO É NECESSÁRIO
+
+    # REL.COMPLETO
+    for categoria in relatorio:
+        if categoria == "ADICIONADO":
+            for cat_add in relatorio[categoria]:
+                relatorio[categoria][cat_add] = []
+        else:
+            relatorio[categoria] = []
+
+    # APAGA EM COMANDAS
+    if nome in comanda['comandas']:
+        del comanda['comandas'][nome]
+        print(f"Comanda de {nome} removida com sucesso.")
+    else:
+        print(f"Comanda de {nome}' não existe.")
+
+    # APAGA EM REL.COMPLETO
+    del rel_completo[data][hora][nome]
+
+    with open("comandas.json", 'w') as w:
+        json.dump(comanda, w, indent=4)
+
+    with open("relatorio_diario_completo.json", 'w') as w:
+        json.dump(rel_completo, w, indent=4)
+
 
 def relatorio_geral():
     with open("dados.json", "r") as r:

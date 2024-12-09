@@ -4,11 +4,10 @@ import escolha_valida
 while True:
     opc = escolha_valida.esc_opcoes()
     resp = add_itens.opc_comandas(opc)
-    if resp == 7:
+    if resp == 8:
         break
 
-# - Excluir comanda inteira
-# - Ver o por que mesmo sem informações, continua saindo os horários no relatório diário completo
+# IMPRESSÃO NO EXCEL
 
                     ## RESUMO DOS JSONs ##
 # COMANDAS - SALVAS APÓS TERMINAR DE REGISTRAR A COMANDA

@@ -165,9 +165,9 @@ def opc_comandas(opc):
 
     if opc == 4: # EXCLUIR DA COMANDA
         nome_comanda = escolha_valida.nome_comanda()
-        excluir_comanda(nome_comanda)
+        excluir_item(nome_comanda)
 
-    if opc == 5: #RELATORIOS GERAIS
+    if opc == 5: # RELATORIOS GERAIS
         relatorio = escolha_valida.esc_relatorio()
         if relatorio == 1:
             relatorio_geral()
@@ -182,11 +182,21 @@ def opc_comandas(opc):
         elif relatorio == 6:
             relatorio_fio_ovos()
 
-    if opc == 6:
+    if opc == 6: # RELATÓRIOS DIÁRIOS
         escolha_valida.relatorios_diarios()
 
-    if opc == 7: #SAIR
-        return 7
+    if opc == 7:
+        nome = escolha_valida.nome_comanda()
+        print(f"\nTem certeza que deseja excluir? Caso contrário, \033[33mdigite\033[m qualquer tecla")
+        confirmar = input("Digite \033[33mCONFIRMAR\033[m para excluir: ").upper().strip()
+
+        if confirmar == 'CONFIRMAR':
+            excluir_comanda(nome)
+        else:
+            print("Comanda não excluida")
+
+    if opc == 8: # SAIR
+        return 8
 
 
 

@@ -33,15 +33,16 @@ def esc_opcoes():
             print("\033[33m4 - \033[34mExcluir itens da comanda\033[m")
             print("\033[33m5 - \033[34mRelatórios Gerais\033[m")
             print("\033[33m6 - \033[34mRelatórios Diários\033[m")
-            print("\033[33m7 - \033[34mSair\033[m")
+            print("\033[33m7 - \033[34mExcluir comanda\033[m")
+            print("\033[33m8 - \033[34mSair\033[m")
             print()
             opc = int(input("Escolha: "))
-            if opc > 7 or opc < 1:
-                print("\033[31mEscolha um número entre 1 e 7 apenas!\033[m\n")
+            if opc > 8 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 8 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 7 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 8 apenas!\033[m\n")
 
     return opc
 
@@ -944,19 +945,19 @@ def validar_exclusao(itens_split,qntd,data):
 
     if len(itens_split) == 6:  # 1 palavra (nome do item)
         produto = (itens_split[5])
-        print(itens_split[5])
+        # print(itens_split[5])
     elif len(itens_split) == 7:  # 2 palavras (nome do item)
         produto = (itens_split[5] + " " + itens_split[6])
-        print(itens_split[5] + " " + itens_split[6])
+        # print(itens_split[5] + " " + itens_split[6])
     elif len(itens_split) == 8:  # 3 palavras (nome do item)
         produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
-        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
     elif len(itens_split) == 9:  # 4 palavras (nome do item)
         produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
-        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
     else:  # 5 palavras (nome do item)
         produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
-        print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
 
     #SALGADOS
     if unidecode(produto) in dados['salgado']['fritos']:

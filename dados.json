@@ -1,7 +1,7 @@
 {
     "doce": {
         "tradicional/espelhado": {
-            "Brigadeiro": 17,
+            "Brigadeiro": -19.0,
             "Brigadeiro Branco": 0,
             "Beijinho": 0,
             "Olho de Sogra": 0,
@@ -33,7 +33,7 @@
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 239.0,
+            "Coxinha": 172.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": -30.0,
             "Kibe Recheado": 0,

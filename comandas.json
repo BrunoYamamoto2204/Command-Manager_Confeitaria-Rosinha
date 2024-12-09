@@ -1026,33 +1026,6 @@
                 "sobremesas": [],
                 "fio_de_ovos": []
             }
-        },
-        "aaaaaa_": {
-            "local_entrega": "rua aaaaaaaaaaaaaaaaa",
-            "celular": "41 98414-9323",
-            "telefone": "",
-            "data": "22/04/2024",
-            "dia_semana": "Segunda-Feira",
-            "hora_pronta": "11:00",
-            "hora_entrega": "12:00",
-            "num_item": 3,
-            "obs": "babababba",
-            "salgados": [
-                "(1) -> 1 UN - Coxinha"
-            ],
-            "doces": [],
-            "bolos": [],
-            "sobremesas": [],
-            "fio_de_ovos": [],
-            "ADICIONADO": {
-                "salgados": [],
-                "doces": [
-                    "(2) -> 1 UN - Brigadeiro"
-                ],
-                "bolos": [],
-                "sobremesas": [],
-                "fio_de_ovos": []
-            }
         }
     }
 }
