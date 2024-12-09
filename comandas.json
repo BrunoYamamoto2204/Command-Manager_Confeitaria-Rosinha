@@ -981,7 +981,7 @@
             "dia_semana": "Segunda-Feira",
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
-            "num_item": 3,
+            "num_item": 4,
             "obs": "Deve estar tudo bem legal",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
@@ -994,7 +994,9 @@
             "fio_de_ovos": [],
             "ADICIONADO": {
                 "salgados": [],
-                "doces": [],
+                "doces": [
+                    "(3) -> 1 UN - Brigadeiro"
+                ],
                 "bolos": [],
                 "sobremesas": [],
                 "fio_de_ovos": []
@@ -1033,7 +1035,7 @@
             "dia_semana": "Segunda-Feira",
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
-            "num_item": 2,
+            "num_item": 3,
             "obs": "babababba",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
@@ -1044,7 +1046,9 @@
             "fio_de_ovos": [],
             "ADICIONADO": {
                 "salgados": [],
-                "doces": [],
+                "doces": [
+                    "(2) -> 1 UN - Brigadeiro"
+                ],
                 "bolos": [],
                 "sobremesas": [],
                 "fio_de_ovos": []

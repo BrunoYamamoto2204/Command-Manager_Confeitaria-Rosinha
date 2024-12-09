@@ -821,11 +821,16 @@ def relatorio_diario_completo(data_formatada):
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    if not exibiu_cabecalho:
+                        if rel_completo[dia][hora]:
+                            printar_hora = f"█   {hora:>20}{'█':>20}"
+                            print(f'{"━"*43:^80}')
+                            print(f"{printar_hora:^80}")
+                            print(f'{"━"*43:^80}')
+                            exibiu_cabecalho = True
+
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -880,11 +885,17 @@ def relatorio_diario_completo(data_formatada):
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['salgado']:
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
+
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -929,22 +940,27 @@ def relatorio_diario_completo(data_formatada):
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
-                        if obs != "":
-                            printar_obs = "\033[33mObs:\033[m"
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
-                            print (f" {f'{printar_obs} {obs}':^80}")
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print (f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 3:
         for dia in rel_completo:
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['doce']:
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -987,22 +1003,27 @@ def relatorio_diario_completo(data_formatada):
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
-                        if obs != "":
-                            printar_obs = "\033[33mObs:\033[m"
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
-                            print (f" {f'{printar_obs} {obs}':^80}")
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print (f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 4:
         for dia in rel_completo:
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['bolo']:
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -1042,22 +1063,28 @@ def relatorio_diario_completo(data_formatada):
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
-                        if obs != "":
-                            printar_obs = "\033[33mObs:\033[m"
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
-                            print (f" {f'{printar_obs} {obs}':^80}")
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print (f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 5:
         for dia in rel_completo:
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['sobremesa']:
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
+
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -1097,22 +1124,27 @@ def relatorio_diario_completo(data_formatada):
                                 print_produtos = f" \033[33m>>\033[m {item}  \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
-                        if obs != "":
-                            printar_obs = "\033[33mObs:\033[m"
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
-                            print (f" {f'{printar_obs} {obs}':^80}")
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print (f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 6:
         for dia in rel_completo:
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━"*43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━"*43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['fio_de_ovos']:
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
 
                     for cliente in rel_completo[dia][hora]:
                         nome_completo = ""
@@ -1152,22 +1184,27 @@ def relatorio_diario_completo(data_formatada):
                                 print_produtos = f" \033[33m>>\033[m {item} \033[33m<<\033[m "
                                 print(f"{print_produtos:^95}")
 
-                        if obs != "":
-                            printar_obs = "\033[33mObs:\033[m"
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
-                            print (f" {f'{printar_obs} {obs}':^80}")
-                            print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                            if obs != "":
+                                printar_obs = "\033[33mObs:\033[m"
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
+                                print (f" {f'{printar_obs} {obs}':^80}")
+                                print(f"\033[1;36m{'=' * 50:^80}\033[m")
 
     elif esc_relatorio == 7:
         for dia in rel_completo:
 
             if dia == data_formatada:
                 for hora in rel_completo[dia]:
+                    exibiu_cabecalho = False
 
-                    printar_hora = f"█   {hora:>20}{'█':>20}"
-                    print(f'{"━" * 43:^80}')
-                    print(f"{printar_hora:^80}")
-                    print(f'{"━" * 43:^80}')
+                    for cliente in rel_completo[dia][hora]:
+                        if not exibiu_cabecalho:
+                            if rel_completo[dia][hora][cliente]['entrega'] != "-":
+                                printar_hora = f"█   {hora:>20}{'█':>20}"
+                                print(f'{"━" * 43:^80}')
+                                print(f"{printar_hora:^80}")
+                                print(f'{"━" * 43:^80}')
+                                exibiu_cabecalho = True
 
                     for cliente in rel_completo[dia][hora]:
 

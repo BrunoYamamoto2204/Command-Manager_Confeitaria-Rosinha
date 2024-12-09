@@ -4,6 +4,9 @@ from unidecode import unidecode
 import comandas
 from datetime import datetime
 
-local = escolha_valida.horario_comanda()
-print(local)
+opa ={3}
+if opa:
+    print("Ta cheio")
+else:
+    print("Ta vazio")
 

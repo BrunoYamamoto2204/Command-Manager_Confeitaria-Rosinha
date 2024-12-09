@@ -176,7 +176,9 @@
                 "fio_de_ovos": [],
                 "ADICIONADO": {
                     "salgado": [],
-                    "doce": [],
+                    "doce": [
+                        "(3) -> 1 UN - Brigadeiro"
+                    ],
                     "bolo": [],
                     "sobremesa": [],
                     "fio_de_ovos": []
@@ -193,7 +195,9 @@
                 "fio_de_ovos": [],
                 "ADICIONADO": {
                     "salgado": [],
-                    "doce": [],
+                    "doce": [
+                        "(2) -> 1 UN - Brigadeiro"
+                    ],
                     "bolo": [],
                     "sobremesa": [],
                     "fio_de_ovos": []
@@ -258,7 +262,9 @@
                 "salgado": [
                     "(1) -> 1 UN - Coxinha"
                 ],
-                "doce": [],
+                "doce": [
+                    "(5) -> 35 UN - Camafeu"
+                ],
                 "bolo": [],
                 "sobremesa": [],
                 "fio_de_ovos": [],
