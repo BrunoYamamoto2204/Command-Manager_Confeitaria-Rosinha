@@ -181,7 +181,7 @@
                     ],
                     "bolo": [],
                     "sobremesa": [],
-                    "fio_de_ovos": []
+                    "fio_de_ovos": ["(7) -> 50 Kg - Fio de ovos"]
                 }
             }
         },
@@ -190,7 +190,9 @@
                 "entrega": "rua aaaaaaaaaaaaaaaaa",
                 "salgado": [
                     "(1) -> 30 UN - Empadinha Palmito",
-                    "(3) -> 4 Kg - Empad\u00e3o Frango"
+                    "(3) -> 3 Kg - Empad\u00e3o Frango",
+                    "(10) -> 53 UN - Coxinha",
+                    "(10) -> 50 UN - Coxinha"
                 ],
                 "doce": [
                     "(5) -> 35 UN - Camafeu"
@@ -250,7 +252,7 @@
                 "sobremesa": [],
                 "fio_de_ovos": [],
                 "ADICIONADO": {
-                    "salgado": [],
+                    "salgado": ["(10) -> 55 UN - Coxinha"],
                     "doce": [],
                     "bolo": [],
                     "sobremesa": [],

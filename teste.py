@@ -4,63 +4,53 @@ from unidecode import unidecode
 import comandas
 from datetime import datetime
 
-with open("comandas.json", 'r') as r:
-    comanda = json.load(r)
-with open("relatorio_diario_completo.json", 'r') as r:
+with open("relatorio_diario_completo.json","r") as r:
     rel_completo = json.load(r)
+relatorio = rel_completo["22/04/2024"]
 
-nome = "aaaaaa_"
-cliente = comanda['comandas'][nome]
-data = cliente['data']
-hora = cliente['hora_pronta']
-relatorio = rel_completo[data][hora][nome]
+for hora in relatorio:
+    for cliente in relatorio[hora]:
+        valores = relatorio[hora][cliente]["doce"]
+        dado = {}
 
-# COMANDAS, REL.SIMPLES, DADOS
-for categoria in cliente:
+        # NOMES
+        cliente_split = str(cliente).split("_")
+        nome = ""
+        for p in cliente_split:
+            nome += " " + p
+        dado["Nome"] = nome.title().strip()
 
-    if isinstance(cliente[categoria],list) or isinstance(cliente[categoria], dict):
+        # HORÁRIOS
+        dado["Horário"] = hora
 
-        if categoria == "ADICIONADO":
-            for cat_add in cliente[categoria]:
+        # ITENS
+        for e,v in enumerate(valores):
+            valores = []
+            v_split = str(v).split()
+            del v_split[:2]
 
-                for produtos_add in cliente[categoria][cat_add]:
-                    produtos_split = produtos_add.split()
-                    print(produtos_split)
-                    escolha_valida.validar_exclusao(produtos_split,produtos_split[2], data)
+            v_format = ""
+            for p in v_split:
+                v_format += " " + p
 
-                cliente[categoria][cat_add] = []
-        else:
-            for produtos in cliente[categoria]:
-                produtos_split = produtos.split()
-                print(produtos_split)
-                escolha_valida.validar_exclusao(produtos_split, produtos_split[2], data)
+            valores.append(v_format.strip())
+            dado[f"Item {e+1}"] = valores
 
-            cliente[categoria] = []
+        valores_add = relatorio[hora][cliente]["ADICIONADO"]["doce"]
+        for e,v in enumerate(valores_add):
+            valores = []
+            v_split = str(v).split()
+            del v_split[:2]
 
-# REL.COMPLETO
-for categoria in relatorio:
-    if categoria == "ADICIONADO":
-        for cat_add in relatorio[categoria]:
-            relatorio[categoria][cat_add] = []
-    else:
-        relatorio[categoria] = []
+            v_format = ""
+            for p in v_split:
+                v_format += " " + p
 
-# APAGA EM COMANDAS
-if nome in comanda['comandas']:
-    del comanda['comandas'][nome]
-    print(f"Comanda de {nome} removida com sucesso.")
-else:
-    print(f"Comanda de {nome}' não existe.")
-
-# APAGA EM REL.COMPLETO
-del rel_completo[data][hora][nome]
+            valores.append(v_format.strip())
+            dado[f"Item {len(dado)-1}"] = valores
 
 
-with open("comandas.json", 'w') as w:
-    json.dump(comanda, w, indent=4)
-
-with open("relatorio_diario_completo.json", 'w') as w:
-    json.dump(rel_completo, w, indent=4)
+        print(dado)
 
 
 
