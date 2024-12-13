@@ -4,10 +4,10 @@ import escolha_valida
 while True:
     opc = escolha_valida.esc_opcoes()
     resp = add_itens.opc_comandas(opc)
-    if resp == 8:
+    if resp == 9:
         break
 
-# INTERGRAR UMA OPÇÃO DO EXCEL NOS MENUS
+# CRIAR O ARQUIVO NA ÁREA DE TRABALHO / ABRIR O ARQUIVO AO INICIAR O CÓDIGO
 
                     ## RESUMO DOS JSONs ##
 # COMANDAS - SALVAS APÓS TERMINAR DE REGISTRAR A COMANDA
@@ -15,10 +15,11 @@ while True:
 # RLATORIO DIARIO COMPLETO - SALVA APÓS TERMINAR DE REGISTRAR A COMANDA
 # DADOS - LOGO APÓS DIGITAR O ITEM
 
-# BIBLIOTECAS NECESSÁRIAS #
+## BIBLIOTECAS NECESSÁRIAS ##
 # - JSON
 # - UNIDECODE
 # - JSON
 # - DATETIME
 # - PANDAS
 # - OPENPYXL
+# - OS

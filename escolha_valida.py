@@ -2,6 +2,7 @@ import json
 from datetime import datetime,timedelta
 from unidecode import unidecode
 import comandas
+import excel
 def esc_principal():
     while True:
         try:
@@ -34,15 +35,16 @@ def esc_opcoes():
             print("\033[33m5 - \033[34mRelatórios Gerais\033[m")
             print("\033[33m6 - \033[34mRelatórios Diários\033[m")
             print("\033[33m7 - \033[34mExcluir comanda\033[m")
-            print("\033[33m8 - \033[34mSair\033[m")
+            print("\033[33m8 - \033[34mTabelas Excel\033[m")
+            print("\033[33m9 - \033[34mSair\033[m")
             print()
             opc = int(input("Escolha: "))
-            if opc > 8 or opc < 1:
-                print("\033[31mEscolha um número entre 1 e 8 apenas!\033[m\n")
+            if opc > 9 or opc < 1:
+                print("\033[31mEscolha um número entre 1 e 9 apenas!\033[m\n")
             else:
                 break
         except ValueError:
-            print("\033[31mEscolha um número entre 1 e 8 apenas!\033[m\n")
+            print("\033[31mEscolha um número entre 1 e 9 apenas!\033[m\n")
 
     return opc
 
@@ -1044,3 +1046,39 @@ def relatorios_diarios():
 
     if escolha == 2:
         comandas.relatorio_diario_completo(data_formatada)
+
+def tabelas_excel():
+    with open("relatorio_diario_completo.json", "r") as r:
+        rel_completo = json.load(r)
+
+    while True:
+        try:
+            print("\n\033[1;33mEscolha o tipo de tabela:\033[m")
+            print("\033[33m1 - \033[34mTabela Geral (Salgados, Doces, Bolos, Sobremesas, Fio de Ovos)\033[m")
+            print("\033[33m2 - \033[34mTabela de Encomendas\033[m\n")
+            escolha = int(input("Escolha: "))
+        except:
+            print("\033[31mEscolha um número entre 1 e 2 apenas!\033[m\n")
+        else:
+            if escolha == 1 or escolha == 2:
+                break
+            else:
+                print("\033[31mEscolha um número entre 1 e 2 apenas!\033[m\n")
+
+    while True:
+        try:
+            data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
+            data_formatada = datetime.strptime(data, "%d/%m/%Y")
+        except ValueError:
+            print("\033[31mData inválida!\033[m")
+        else:
+            data_formatada = datetime.strftime(data_formatada, "%d/%m/%Y")
+            if data_formatada in rel_completo:  # TANTO FAZ COMPLETO OU SIMPLES, ABOS VÃO TER AS MESMAS DATAS
+                break
+            else:
+                print("\033[33mNada cadastrado nesta data!\033[m")
+
+    if escolha == 1:
+        excel.tabela_encomendas(data_formatada)
+    if escolha == 2:
+        excel.tabela_entregas(data_formatada)

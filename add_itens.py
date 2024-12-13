@@ -185,7 +185,7 @@ def opc_comandas(opc):
     if opc == 6: # RELATÓRIOS DIÁRIOS
         escolha_valida.relatorios_diarios()
 
-    if opc == 7:
+    if opc == 7: # EXCLUIR COMANDA
         nome = escolha_valida.nome_comanda()
         print(f"\nTem certeza que deseja excluir? Caso contrário, \033[33mdigite\033[m qualquer tecla")
         confirmar = input("Digite \033[33mCONFIRMAR\033[m para excluir: ").upper().strip()
@@ -195,8 +195,11 @@ def opc_comandas(opc):
         else:
             print("Comanda não excluida")
 
-    if opc == 8: # SAIR
-        return 8
+    if opc == 8: # TABELAS DO EXCEL PARA IMPRESSÃO
+        escolha_valida.tabelas_excel()
+
+    if opc == 9: # SAIR
+        return 9
 
 
 
