@@ -797,15 +797,6 @@ def relatorio_sobremesas():
     for sobremesa in sorted(outras):
         print(f"\033[36m{sobremesa} = \033[33m{outras[sobremesa]}\033[m")
 
-    # # Fio de ovos
-    # print("\n\033[33m|| Fio de Ovos || \033[m")
-    # fio_ovos = dados['fio_de_ovos']
-    # for fio in fio_ovos:
-    #     print(f"\033[36m{str(fio).capitalize()} = \033[33m{fio_ovos[fio]}\033[m")
-    #
-    # print("-" * 45)
-    # print()
-
 def relatorio_fio_ovos():
     with open("dados.json", "r") as r:
         dados = json.load(r)

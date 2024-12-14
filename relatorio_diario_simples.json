@@ -22,21 +22,27 @@
     },
     "22/04/2024": {
         "doce": {
-            "Brigadeiro": 26.0
+            "Brigadeiro": 26.0,
+            "Beijinho": 50.0,
+            "Camafeu": 30.0
         },
         "salgado": {
-            "Coxinha": 79.0,
+            "Coxinha": 226.0,
             "Empadao Palmito": 1.0,
-            "Empadao Camarao": 0.0
+            "Empadao Camarao": 0.0,
+            "Empadao Frango": 2.0
         },
-        "bolo": {},
+        "bolo": {
+            "Taca Martha Rocha": 6.0,
+            "Martha Rocha": 1.0
+        },
         "sobremesa": {
             "Banoff": 2.0,
             "Mini Quindim": 6.0,
             "Torta Choco Morango": 1.0
         },
         "fio_de_ovos": {
-            "Fio de ovos": -5.0
+            "Fio de ovos": 5.0
         }
     },
     "07/07/2024": {

@@ -149,16 +149,37 @@ def opc_comandas(opc):
                 lista_relatorio_fio.append(qntd_fio_ovos)
 
             comandas['comandas'][f'{nome_comanda}']["num_item"] += 1
-            with open("comandas.json","w") as w:
-                json.dump(comandas,w,indent=4)
-            with open("relatorio_diario_completo.json", "w") as w:
-                json.dump(rel_completo, w, indent=4)
 
             print("=" * 40)
             cont = input("Mais itens? S/N:").strip().upper()
             print("=" * 40)
             if cont == "N":
                 break
+
+        with open("relatorio_diario_completo.json", "w") as w:
+            json.dump(rel_completo, w, indent=4)
+
+        # VALIDAÇÃO DE ITENS IGUAIS
+        itens_adicionados_salgado = escolha_valida.validar_igualdade(f"{nome_comanda}", 'salgado',data,hora)
+        itens_adicionados_doce = escolha_valida.validar_igualdade(f"{nome_comanda}", 'doce',data,hora)
+        itens_adicionados_bolo = escolha_valida.validar_igualdade(f"{nome_comanda}", 'bolo',data,hora)
+        itens_adicionados_sobremesa = escolha_valida.validar_igualdade(f"{nome_comanda}", 'sobremesa',data,hora)
+        itens_adicionados_fio_ovos = escolha_valida.validar_igualdade(f"{nome_comanda}", 'fio_de_ovos',data,hora)
+
+        with open("relatorio_diario_completo.json", "r") as r:
+            rel_completo = json.load(r)
+
+        rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["salgado"] = itens_adicionados_salgado
+        rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["doce"] = itens_adicionados_doce
+        rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["bolo"] = itens_adicionados_bolo
+        rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesa"] = itens_adicionados_sobremesa
+        rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"] = itens_adicionados_fio_ovos
+
+
+        with open("comandas.json", "w") as w:
+            json.dump(comandas, w, indent=4)
+        with open("relatorio_diario_completo.json", "w") as w:
+            json.dump(rel_completo, w, indent=4)
 
         mostrar_comanda_geral(comandas["comandas"][f"{nome_comanda}"], nome_comanda)
 

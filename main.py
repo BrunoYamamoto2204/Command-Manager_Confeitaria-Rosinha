@@ -7,7 +7,6 @@ while True:
     if resp == 9:
         break
 
-# CRIAR O ARQUIVO NA ÁREA DE TRABALHO / ABRIR O ARQUIVO AO INICIAR O CÓDIGO
 
                     ## RESUMO DOS JSONs ##
 # COMANDAS - SALVAS APÓS TERMINAR DE REGISTRAR A COMANDA

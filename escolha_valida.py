@@ -94,6 +94,26 @@ def nome_comanda():
 
     return variavel_nome.lower()
 
+def nome_produto(itens_split):
+
+    if len(itens_split) == 6:  # 1 palavra (nome do item)
+        produto = (itens_split[5])
+        # print(itens_split[5])
+    elif len(itens_split) == 7:  # 2 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6])
+        # print(itens_split[5] + " " + itens_split[6])
+    elif len(itens_split) == 8:  # 3 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
+    elif len(itens_split) == 9:  # 4 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
+    else:  # 5 palavras (nome do item)
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+
+    return produto
+
 def esc_relatorio():
     while True:
         try:
@@ -945,21 +965,7 @@ def validar_exclusao(itens_split,qntd,data):
     with open('relatorio_diario_simples.json','r') as r:
         rel_simples =json.load(r)
 
-    if len(itens_split) == 6:  # 1 palavra (nome do item)
-        produto = (itens_split[5])
-        # print(itens_split[5])
-    elif len(itens_split) == 7:  # 2 palavras (nome do item)
-        produto = (itens_split[5] + " " + itens_split[6])
-        # print(itens_split[5] + " " + itens_split[6])
-    elif len(itens_split) == 8:  # 3 palavras (nome do item)
-        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
-        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7])
-    elif len(itens_split) == 9:  # 4 palavras (nome do item)
-        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
-        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
-    else:  # 5 palavras (nome do item)
-        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
-        # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+    produto = nome_produto(itens_split)
 
     #SALGADOS
     if unidecode(produto) in dados['salgado']['fritos']:
@@ -1082,3 +1088,72 @@ def tabelas_excel():
         excel.tabela_encomendas(data_formatada)
     if escolha == 2:
         excel.tabela_entregas(data_formatada)
+
+def validar_igualdade(nome,categoria,dia,hora):
+    with open("relatorio_diario_completo.json", "r") as r:
+        rel_completo = json.load(r)
+
+    relatorio = rel_completo[dia][hora][nome]
+    itens_cat = relatorio[categoria]
+
+    tirar_repetidos = []
+
+    if len(relatorio[categoria]) > 0:
+        nomes_categoria = []
+        for item in itens_cat: # Junta apenas os nomes do item.split()
+            split = item.split()
+            nome = nome_produto(split)
+
+            split = (split[:5])
+            split.append(nome)
+
+            nomes_categoria.append(split)
+
+        nomes_categoria_add_atualizado = []
+        nomes_categoria_atualizado = []
+
+        for item in nomes_categoria: # Passa por todos os itens da categoria
+            qntd_item = float(item[2])
+            qntd_total = qntd_item
+
+            for item_add in relatorio["ADICIONADO"][categoria]: # Dentro de cada item, procura se não tem um igual no ADD
+                split_add = str(item_add).split()
+                nome_add = nome_produto(split_add)
+
+                if nome_add in item[5]: # Se tiver o mesmo item no na categiria e no ADD
+
+                    qntd_item_add = float(split_add[2])
+                    qntd_total += qntd_item_add
+
+                else:
+                    tirar_repetidos.append(item[5]) # Registra os itens que tem na categoria
+                    nomes_categoria_add_atualizado.append(item_add)
+
+            item[2] = qntd_total
+
+            juntar_nome = ""
+            for p in item:
+                juntar_nome += " " + str(p)
+
+            nomes_categoria_atualizado.append(juntar_nome.strip())
+
+
+        relatorio[categoria] = nomes_categoria_atualizado
+
+        with open("relatorio_diario_completo.json","w") as w:
+            json.dump(rel_completo,w,indent=4)
+
+        itens_nao_repetidos = []
+        for item in nomes_categoria_add_atualizado:
+            item_split = str(item).split()
+            nome = nome_produto(item_split)
+
+            if nome not in tirar_repetidos:
+                # print(tirar_repetidos)
+                tirar_repetidos.append(nome) # Vai adicionando os itens aos que já formam para não repetir no add
+                itens_nao_repetidos.append(item) # Só adiciona se ainda nao tiver o nome no add
+
+        return itens_nao_repetidos
+
+    else:
+        return relatorio["ADICIONADO"][categoria]

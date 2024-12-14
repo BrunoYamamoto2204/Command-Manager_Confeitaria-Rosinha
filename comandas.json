@@ -44,7 +44,7 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 41,
+            "num_item": 56,
             "obs": "bolo deve ser legal",
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
@@ -69,10 +69,17 @@
                     "(19) -> 1.0 Kg - Empad\u00e3o Frango",
                     "(21) -> 3.0 Kg - Empad\u00e3o Palmito",
                     "(34) -> 4 UN - Coxinha",
-                    "(39) -> 1 UN - Coxinha"
+                    "(39) -> 1 UN - Coxinha",
+                    "(41) -> 10 UN - Coxinha",
+                    "(44) -> 10 UN - Coxinha",
+                    "(47) -> 1 UN - Coxinha"
                 ],
                 "doces": [
-                    "(35) -> 14 UN - Brigadeiro"
+                    "(35) -> 14 UN - Brigadeiro",
+                    "(45) -> 30 UN - Beijinho",
+                    "(45) -> 15 UN - Camafeu",
+                    "(47) -> 15 UN - Camafeu",
+                    "(47) -> 20 UN - Beijinho"
                 ],
                 "bolos": [
                     "(9) -> 3 Kg - Morango Nata e Suspiro",
@@ -80,7 +87,12 @@
                     "(15) -> 2 Kg - Sinfonia de Damasco",
                     "(17) -> 2 Kg - Martha Rocha",
                     "(20) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro",
-                    "(33) -> 2 Kg - Abacaxi c/ C\u00f4co"
+                    "(33) -> 2 Kg - Abacaxi c/ C\u00f4co",
+                    "(47) -> 1 Kg - Ta\u00e7a Martha Rocha",
+                    "(47) -> 1 Kg - Martha Rocha",
+                    "(53) -> 1 Kg - Ta\u00e7a Martha Rocha",
+                    "(54) -> 3 Kg - Ta\u00e7a Martha Rocha",
+                    "(55) -> 1 Kg - Ta\u00e7a Martha Rocha"
                 ],
                 "sobremesas": [
                     "(13) -> 2 UN - Mini Torta Morango",
@@ -91,7 +103,8 @@
                     "(40) -> 1 KG - Torta Choco Morango"
                 ],
                 "fio_de_ovos": [
-                    "(31) -> 2 Kg - Fio de ovos"
+                    "(31) -> 2 Kg - Fio de ovos",
+                    "(47) -> 10 Kg - Fio de ovos"
                 ]
             }
         },
@@ -981,7 +994,7 @@
             "dia_semana": "Segunda-Feira",
             "hora_pronta": "11:00",
             "hora_entrega": "12:00",
-            "num_item": 4,
+            "num_item": 8,
             "obs": "Deve estar tudo bem legal",
             "salgados": [
                 "(1) -> 1 UN - Coxinha"
@@ -993,7 +1006,12 @@
             ],
             "fio_de_ovos": [],
             "ADICIONADO": {
-                "salgados": [],
+                "salgados": [
+                    "(4) -> 1.0 Kg - Empad\u00e3o Frango",
+                    "(5) -> 11 UN - Coxinha",
+                    "(5) -> 22 UN - Coxinha",
+                    "(5) -> 33 UN - Coxinha"
+                ],
                 "doces": [
                     "(3) -> 1 UN - Brigadeiro"
                 ],
