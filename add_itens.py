@@ -156,6 +156,7 @@ def opc_comandas(opc):
             if cont == "N":
                 break
 
+        # Salvar os adicionados
         with open("relatorio_diario_completo.json", "w") as w:
             json.dump(rel_completo, w, indent=4)
 
@@ -166,6 +167,7 @@ def opc_comandas(opc):
         itens_adicionados_sobremesa = escolha_valida.validar_igualdade(f"{nome_comanda}", 'sobremesa',data,hora)
         itens_adicionados_fio_ovos = escolha_valida.validar_igualdade(f"{nome_comanda}", 'fio_de_ovos',data,hora)
 
+        # Salvar a soma dos itens repetidos da categoria
         with open("relatorio_diario_completo.json", "r") as r:
             rel_completo = json.load(r)
 
@@ -175,7 +177,7 @@ def opc_comandas(opc):
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesa"] = itens_adicionados_sobremesa
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"] = itens_adicionados_fio_ovos
 
-
+        # Retirar os itens que já foram somados
         with open("comandas.json", "w") as w:
             json.dump(comandas, w, indent=4)
         with open("relatorio_diario_completo.json", "w") as w:
@@ -221,7 +223,3 @@ def opc_comandas(opc):
 
     if opc == 9: # SAIR
         return 9
-
-
-
-

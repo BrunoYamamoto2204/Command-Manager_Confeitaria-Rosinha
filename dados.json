@@ -1,39 +1,39 @@
 {
     "doce": {
         "tradicional/espelhado": {
-            "Brigadeiro": -19.0,
-            "Brigadeiro Branco": 0,
-            "Beijinho": 50,
-            "Olho de Sogra": 0,
+            "Brigadeiro": 59.0,
+            "Brigadeiro Branco": 2,
+            "Beijinho": 3.0,
+            "Olho de Sogra": 1,
             "Cajuzinho": 0,
             "Brigadeiro Preto c/ Cereal": 0,
             "Brigadeiro Branco c/ Cereal": 0,
-            "Dois Amores": 0,
+            "Dois Amores": 1,
             "Espelhado Ourico": 0,
             "Espelhado Dois Amores": 0,
             "Espelhado Brigadeiro": 0,
-            "Espelhado Cereja": 0,
+            "Espelhado Cereja": 1,
             "Espelhado Nozes": 0,
             "Espelhado Olho Sogra": 33
         },
         "bombom": {
-            "Bomb. Morango": 1,
-            "Bomb. Damasco": 3,
+            "Bomb. Morango": 2,
+            "Bomb. Damasco": 4,
             "Bomb. Uva": 0,
             "Bomb. Cereja": 0,
             "Bomb. Nozes": 0,
-            "Bomb. Brigadeiro": 0,
-            "Bomb. Coco": 0,
+            "Bomb. Brigadeiro": 1,
+            "Bomb. Coco": 51,
             "Bomb. Dois Amores": 0,
-            "Bomb. Crocante": 0,
+            "Bomb. Crocante": 2,
             "Bomb. Laranjinha": 0,
-            "Bomb. Suspiro": 20,
-            "Camafeu": 74
+            "Bomb. Suspiro": 30,
+            "Camafeu": 485.0
         }
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 319.0,
+            "Coxinha": 418.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": -30.0,
             "Kibe Recheado": 0,
@@ -49,7 +49,7 @@
             "Espetinho Frango": 45
         },
         "assados": {
-            "Esfiha Carne": 0,
+            "Esfiha Carne": 4,
             "Esfiha Frango": 0,
             "Esfiha Ricota c/ Tomate Seco": 0,
             "Doguinho": 0,
@@ -67,17 +67,17 @@
         "empadao": {
             "Empadao Palmito": 4.0,
             "Empadao Camarao": 2.0,
-            "Empadao Frango": 30.0
+            "Empadao Frango": 32.0
         }
     },
     "bolo": {
         "Abacaxi c/ Coco": 9.0,
         "Ameixa c/ Coco": 0,
         "Delicia de Limao e Abacaxi": 0,
-        "Martha Rocha": 1.0,
+        "Martha Rocha": -2.0,
         "Prestigio": 0,
         "Sonho de Valsa": 0,
-        "Morango Nata e Suspiro": 0,
+        "Morango Nata e Suspiro": 1.0,
         "Morango c/ Chocolate": 0,
         "Surpresa de Morango": 0,
         "Tentacao de Morango": 0,
@@ -85,7 +85,7 @@
         "Sinfonia de Damasco": 0,
         "Bolo Trufado": 2.0,
         "Floresta Negra": 2.0,
-        "Taca Martha Rocha": 8.0,
+        "Taca Martha Rocha": 5.0,
         "Taca Dueto": 0,
         "Taca Morango Nata e Suspiro": 6.0
     },
@@ -113,10 +113,10 @@
             "Pave Pessego": 0,
             "Pave Abacaxi": 0,
             "Profiteroles": 0,
-            "Banoff": 4.0
+            "Banoff": 3.0
         }
     },
     "fio_de_ovos": {
-        "Fio de ovos": 148.0
+        "Fio de ovos": 110.0
     }
 }

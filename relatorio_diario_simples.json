@@ -22,27 +22,39 @@
     },
     "22/04/2024": {
         "doce": {
-            "Brigadeiro": 26.0,
-            "Beijinho": 50.0,
-            "Camafeu": 30.0
+            "Brigadeiro": 104.0,
+            "Beijinho": 3.0,
+            "Camafeu": 441.0,
+            "Brigadeiro Branco": 2.0,
+            "Dois Amores": 1.0,
+            "Bomb. Suspiro": 10.0,
+            "Espelhado Cereja": 1.0,
+            "Bomb. Coco": 51.0,
+            "Bomb. Crocante": 2.0,
+            "Bomb. Brigadeiro": 1.0,
+            "Bomb. Damasco": 1.0,
+            "Bomb. Morango": 1.0,
+            "Olho de Sogra": 1.0
         },
         "salgado": {
-            "Coxinha": 226.0,
+            "Coxinha": 325.0,
             "Empadao Palmito": 1.0,
             "Empadao Camarao": 0.0,
-            "Empadao Frango": 2.0
+            "Empadao Frango": 4.0,
+            "Esfiha Carne": 4.0
         },
         "bolo": {
-            "Taca Martha Rocha": 6.0,
-            "Martha Rocha": 1.0
+            "Taca Martha Rocha": 3.0,
+            "Martha Rocha": -2.0,
+            "Morango Nata e Suspiro": 1.0
         },
         "sobremesa": {
-            "Banoff": 2.0,
+            "Banoff": 1.0,
             "Mini Quindim": 6.0,
             "Torta Choco Morango": 1.0
         },
         "fio_de_ovos": {
-            "Fio de ovos": 5.0
+            "Fio de ovos": -33.0
         }
     },
     "07/07/2024": {

@@ -1,13 +1,15 @@
 import json
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from unidecode import unidecode
 import comandas
 import excel
+
+
 def esc_principal():
     while True:
         try:
             escolha = int(input
-("""\nEscolha uma opção:\n 
+                          ("""\nEscolha uma opção:\n 
 \033[33m1\033[m - \033[34mSalgados\033[m 
 \033[33m2\033[m - \033[34mDoces\033[m 
 \033[33m3\033[m - \033[34mBolos\033[m 
@@ -23,6 +25,7 @@ Escolha: """))
             print("\033[31mEscolha um número entre 1 e 5 apenas!\033[m\n")
 
     return escolha
+
 
 def esc_opcoes():
     while True:
@@ -48,6 +51,7 @@ def esc_opcoes():
 
     return opc
 
+
 def esc_comandas():
     print("=" * 60)
     while True:
@@ -70,32 +74,33 @@ def esc_comandas():
 
     return opc
 
+
 def nome_comanda():
     with open("comandas.json", "r") as r:
         comandas = json.load(r)
 
     lista_nomes_clientes = []
-    for nomes in comandas['comandas']: #Armazena todos os nomes na lista
+    for nomes in comandas['comandas']:  # Armazena todos os nomes na lista
         lista_nomes_clientes.append(nomes)
 
     while True:
         try:
             nome = (input("Nome do cliente referente a comanda: "))
             variavel_nome = ""
-            for c in nome.split(): #Converte o nome do clinte no da variável
+            for c in nome.split():  # Converte o nome do clinte no da variável
                 variavel_nome += c + "_"
 
-            if variavel_nome.lower() in lista_nomes_clientes: #Confere se tem esse nome na lista
+            if variavel_nome.lower() in lista_nomes_clientes:  # Confere se tem esse nome na lista
                 break
-            else: 
+            else:
                 print(f"\033[31mCliente não encontrado!\033[m\n")
         except ValueError:
             print(f"\033[31mCliente não encontrado!\033[m\n")
 
     return variavel_nome.lower()
 
-def nome_produto(itens_split):
 
+def nome_produto(itens_split):
     if len(itens_split) == 6:  # 1 palavra (nome do item)
         produto = (itens_split[5])
         # print(itens_split[5])
@@ -109,10 +114,12 @@ def nome_produto(itens_split):
         produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
         # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8])
     else:  # 5 palavras (nome do item)
-        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
+        produto = (itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " +
+                   itens_split[9])
         # print(itens_split[5] + " " + itens_split[6] + " " + itens_split[7] + " " + itens_split[8] + " " + itens_split[9])
 
     return produto
+
 
 def esc_relatorio():
     while True:
@@ -138,11 +145,11 @@ def esc_relatorio():
 
 
 def esc_salgado():
-    #ESCOLHA DOS TIPOS DE SALGADOS
+    # ESCOLHA DOS TIPOS DE SALGADOS
     while True:
         try:
             tipo_salg = int(input
-("""Escolha o tipo de salgado: 
+                            ("""Escolha o tipo de salgado: 
 \033[33m1\033[m - \033[34mFritos\033[m 
 \033[33m2 - \033[34mAssados
 \033[33m3 - \033[34mEmpadão\033[m 
@@ -155,14 +162,14 @@ Escolha:"""))
         except ValueError:
             print("\033[31mEscolha um número entre 1 e 3 apenas!\033[m\n")
 
-    print("="*60)
+    print("=" * 60)
 
-    #ESCOLHA DOS SALGADOS
+    # ESCOLHA DOS SALGADOS
     if tipo_salg == 1:
         while True:
             try:
                 escolha = int(input
-("""Escolha o salgado assado frito: 
+                              ("""Escolha o salgado assado frito: 
 \033[33m1 - \033[34mCoxinha\033[m  
 \033[33m2 - \033[34mCoxinha c/ Catupiry\033[m 
 \033[33m3 - \033[34mKibe\033[m
@@ -190,7 +197,7 @@ Escolha: """))
         while True:
             try:
                 escolha = int(input
-("""Escolha o salgado assado:
+                              ("""Escolha o salgado assado:
 \033[33m15 - \033[34mEsfiha Carne    
 \033[33m16 - \033[34mEsfiha Frango 
 \033[33m17 - \033[34mEsfiha Ricota c/ Tomate Seco 
@@ -205,7 +212,7 @@ Escolha: """))
 \033[33m26 - \033[34mFolhado Presunto e Ameixa 
 \033[33m27 - \033[34mFolhado Frango /c Catupiry 
 \033[33m28 - \033[34mFolhado Presunto e Queijo\033[m
- 
+
 Escolha: """))
                 if escolha > 28 or escolha < 15:
                     print("\033[31mEscolha um número entre 15 e 28 apenas!\033[m\n")
@@ -218,7 +225,7 @@ Escolha: """))
         while True:
             try:
                 escolha = int(input
-("""Escolha o salgado empadão:
+                              ("""Escolha o salgado empadão:
 \033[33m29\033[m - \033[34mEmpadão Palmito   
 \033[33m30\033[m - \033[34mEmpadão Camarão  
 \033[33m31\033[m - \033[34mEmpadão Frango\033[m 
@@ -229,15 +236,16 @@ Escolha: """))
                 else:
                     break
             except ValueError:
-                print("\033[31mEscolha um número entre 29 e 31 apenas!\033[m\n")\
-
+                print("\033[31mEscolha um número entre 29 e 31 apenas!\033[m\n")
 
     return escolha
+
+
 def esc_doce():
     while True:
         try:
             tipo_doce = int(input
-("""Escolha o tipo de doce: 
+                            ("""Escolha o tipo de doce: 
 \033[33m1\033[m - \033[34mTradicionais/Espelhados\033[m 
 \033[33m2 - \033[34mBombom\033[m 
 
@@ -255,7 +263,7 @@ Escolha:"""))
         while True:
             try:
                 escolha = int(input
-("""Escolha o doce tradicional/espelhado:
+                              ("""Escolha o doce tradicional/espelhado:
 \033[33m1\033[m - \033[34mBrigadeiro   
 \033[33m2\033[m- \033[34mBrigadeiro Branco
 \033[33m3\033[m- \033[34mBeijinho
@@ -270,7 +278,7 @@ Escolha:"""))
 \033[33m12\033[m- \033[34mEspelhado Cereja
 \033[33m13\033[m- \033[34mEspelhado Nozes
 \033[33m14\033[m- \033[34mEspelhado Olho Sogra\033[m  
-    
+
 Escolha: """))
                 if escolha > 14 or escolha < 1:
                     print("\033[31mEscolha um número entre 1 e 14 apenas!\033[m\n")
@@ -283,7 +291,7 @@ Escolha: """))
         while True:
             try:
                 escolha = int(input
-("""Escolha o bombom:
+                              ("""Escolha o bombom:
 \033[33m15\033[m - \033[34mBomb. Morango   
 \033[33m16\033[m - \033[34mBomb. Damasco
 \033[33m17\033[m - \033[34mBomb. Uva
@@ -307,11 +315,13 @@ Escolha: """))
                 print("\033[31mEscolha um número entre 15 e 26 apenas!\033[m\n")
 
     return escolha
+
+
 def esc_bolo():
     while True:
         try:
             escolha = int(input
-("""Escolha o tipo de bolo: 
+                          ("""Escolha o tipo de bolo: 
 \033[33m1\033[m - \033[34mAbacaxi /c Côco\033[m 
 \033[33m2 - \033[34mAmeixa c/ Côco
 \033[33m3 - \033[34mDelícia de Limão e abacaxi
@@ -339,11 +349,13 @@ Escolha:"""))
             print("\033[31mEscolha um número entre 1 e 17 apenas!\033[m\n")
 
     return escolha
+
+
 def esc_sobremesa():
     while True:
         try:
             tipo_sobremesa = int(input
-("""Escolha o tipo da sobremesa: 
+                                 ("""Escolha o tipo da sobremesa: 
 \033[33m1\033[m - \033[34mTortas/Tortinhas/Quindim\033[m 
 \033[33m2 - \033[34mPavês/Profeteroles/Banoff/Mil Folhas\033[m 
 
@@ -361,7 +373,7 @@ Escolha:"""))
         while True:
             try:
                 escolha = int(input
-("""Escolha a torta:
+                              ("""Escolha a torta:
 \033[33m1\033[m - \033[34mTorta Choco Morango  
 \033[33m2\033[m - \033[34mTorta Choco Nana 
 \033[33m3\033[m - \033[34mTorta Maracujá  
@@ -382,11 +394,11 @@ Escolha: """))
                     break
             except ValueError:
                 print("\033[31mEscolha um número entre 1 e 12 apenas!\033[m\n")
-    if tipo_sobremesa ==2:
+    if tipo_sobremesa == 2:
         while True:
             try:
                 escolha = int(input
-("""Escolha a torta:
+                              ("""Escolha a torta:
 \033[33m13\033[m - \033[34mMil Folhas
 \033[33m14\033[m - \033[34mMil Folhas c / Morango
 \033[33m15\033[m - \033[34mMil Folhas c / Frutas
@@ -407,9 +419,9 @@ Escolha: """))
     return escolha
 
 
-def qnd_salg(salg,nome):
+def qnd_salg(salg, nome):
     with open("comandas.json", "r", encoding="utf-8") as r:
-         comanda = json.load(r)
+        comanda = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
 
@@ -419,7 +431,7 @@ def qnd_salg(salg,nome):
                   "Esfiha Frango", "Esfiha Ricota c/ Tomate Seco", "Doguinho", "Mini Calzone Frango", "Mini Pizza",
                   "Assado Escarola e Bacon", "Empadinha Frango", "Empadinha Palmito", "Empadinha Camarão",
                   "Trouxinha Camarão", "Folhado Presunto e Ameixa", "Folhado Frango c/ Catupiry",
-                  "Folhado Presunto e Queijo", "Empadão Palmito", "Empadão Camarão", "Empadão Frango",""]
+                  "Folhado Presunto e Queijo", "Empadão Palmito", "Empadão Camarão", "Empadão Frango", ""]
 
     salgado = lista_salg[salg - 1]
 
@@ -428,60 +440,61 @@ def qnd_salg(salg,nome):
             if salg < 29:
                 qntd = int(input("Quantidade de Salgados(UN): ").strip())
             else:
-                qntd = float(input("Peso do Empadão(Kg): ").strip().replace(",","."))
+                qntd = float(input("Peso do Empadão(Kg): ").strip().replace(",", "."))
                 float(qntd)
         except ValueError:
             print("\033[31m\nDigite uma quantidade válida!\033[m")
         else:
             break
 
-    #ADICIONAR EM DADOS
-    if salg >= 1 and salg <= 14: #FRITOS
+    # ADICIONAR EM DADOS
+    if salg >= 1 and salg <= 14:  # FRITOS
         dados_salgado = dados['salgado']['fritos'][unidecode(salgado)] + qntd
         dados['salgado']['fritos'][unidecode(salgado)] = dados_salgado
-    if salg >=15 and salg <= 28: #ASSADOS
+    if salg >= 15 and salg <= 28:  # ASSADOS
         dados_salgado = dados['salgado']['assados'][unidecode(salgado)] + qntd
         dados['salgado']['assados'][unidecode(salgado)] = dados_salgado
-    if salg >=29 and salg <= 31: #ASSADOS
+    if salg >= 29 and salg <= 31:  # ASSADOS
         dados_salgado = dados['salgado']['empadao'][unidecode(salgado)] + float(qntd)
         dados['salgado']['empadao'][unidecode(salgado)] = dados_salgado
 
     with open("dados.json", "w") as w:
         json.dump(dados, w, indent=4, ensure_ascii=False)
 
-    #ADICIONAR EM RELATORIO DIARIO SIMPLES
+    # ADICIONAR EM RELATORIO DIARIO SIMPLES
     with open("relatorio_diario_simples.json", "r") as r:
         data = json.load(r)
 
-    data_simples = comanda['comandas'][nome]["data"] #DATA A SER ADD NO RELATORIO SIMPLES
-    if unidecode(salgado) in data[data_simples]['salgado']: #CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
+    data_simples = comanda['comandas'][nome]["data"]  # DATA A SER ADD NO RELATORIO SIMPLES
+    if unidecode(salgado) in data[data_simples]['salgado']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['salgado'][unidecode(salgado)] + float(qntd)
         data[data_simples]['salgado'][unidecode(salgado)] = qntd_simples
-    else:                                                    #CASO NAO TENHA, CRIA
+    else:  # CASO NAO TENHA, CRIA
         data[data_simples]['salgado'][unidecode(salgado)] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
 
-    #ADICIONAR EM COMANDAS
+    # ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     if salg < 29:
         return f"({num_item}) -> {qntd} UN - {salgado}"
     else:
         return f"({num_item}) -> {qntd} Kg - {salgado}"
 
-def qntd_doce(doces,nome):
+
+def qntd_doce(doces, nome):
     with open("comandas.json", "r", encoding="utf-8") as r:
-         comanda = json.load(r)
+        comanda = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
 
     lista_doce = ["Brigadeiro", "Brigadeiro Branco", "Beijinho", "Olho de Sogra", "Cajuzinho",
-                   "Brigadeiro Preto c/ Cereal", "Brigadeiro Branco c/ Cereal", "Dois Amores", "Espelhado Ouriço",
-                   "Espelhado Dois Amores", "Espelhado Brigadeiro", "Espelhado Cereja", "Espelhado Nozes",
-                   "Espelhado Olho Sogra", "Bomb. Morango", "Bomb. Damasco", "Bomb. Uva", "Bomb. Cereja", "Bomb. Nozes",
-                   "Bomb. Brigadeiro", "Bomb. Côco", "Bomb. Dois Amores", "Bomb. Crocante", "Bomb. Laranjinha",
-                   "Bomb. Suspiro", "Camafeu"]
+                  "Brigadeiro Preto c/ Cereal", "Brigadeiro Branco c/ Cereal", "Dois Amores", "Espelhado Ouriço",
+                  "Espelhado Dois Amores", "Espelhado Brigadeiro", "Espelhado Cereja", "Espelhado Nozes",
+                  "Espelhado Olho Sogra", "Bomb. Morango", "Bomb. Damasco", "Bomb. Uva", "Bomb. Cereja", "Bomb. Nozes",
+                  "Bomb. Brigadeiro", "Bomb. Côco", "Bomb. Dois Amores", "Bomb. Crocante", "Bomb. Laranjinha",
+                  "Bomb. Suspiro", "Camafeu"]
 
     doce = lista_doce[doces - 1]
 
@@ -512,27 +525,28 @@ def qntd_doce(doces,nome):
     if unidecode(doce) in data[data_simples]['doce']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['doce'][unidecode(doce)] + float(qntd)
         data[data_simples]['doce'][unidecode(doce)] = qntd_simples
-    else:                                               # CASO NAO TENHA, CRIA
+    else:  # CASO NAO TENHA, CRIA
         data[data_simples]['doce'][unidecode(doce)] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
 
-    #ADICIONAR EM COMANDAS
+    # ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} UN - {doce}"
 
-def qntd_sobremesa(sobre,nome):
+
+def qntd_sobremesa(sobre, nome):
     with open("comandas.json", "r", encoding="utf-8") as r:
-         comanda = json.load(r)
+        comanda = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
 
     lista_sobremesa = ["Torta Choco Morango", "Torta Choco Nana", "Torta Maracujá", "Torta Limão", "Torta Morango",
-                        "Torta Alemã", "Mini Quindim", "Mini Torta Brigadeiro", "Mini Torta Limão",
-                        "Mini Torta Morango", "Mini Torta Strogonoff Nozes", "Mini Torta Uva", "Mil Folhas",
-                        "Mil Folhas c/ Morango", "Mil Folhas c/ Frutas", "Pavê Frutas Tropicais", "Pavê Morango",
-                        "Pavê Pêssego", "Pavê Abacaxi", "Profiteroles", "Banoff"]
+                       "Torta Alemã", "Mini Quindim", "Mini Torta Brigadeiro", "Mini Torta Limão",
+                       "Mini Torta Morango", "Mini Torta Strogonoff Nozes", "Mini Torta Uva", "Mil Folhas",
+                       "Mil Folhas c/ Morango", "Mil Folhas c/ Frutas", "Pavê Frutas Tropicais", "Pavê Morango",
+                       "Pavê Pêssego", "Pavê Abacaxi", "Profiteroles", "Banoff"]
 
     sobremesa = lista_sobremesa[sobre - 1]
 
@@ -567,22 +581,23 @@ def qntd_sobremesa(sobre,nome):
     if unidecode(sobremesa) in data[data_simples]['sobremesa']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['sobremesa'][unidecode(sobremesa)] + float(qntd)
         data[data_simples]['sobremesa'][unidecode(sobremesa)] = qntd_simples
-    else:                                               # CASO NAO TENHA, CRIA
+    else:  # CASO NAO TENHA, CRIA
         data[data_simples]['sobremesa'][unidecode(sobremesa)] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
 
-    #ADICIONAR EM COMANDAS
+    # ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     if sobre < 7 or sobre > 12:
         return f"({num_item}) -> {qntd} KG - {sobremesa}"
     else:
         return f"({num_item}) -> {qntd} UN - {sobremesa}"
 
-def qntd_bolo(bolo,nome):
+
+def qntd_bolo(bolo, nome):
     with open("comandas.json", "r", encoding="utf-8") as r:
-         comanda = json.load(r)
+        comanda = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
 
@@ -618,19 +633,20 @@ def qntd_bolo(bolo,nome):
     if unidecode(bolos) in data[data_simples]['bolo']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['bolo'][unidecode(bolos)] + float(qntd)
         data[data_simples]['bolo'][unidecode(bolos)] = qntd_simples
-    else:                                               # CASO NAO TENHA, CRIA
+    else:  # CASO NAO TENHA, CRIA
         data[data_simples]['bolo'][unidecode(bolos)] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
 
-    #ADICIONAR EM COMANDAS
+    # ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - {bolos}"
 
+
 def qntd_fio_de_ovos(nome):
     with open("comandas.json", "r", encoding="utf-8") as r:
-         comanda = json.load(r)
+        comanda = json.load(r)
     with open("dados.json", "r") as r:
         dados = json.load(r)
 
@@ -657,19 +673,18 @@ def qntd_fio_de_ovos(nome):
     if 'Fio de ovos' in data[data_simples]['fio_de_ovos']:  # CONFERE SE TEM ESSE PRODUTO, E ADICIONA SE TIVER
         qntd_simples = data[data_simples]['fio_de_ovos']['Fio de ovos'] + float(qntd)
         data[data_simples]['fio_de_ovos']['Fio de ovos'] = qntd_simples
-    else:                                               # CASO NAO TENHA, CRIA
+    else:  # CASO NAO TENHA, CRIA
         data[data_simples]['fio_de_ovos']['Fio de ovos'] = float(qntd)
 
     with open("relatorio_diario_simples.json", "w") as w:
         json.dump(data, w, indent=4)
 
-    #ADICIONAR EM COMANDAS
+    # ADICIONAR EM COMANDAS
     num_item = comanda['comandas'][nome]["num_item"]
     return f"({num_item}) -> {qntd} Kg - Fio de ovos"
 
 
 def nome_cliente():
-
     while True:
 
         while True:
@@ -688,9 +703,10 @@ def nome_cliente():
 
     variavel_nome = ""
     for c in nome.split():
-        variavel_nome+=c+"_"
+        variavel_nome += c + "_"
 
     return variavel_nome.lower()
+
 
 def numero_cliente():
     with open("comandas.json", "r") as r:
@@ -703,7 +719,7 @@ def numero_cliente():
             print("(2) - Apenas Telefone ")
             print("(3) - Telefone e Celular\n")
             esc_cel_tel = int(input("Escolha: "))
-            if esc_cel_tel < 1 or esc_cel_tel >3:
+            if esc_cel_tel < 1 or esc_cel_tel > 3:
                 print("\033[mApenas números entre 1 e 3\033[m")
             else:
                 break
@@ -732,7 +748,6 @@ def numero_cliente():
                 print("\033[mNúmero celular inválido!\033[m")
 
         num_tel = ''
-
 
     if esc_cel_tel == 2:
         # TELEFONE
@@ -797,10 +812,11 @@ def numero_cliente():
             except:
                 print("\033[mNúmero celular inválido!\033[m")
 
-    return [num_cel,num_tel]
+    return [num_cel, num_tel]
+
 
 def dia_data(nome):
-    #DATA
+    # DATA
     while True:
         try:
             data = input("\n\033[36m|| Formato (%dd/%m/%yyyy) ||\033[m\nData da encomenda: ")
@@ -808,19 +824,19 @@ def dia_data(nome):
         except ValueError:
             print("\033[31mData inválida!\033[m")
         else:
-            data_formatada = datetime.strftime(data_formatada,"%d/%m/%Y")
+            data_formatada = datetime.strftime(data_formatada, "%d/%m/%Y")
             break
 
     print()
 
-    #ADICIONAR DATA NO RELATORIO_DIARIO
+    # ADICIONAR DATA NO RELATORIO_DIARIO
     with open("relatorio_diario_simples.json", "r") as r:
         data = json.load(r)
     with open("relatorio_diario_completo.json", "r") as r:
         data_completa = json.load(r)
 
-    if data_formatada not in data:  #SÓ VAI SER CRIADO SE AINDA NÃO EXISTIR A DATA
-        data[data_formatada] = {"doce":{},"salgado":{},"bolo":{},"sobremesa":{},"fio_de_ovos":{}}
+    if data_formatada not in data:  # SÓ VAI SER CRIADO SE AINDA NÃO EXISTIR A DATA
+        data[data_formatada] = {"doce": {}, "salgado": {}, "bolo": {}, "sobremesa": {}, "fio_de_ovos": {}}
         data_completa[data_formatada] = {}
 
     def converter_data(data_str):
@@ -829,11 +845,11 @@ def dia_data(nome):
     sorted_keys = sorted(data.keys(), key=converter_data)
     sorted_keys_completa = sorted(data_completa.keys(), key=converter_data)
 
-    sorted_data = {} #DIARIO SIMPLES
+    sorted_data = {}  # DIARIO SIMPLES
     for key in sorted_keys:
         sorted_data[key] = data[key]
 
-    sorted_data_completa = {} #DIARIO COMPLETO
+    sorted_data_completa = {}  # DIARIO COMPLETO
     for key in sorted_keys_completa:
         sorted_data_completa[key] = data_completa[key]
 
@@ -843,8 +859,9 @@ def dia_data(nome):
     with open("relatorio_diario_completo.json", "w") as w:
         json.dump(sorted_data_completa, w, indent=4)
 
-    #DIA DA SEMANA
-    dias_da_semana=["","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado","Domingo"]
+    # DIA DA SEMANA
+    dias_da_semana = ["", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado",
+                      "Domingo"]
 
     while True:
         print("\033[1;33mEscolha o dia da semana:\033[m ")
@@ -865,12 +882,13 @@ def dia_data(nome):
         except ValueError:
             print("\033[31mDigite apenas valores de 1 a 7\033[m")
 
-    return [data_formatada,dias_da_semana[dia_semana]]
+    return [data_formatada, dias_da_semana[dia_semana]]
+
 
 def horario_comanda():
     while True:
         encomenda = input("\nA comanda é para \033[33mentrega?\033[m S/N:").strip().upper()
-        if encomenda  == "S" or encomenda == "N":
+        if encomenda == "S" or encomenda == "N":
             break
         else:
             print("\033[31mResposta inválida! Responda S/N\033[m")
@@ -881,7 +899,7 @@ def horario_comanda():
         while True:
             try:
                 horario_entrega = input("\n\033[36m|| Formato (00:00) ||\033[m\nHorário da entrega: ")
-                horario_formatado = datetime.strptime(horario_entrega,"%H:%M")
+                horario_formatado = datetime.strptime(horario_entrega, "%H:%M")
             except ValueError:
                 print("\033[31mHorário Inválido!\033[m")
             else:
@@ -896,7 +914,7 @@ def horario_comanda():
         while True:
             try:
                 horario_pronto = input("\n\033[36m||Formato (00:00)||\033[m\nHorário da encomenda: ")
-                horario_formatado = datetime.strptime(horario_pronto,"%H:%M")
+                horario_formatado = datetime.strptime(horario_pronto, "%H:%M")
             except ValueError:
                 print("\033[31mHorário Inválido!\033[m")
             else:
@@ -904,10 +922,11 @@ def horario_comanda():
                 horario_entrega = 0
                 break
 
-    return [horario_pronto,horario_entrega,local]
+    return [horario_pronto, horario_entrega, local]
+
 
 def obs(nome_cliente):
-    with open('comandas.json','r') as r:
+    with open('comandas.json', 'r') as r:
         comandas = json.load(r)
 
     while True:
@@ -935,10 +954,11 @@ def obs(nome_cliente):
 
     comandas['comandas'][nome_cliente]['obs'] = observacao
 
-    with open("comandas.json",'w') as w:
+    with open("comandas.json", 'w') as w:
         json.dump(comandas, w, indent=4)
 
     return observacao
+
 
 def local_de_entrega():
     while True:
@@ -959,15 +979,16 @@ def local_de_entrega():
 
     return local
 
-def validar_exclusao(itens_split,qntd,data):
+
+def validar_exclusao(itens_split, qntd, data):
     with open("dados.json", "r") as r:
         dados = json.load(r)
-    with open('relatorio_diario_simples.json','r') as r:
-        rel_simples =json.load(r)
+    with open('relatorio_diario_simples.json', 'r') as r:
+        rel_simples = json.load(r)
 
     produto = nome_produto(itens_split)
 
-    #SALGADOS
+    # SALGADOS
     if unidecode(produto) in dados['salgado']['fritos']:
         dados['salgado']['fritos'][unidecode(produto)] -= float(qntd)
     elif unidecode(produto) in dados['salgado']['assados']:
@@ -978,7 +999,7 @@ def validar_exclusao(itens_split,qntd,data):
     if unidecode(produto) in rel_simples[data]['salgado']:
         rel_simples[data]['salgado'][unidecode(produto)] -= float(qntd)
 
-    #DOCES
+    # DOCES
     if unidecode(produto) in dados['doce']['tradicional/espelhado']:
         dados['doce']['tradicional/espelhado'][unidecode(produto)] -= float(qntd)
     elif unidecode(produto) in dados['doce']['bombom']:
@@ -987,14 +1008,14 @@ def validar_exclusao(itens_split,qntd,data):
     if unidecode(produto) in rel_simples[data]['doce']:
         rel_simples[data]['doce'][unidecode(produto)] -= float(qntd)
 
-    #BOLOS
+    # BOLOS
     if unidecode(produto) in dados['bolo']:
         dados['bolo'][unidecode(produto)] -= float(qntd)
 
     if unidecode(produto) in rel_simples[data]['bolo']:
         rel_simples[data]['bolo'][unidecode(produto)] -= float(qntd)
 
-    #SOBREMESAS
+    # SOBREMESAS
     if unidecode(produto) in dados['sobremesa']['tortas']:
         dados['sobremesa']['tortas'][unidecode(produto)] -= float(qntd)
     if unidecode(produto) in dados['sobremesa']['Paves/Profiteroles/Banoff/Mil Folhas']:
@@ -1003,7 +1024,7 @@ def validar_exclusao(itens_split,qntd,data):
     if unidecode(produto) in rel_simples[data]['sobremesa']:
         rel_simples[data]['sobremesa'][unidecode(produto)] -= float(qntd)
 
-    #FIO DE OVOS
+    # FIO DE OVOS
     if unidecode(produto) in dados['fio_de_ovos']:
         dados['fio_de_ovos']["Fio de ovos"] -= float(qntd)
 
@@ -1053,6 +1074,7 @@ def relatorios_diarios():
     if escolha == 2:
         comandas.relatorio_diario_completo(data_formatada)
 
+
 def tabelas_excel():
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
@@ -1089,18 +1111,27 @@ def tabelas_excel():
     if escolha == 2:
         excel.tabela_entregas(data_formatada)
 
-def validar_igualdade(nome,categoria,dia,hora):
+
+def validar_igualdade(nome, categoria, dia, hora):
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
+
+    def remover_copias(lista):
+        lista_formatada = []
+        seen = []
+        for item in lista:
+            if item not in seen:
+                lista_formatada.append(item)
+                seen.append(item)
+
+        return lista_formatada
 
     relatorio = rel_completo[dia][hora][nome]
     itens_cat = relatorio[categoria]
 
-    tirar_repetidos = []
-
     if len(relatorio[categoria]) > 0:
         nomes_categoria = []
-        for item in itens_cat: # Junta apenas os nomes do item.split()
+        for item in itens_cat:  # Junta apenas os nomes do item.split()
             split = item.split()
             nome = nome_produto(split)
 
@@ -1111,26 +1142,44 @@ def validar_igualdade(nome,categoria,dia,hora):
 
         nomes_categoria_add_atualizado = []
         nomes_categoria_atualizado = []
+        produto_existente = []
 
-        for item in nomes_categoria: # Passa por todos os itens da categoria
+        for produtos in relatorio[categoria]:
+            produto_existente.append(nome_produto(produtos.split()))
+
+
+        for item in nomes_categoria:  # Passa por todos os itens da categoria
             qntd_item = float(item[2])
             qntd_total = qntd_item
 
-            for item_add in relatorio["ADICIONADO"][categoria]: # Dentro de cada item, procura se não tem um igual no ADD
+
+            for item_add in relatorio["ADICIONADO"][categoria]:  # Dentro de cada item, procura se não tem um igual no ADD
                 split_add = str(item_add).split()
                 nome_add = nome_produto(split_add)
 
-                if nome_add in item[5]: # Se tiver o mesmo item no na categiria e no ADD
+                if nome_add in item[5]:  # Se tiver o mesmo item no na categiria e no ADD
 
                     qntd_item_add = float(split_add[2])
                     qntd_total += qntd_item_add
 
-                else:
-                    tirar_repetidos.append(item[5]) # Registra os itens que tem na categoria
+                    print(item[5])
+
+
+                elif nome_add not in produto_existente:
+                    print(item[5])
+                    print(nome_add)
+                    print(produto_existente)
+
                     nomes_categoria_add_atualizado.append(item_add)
 
+                    print(nomes_categoria_add_atualizado)
+                    print()
+
+
+            # Atualiza a quantidade somada no item
             item[2] = qntd_total
 
+            # Junta o nome que estava em uma lista
             juntar_nome = ""
             for p in item:
                 juntar_nome += " " + str(p)
@@ -1138,22 +1187,15 @@ def validar_igualdade(nome,categoria,dia,hora):
             nomes_categoria_atualizado.append(juntar_nome.strip())
 
 
+
         relatorio[categoria] = nomes_categoria_atualizado
 
-        with open("relatorio_diario_completo.json","w") as w:
-            json.dump(rel_completo,w,indent=4)
+        with open("relatorio_diario_completo.json", "w") as w:
+            json.dump(rel_completo, w, indent=4)
 
-        itens_nao_repetidos = []
-        for item in nomes_categoria_add_atualizado:
-            item_split = str(item).split()
-            nome = nome_produto(item_split)
 
-            if nome not in tirar_repetidos:
-                # print(tirar_repetidos)
-                tirar_repetidos.append(nome) # Vai adicionando os itens aos que já formam para não repetir no add
-                itens_nao_repetidos.append(item) # Só adiciona se ainda nao tiver o nome no add
 
-        return itens_nao_repetidos
+        return remover_copias(nomes_categoria_add_atualizado)
 
     else:
         return relatorio["ADICIONADO"][categoria]

@@ -536,6 +536,7 @@ def excluir_item(nome):
     for tipo in comanda:
         if isinstance(comanda[tipo], int) or isinstance(comanda[tipo], str):
             continue
+
         if tipo == "ADICIONADO":
             for tipos_add in comanda[tipo]:
                 lista_adicionados = []
@@ -568,6 +569,8 @@ def excluir_item(nome):
 
     # RELATORIO DIARIO COMPLETO
     for tipo in rel_completo:
+        if isinstance(rel_completo[tipo], str):
+            continue
 
         if tipo == "ADICIONADO":
             for tipos_add in rel_completo[tipo]:

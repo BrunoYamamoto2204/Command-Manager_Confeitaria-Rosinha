@@ -44,14 +44,16 @@
             "dia_semana": 6,
             "hora_pronta": "11:30",
             "hora_entrega": "12:30",
-            "num_item": 56,
+            "num_item": 224,
             "obs": "bolo deve ser legal",
             "salgados": [
                 "(1) -> 30 UN - Empadinha Palmito",
-                "(3) -> 4 Kg - Empad\u00e3o Frango"
+                "(3) -> 4 Kg - Empad\u00e3o Frango",
+                "(60) -> 1 UN - Coxinha"
             ],
             "doces": [
-                "(5) -> 35 UN - Camafeu"
+                "(5) -> 35 UN - Camafeu",
+                "(68) -> 1 UN - Bomb. C\u00f4co"
             ],
             "bolos": [
                 "(6) -> 4 Kg - Ta\u00e7a Martha Rocha"
@@ -62,50 +64,85 @@
             "fio_de_ovos": [],
             "ADICIONADO": {
                 "salgados": [
-                    "(10) -> 55 UN - Coxinha",
-                    "(11) -> 22 UN - Empadinha Frango",
-                    "(12) -> 2 UN - Folhado Presunto e Queijo",
-                    "(18) -> 2 UN - Folhado Frango c/ Catupiry",
-                    "(19) -> 1.0 Kg - Empad\u00e3o Frango",
-                    "(21) -> 3.0 Kg - Empad\u00e3o Palmito",
-                    "(34) -> 4 UN - Coxinha",
-                    "(39) -> 1 UN - Coxinha",
-                    "(41) -> 10 UN - Coxinha",
-                    "(44) -> 10 UN - Coxinha",
-                    "(47) -> 1 UN - Coxinha"
+                    "(2) -> 22.0 Kg - Empad\u00e3o Frango",
+                    "(174) -> 9 UN - Coxinha",
+                    "(174) -> 2 UN - Esfiha Carne",
+                    "(176) -> 1 UN - Coxinha",
+                    "(179) -> 1 UN - Coxinha",
+                    "(180) -> 1 UN - Coxinha",
+                    "(181) -> 1 UN - Coxinha",
+                    "(182) -> 1 UN - Coxinha",
+                    "(184) -> 2 UN - Coxinha",
+                    "(189) -> 1 UN - Coxinha",
+                    "(189) -> 6 UN - Coxinha",
+                    "(191) -> 5 UN - Coxinha",
+                    "(195) -> 10 UN - Coxinha",
+                    "(196) -> 1 UN - Coxinha",
+                    "(197) -> 12 UN - Coxinha",
+                    "(198) -> 1 UN - Coxinha",
+                    "(199) -> 1 UN - Coxinha",
+                    "(200) -> 1 UN - Coxinha",
+                    "(202) -> 4 UN - Coxinha",
+                    "(204) -> 1 UN - Coxinha",
+                    "(206) -> 1 UN - Coxinha",
+                    "(207) -> 1 UN - Coxinha",
+                    "(208) -> 1 UN - Coxinha",
+                    "(209) -> 1 UN - Coxinha",
+                    "(210) -> 1 UN - Coxinha",
+                    "(211) -> 1 UN - Coxinha",
+                    "(214) -> 1 UN - Coxinha",
+                    "(215) -> 1.0 Kg - Empad\u00e3o Frango",
+                    "(216) -> 1 UN - Coxinha",
+                    "(217) -> 1 UN - Coxinha",
+                    "(222) -> 7 UN - Coxinha"
                 ],
                 "doces": [
-                    "(35) -> 14 UN - Brigadeiro",
-                    "(45) -> 30 UN - Beijinho",
-                    "(45) -> 15 UN - Camafeu",
-                    "(47) -> 15 UN - Camafeu",
-                    "(47) -> 20 UN - Beijinho"
+                    "(158) -> 5 UN - Camafeu",
+                    "(159) -> 1 UN - Camafeu",
+                    "(160) -> 1 UN - Camafeu",
+                    "(160) -> 1 UN - Olho de Sogra",
+                    "(162) -> 3 UN - Camafeu",
+                    "(162) -> 2 UN - Brigadeiro",
+                    "(164) -> 5 UN - Camafeu",
+                    "(165) -> 2 UN - Camafeu",
+                    "(166) -> 1 UN - Camafeu",
+                    "(167) -> 2 UN - Camafeu",
+                    "(168) -> 1 UN - Camafeu",
+                    "(169) -> 1 UN - Camafeu",
+                    "(170) -> 4 UN - Camafeu",
+                    "(170) -> 2 UN - Beijinho",
+                    "(172) -> 5 UN - Camafeu",
+                    "(172) -> 1 UN - Brigadeiro",
+                    "(177) -> 2 UN - Camafeu",
+                    "(178) -> 2 UN - Camafeu",
+                    "(182) -> 2 UN - Camafeu",
+                    "(184) -> 4 UN - Camafeu",
+                    "(191) -> 5 UN - Camafeu",
+                    "(193) -> 2 UN - Camafeu",
+                    "(194) -> 3 UN - Camafeu",
+                    "(201) -> 2 UN - Camafeu",
+                    "(203) -> 1 UN - Camafeu",
+                    "(204) -> 2 UN - Camafeu",
+                    "(212) -> 4 UN - Camafeu",
+                    "(212) -> 2 UN - Brigadeiro",
+                    "(218) -> 1 UN - Camafeu",
+                    "(219) -> 4 UN - Camafeu",
+                    "(220) -> 1 UN - Camafeu",
+                    "(221) -> 5 UN - Camafeu",
+                    "(222) -> 9 UN - Camafeu"
                 ],
                 "bolos": [
-                    "(9) -> 3 Kg - Morango Nata e Suspiro",
-                    "(14) -> 1 Kg - Dueto",
-                    "(15) -> 2 Kg - Sinfonia de Damasco",
-                    "(17) -> 2 Kg - Martha Rocha",
-                    "(20) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro",
-                    "(33) -> 2 Kg - Abacaxi c/ C\u00f4co",
-                    "(47) -> 1 Kg - Ta\u00e7a Martha Rocha",
-                    "(47) -> 1 Kg - Martha Rocha",
-                    "(53) -> 1 Kg - Ta\u00e7a Martha Rocha",
-                    "(54) -> 3 Kg - Ta\u00e7a Martha Rocha",
-                    "(55) -> 1 Kg - Ta\u00e7a Martha Rocha"
+                    "(4) -> 2 Kg - Floresta Negra",
+                    "(5) -> 2 Kg - Ta\u00e7a Martha Rocha",
+                    "(6) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro",
+                    "(7) -> 2 Kg - Bolo Trufado",
+                    "(186) -> 1 Kg - Martha Rocha",
+                    "(187) -> 1 Kg - Morango Nata e Suspiro"
                 ],
                 "sobremesas": [
-                    "(13) -> 2 UN - Mini Torta Morango",
-                    "(16) -> 1 KG - Torta Choco Morango",
-                    "(25) -> 30 KG - Pav\u00ea Morango",
-                    "(32) -> 50 UN - Mini Torta Lim\u00e3o",
-                    "(38) -> 2 KG - Banoff",
-                    "(40) -> 1 KG - Torta Choco Morango"
+                    "(188) -> 1 KG - Banoff"
                 ],
-                "fio_de_ovos": [
-                    "(31) -> 2 Kg - Fio de ovos",
-                    "(47) -> 10 Kg - Fio de ovos"
-                ]
+                "fio_de_ovos": []
             }
         },
         "bruno_yamamoto_": {
