@@ -22,9 +22,9 @@
     },
     "22/04/2024": {
         "doce": {
-            "Brigadeiro": 104.0,
+            "Brigadeiro": 105.0,
             "Beijinho": 3.0,
-            "Camafeu": 441.0,
+            "Camafeu": 461.0,
             "Brigadeiro Branco": 2.0,
             "Dois Amores": 1.0,
             "Bomb. Suspiro": 10.0,
@@ -37,7 +37,7 @@
             "Olho de Sogra": 1.0
         },
         "salgado": {
-            "Coxinha": 325.0,
+            "Coxinha": 345.0,
             "Empadao Palmito": 1.0,
             "Empadao Camarao": 0.0,
             "Empadao Frango": 4.0,
@@ -46,7 +46,8 @@
         "bolo": {
             "Taca Martha Rocha": 3.0,
             "Martha Rocha": -2.0,
-            "Morango Nata e Suspiro": 1.0
+            "Morango Nata e Suspiro": 1.0,
+            "Ameixa c/ Coco": 2.0
         },
         "sobremesa": {
             "Banoff": 1.0,

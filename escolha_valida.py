@@ -1112,9 +1112,11 @@ def tabelas_excel():
         excel.tabela_entregas(data_formatada)
 
 
-def validar_igualdade(nome, categoria, dia, hora):
+def validar_igualdade(nome, categoria,categoria_comandas, dia, hora):
     with open("relatorio_diario_completo.json", "r") as r:
         rel_completo = json.load(r)
+    with open("comandas.json", "r") as r:
+        comandas = json.load(r)
 
     def remover_copias(lista):
         lista_formatada = []
@@ -1127,6 +1129,7 @@ def validar_igualdade(nome, categoria, dia, hora):
         return lista_formatada
 
     relatorio = rel_completo[dia][hora][nome]
+    comanda = comandas['comandas'][nome]
     itens_cat = relatorio[categoria]
 
     if len(relatorio[categoria]) > 0:
@@ -1189,9 +1192,12 @@ def validar_igualdade(nome, categoria, dia, hora):
 
 
         relatorio[categoria] = nomes_categoria_atualizado
+        comanda[categoria_comandas] = nomes_categoria_atualizado
 
         with open("relatorio_diario_completo.json", "w") as w:
             json.dump(rel_completo, w, indent=4)
+        with open("comandas.json", "w") as w:
+            json.dump(comandas, w, indent=4)
 
 
 

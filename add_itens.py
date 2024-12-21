@@ -159,23 +159,33 @@ def opc_comandas(opc):
         # Salvar os adicionados
         with open("relatorio_diario_completo.json", "w") as w:
             json.dump(rel_completo, w, indent=4)
+        with open("comandas.json", "w") as w:
+            json.dump(comandas, w, indent=4)
 
         # VALIDAÇÃO DE ITENS IGUAIS
-        itens_adicionados_salgado = escolha_valida.validar_igualdade(f"{nome_comanda}", 'salgado',data,hora)
-        itens_adicionados_doce = escolha_valida.validar_igualdade(f"{nome_comanda}", 'doce',data,hora)
-        itens_adicionados_bolo = escolha_valida.validar_igualdade(f"{nome_comanda}", 'bolo',data,hora)
-        itens_adicionados_sobremesa = escolha_valida.validar_igualdade(f"{nome_comanda}", 'sobremesa',data,hora)
-        itens_adicionados_fio_ovos = escolha_valida.validar_igualdade(f"{nome_comanda}", 'fio_de_ovos',data,hora)
+        itens_adicionados_salgado = escolha_valida.validar_igualdade(f"{nome_comanda}", 'salgado','salgados',data,hora)
+        itens_adicionados_doce = escolha_valida.validar_igualdade(f"{nome_comanda}", 'doce','doces',data,hora)
+        itens_adicionados_bolo = escolha_valida.validar_igualdade(f"{nome_comanda}", 'bolo','bolos',data,hora)
+        itens_adicionados_sobremesa = escolha_valida.validar_igualdade(f"{nome_comanda}", 'sobremesa','sobremesas',data,hora)
+        itens_adicionados_fio_ovos = escolha_valida.validar_igualdade(f"{nome_comanda}", 'fio_de_ovos','fio_de_ovos',data,hora)
 
         # Salvar a soma dos itens repetidos da categoria
         with open("relatorio_diario_completo.json", "r") as r:
             rel_completo = json.load(r)
+        with open("comandas.json","r") as r:
+            comandas = json.load(r)
 
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["salgado"] = itens_adicionados_salgado
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["doce"] = itens_adicionados_doce
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["bolo"] = itens_adicionados_bolo
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["sobremesa"] = itens_adicionados_sobremesa
         rel_completo[data][hora][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"] = itens_adicionados_fio_ovos
+
+        comandas['comandas'][f"{nome_comanda}"]['ADICIONADO']["salgados"] = itens_adicionados_salgado
+        comandas['comandas'][f"{nome_comanda}"]['ADICIONADO']["doces"] = itens_adicionados_doce
+        comandas['comandas'][f"{nome_comanda}"]['ADICIONADO']["bolos"] = itens_adicionados_bolo
+        comandas['comandas'][f"{nome_comanda}"]['ADICIONADO']["sobremesas"] = itens_adicionados_sobremesa
+        comandas['comandas'][f"{nome_comanda}"]['ADICIONADO']["fio_de_ovos"] = itens_adicionados_fio_ovos
 
         # Retirar os itens que já foram somados
         with open("comandas.json", "w") as w:

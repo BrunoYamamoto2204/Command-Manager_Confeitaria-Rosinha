@@ -1,7 +1,7 @@
 {
     "doce": {
         "tradicional/espelhado": {
-            "Brigadeiro": 59.0,
+            "Brigadeiro": 60.0,
             "Brigadeiro Branco": 2,
             "Beijinho": 3.0,
             "Olho de Sogra": 1,
@@ -28,12 +28,12 @@
             "Bomb. Crocante": 2,
             "Bomb. Laranjinha": 0,
             "Bomb. Suspiro": 30,
-            "Camafeu": 485.0
+            "Camafeu": 505.0
         }
     },
     "salgado": {
         "fritos": {
-            "Coxinha": 418.0,
+            "Coxinha": 438.0,
             "Coxinha c/ Catupiry": 0.0,
             "Kibe": -30.0,
             "Kibe Recheado": 0,
@@ -72,7 +72,7 @@
     },
     "bolo": {
         "Abacaxi c/ Coco": 9.0,
-        "Ameixa c/ Coco": 0,
+        "Ameixa c/ Coco": 2.0,
         "Delicia de Limao e Abacaxi": 0,
         "Martha Rocha": -2.0,
         "Prestigio": 0,

@@ -193,11 +193,12 @@
                 "salgado": [
                     "(1) -> 30.0 UN - Empadinha Palmito",
                     "(3) -> 11.0 Kg - Empad\u00e3o Frango",
-                    "(60) -> 1340.0 UN - Coxinha"
+                    "(60) -> 1360.0 UN - Coxinha"
                 ],
                 "doce": [
                     "(68) -> 5.0 UN - Bomb. C\u00f4co",
-                    "(5) -> 200.0 UN - Camafeu"
+                    "(5) -> 220.0 UN - Camafeu",
+                    "(212) -> 22.0 UN - Brigadeiro"
                 ],
                 "bolo": [
                     "(6) -> 5.0 Kg - Ta\u00e7a Martha Rocha"
@@ -217,15 +218,11 @@
                         "(174) -> 2 UN - Esfiha Carne"
                     ],
                     "doce": [
-                        "(35) -> 14 UN - Brigadeiro",
                         "(136) -> 1 UN - Bomb. Suspiro",
                         "(70) -> 1 UN - Beijinho",
                         "(73) -> 1 UN - Bomb. Morango",
                         "(160) -> 1 UN - Olho de Sogra",
-                        "(162) -> 2 UN - Brigadeiro",
-                        "(170) -> 2 UN - Beijinho",
-                        "(172) -> 1 UN - Brigadeiro",
-                        "(212) -> 2 UN - Brigadeiro"
+                        "(170) -> 2 UN - Beijinho"
                     ],
                     "bolo": [
                         "(9) -> 3 Kg - Morango Nata e Suspiro",
@@ -233,7 +230,8 @@
                         "(15) -> 2 Kg - Sinfonia de Damasco",
                         "(20) -> 2 Kg - Ta\u00e7a Morango Nata e Suspiro",
                         "(33) -> 2 Kg - Abacaxi c/ C\u00f4co",
-                        "(187) -> 1 Kg - Morango Nata e Suspiro"
+                        "(187) -> 1 Kg - Morango Nata e Suspiro",
+                        "(224) -> 2 Kg - Ameixa c/ C\u00f4co"
                     ],
                     "sobremesa": [
                         "(13) -> 2 UN - Mini Torta Morango"

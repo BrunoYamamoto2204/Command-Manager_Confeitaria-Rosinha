@@ -20,12 +20,10 @@ import openpyxl
 # with open("relatorio_diario_completo.json", "w") as w:
 #     json.dump(rel_completo, w, indent=4)
 
-def remover_copias(lista):
-    lista_formatada = []
-    seen = []
-    for item in lista:
-        if item not in seen:
-            lista_formatada.append(item)
-            seen.append(item)
+with open("comandas.json", "r") as r:
+    comanda = json.load(r)
+with open("relatorio_diario_completo.json", "r") as r:
+    rel_completo = json.load(r)
 
-    return lista_formatada
+for item_add in rel_completo["22/04/2024"]["11:30"]["jonson_silva_"]["salgado"]:
+    print(item_add)
