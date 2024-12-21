@@ -59,7 +59,13 @@ def opc_comandas(opc):
 
 
             print("=" * 40)
-            cont = input("Mais itens? S/N:").strip().upper()
+            while True:
+                cont = input("Mais itens? S/N:").strip().upper()
+                if cont == "S" or cont == "N":
+                    break
+                else:
+                    print("\033[31mResposta inválida! Responda S/N\033[m")
+
             print("=" * 40)
             if cont == "N":
                 break
@@ -151,7 +157,12 @@ def opc_comandas(opc):
             comandas['comandas'][f'{nome_comanda}']["num_item"] += 1
 
             print("=" * 40)
-            cont = input("Mais itens? S/N:").strip().upper()
+            while True:
+                cont = input("Mais itens? S/N:").strip().upper()
+                if cont == "S" or cont == "N":
+                    break
+                else:
+                    print("\033[31mResposta inválida! Responda S/N\033[m")
             print("=" * 40)
             if cont == "N":
                 break
