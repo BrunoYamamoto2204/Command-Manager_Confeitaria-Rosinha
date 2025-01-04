@@ -1150,11 +1150,9 @@ def validar_igualdade(nome, categoria,categoria_comandas, dia, hora):
         for produtos in relatorio[categoria]:
             produto_existente.append(nome_produto(produtos.split()))
 
-
         for item in nomes_categoria:  # Passa por todos os itens da categoria
             qntd_item = float(item[2])
             qntd_total = qntd_item
-
 
             for item_add in relatorio["ADICIONADO"][categoria]:  # Dentro de cada item, procura se não tem um igual no ADD
                 split_add = str(item_add).split()
@@ -1165,19 +1163,9 @@ def validar_igualdade(nome, categoria,categoria_comandas, dia, hora):
                     qntd_item_add = float(split_add[2])
                     qntd_total += qntd_item_add
 
-                    print(item[5])
-
-
                 elif nome_add not in produto_existente:
-                    print(item[5])
-                    print(nome_add)
-                    print(produto_existente)
 
                     nomes_categoria_add_atualizado.append(item_add)
-
-                    print(nomes_categoria_add_atualizado)
-                    print()
-
 
             # Atualiza a quantidade somada no item
             item[2] = qntd_total
@@ -1190,7 +1178,6 @@ def validar_igualdade(nome, categoria,categoria_comandas, dia, hora):
             nomes_categoria_atualizado.append(juntar_nome.strip())
 
 
-
         relatorio[categoria] = nomes_categoria_atualizado
         comanda[categoria_comandas] = nomes_categoria_atualizado
 
@@ -1198,8 +1185,6 @@ def validar_igualdade(nome, categoria,categoria_comandas, dia, hora):
             json.dump(rel_completo, w, indent=4)
         with open("comandas.json", "w") as w:
             json.dump(comandas, w, indent=4)
-
-
 
         return remover_copias(nomes_categoria_add_atualizado)
 
