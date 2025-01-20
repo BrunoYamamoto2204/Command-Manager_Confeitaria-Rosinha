@@ -5,7 +5,7 @@ Projeto desenvolvido para facilitar o gerenciamento de comandas na Confeitaria R
 - Criação e visualização das comandas
 - Relatórios detalhados e divididos por setores
 - Edição e exclusão de itens e tabelas
-- Expotação tabelas para Excel(.xlsx)
+- Exportação tabelas para Excel(.xlsx)
 
 ### -- Input --
 - Criar comanda (Nome, Telefone, Endereço, Local de Entrega, Data, Horário, Obs)
